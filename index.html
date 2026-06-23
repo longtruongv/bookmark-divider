@@ -1388,10 +1388,13 @@
         e.dataTransfer.setDragImage(dragImg, 32, 32);
         setTimeout(() => dragImg.remove(), 60);
 
+        // Thiết lập tên kéo thả: Sử dụng ký tự không độ rộng đặc biệt '\u200c' nếu tên trống để trình duyệt không tự lấy URL làm tên dấu trang
+        const bookmarkName = (p.name && p.name.trim() !== '') ? p.name : '\u200c';
+
         e.dataTransfer.effectAllowed = 'copy';
         e.dataTransfer.setData('text/uri-list', pUrl);
         e.dataTransfer.setData('text/plain', pUrl);
-        e.dataTransfer.setData('text/html', `<a href="${esc(pUrl)}">${esc(p.name || '')}</a>`);
+        e.dataTransfer.setData('text/html', `<a href="${esc(pUrl)}">${esc(bookmarkName)}</a>`);
         
         btn.closest('.item').style.opacity = '0.5';
         $('dragGuideBanner').classList.add('active');
@@ -1815,10 +1818,13 @@
         setTimeout(() => dragImg.remove(), 60);
 
         const u = shareUrl();
+        // Thiết lập tên kéo thả: Sử dụng ký tự không độ rộng đặc biệt '\u200c' nếu tên trống để trình duyệt không tự lấy URL làm tên dấu trang
+        const bookmarkName = (p.name && p.name.trim() !== '') ? p.name : '\u200c';
+
         e.dataTransfer.effectAllowed = 'copy';
         e.dataTransfer.setData('text/uri-list', u);
         e.dataTransfer.setData('text/plain', u);
-        e.dataTransfer.setData('text/html', `<a href="${esc(u)}">${esc(p.name || '')}</a>`);
+        e.dataTransfer.setData('text/html', `<a href="${esc(u)}">${esc(bookmarkName)}</a>`);
         
         $('dragGuideBanner').classList.add('active');
 
