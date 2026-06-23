@@ -6,72 +6,74 @@
 <title>‌</title>
 <style>
   :root {
-    --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #f5f3ff 50%, #ecfdf5 100%);
-    --panel-bg: rgba(255, 255, 255, 0.8);
-    --panel-border: rgba(99, 102, 241, 0.15);
-    --text-primary: #0f172a;
-    --text-muted: #4f46e5;
-    --brand-gradient: linear-gradient(135deg, #6366f1 0%, #9333ea 50%, #0d9488 100%);
-    --brand-pink: #9333ea;
-    --brand-purple: #6366f1;
-    --brand-blue: #0d9488;
+    --bg-gradient: linear-gradient(135deg, #fff7ed 0%, #fef3c7 45%, #ffe4e6 100%);
+    --panel-bg: rgba(255, 255, 255, 0.78);
+    --panel-border: rgba(249, 115, 22, 0.16);
+  
+    --text-primary: #111827;
+    --text-muted: #c2410c;
+  
+    --brand-gradient: linear-gradient(135deg, #fb7185 0%, #f97316 45%, #f59e0b 100%);
+    --brand-pink: #f97316;
+    --brand-purple: #fb7185;
+    --brand-blue: #14b8a6;
+  
     --radius-lg: 24px;
     --radius-md: 14px;
-    --shadow-premium: 0 15px 35px rgba(99, 102, 241, 0.08), 0 5px 15px rgba(13, 148, 136, 0.04);
+    --shadow-premium: 0 15px 35px rgba(249, 115, 22, 0.08), 0 5px 15px rgba(244, 114, 182, 0.05);
     --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    
-    --svg-canvas-bg: #ffffff;
-    --input-bg: rgba(255, 255, 255, 0.85);
-    --input-border: rgba(99, 102, 241, 0.15);
-    --button-bg: #ffffff;
-    --button-color: #1e1b4b;
-    --stage-box-bg: rgba(255, 255, 255, 0.6);
-    --item-bg: rgba(255, 255, 255, 0.7);
-    --item-active-bg: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(13, 148, 136, 0.08) 100%);
-    --topbar-bg: rgba(255, 255, 255, 0.75);
-    --segmented-bg: rgba(99, 102, 241, 0.08);
+  
+    --svg-canvas-bg: #fffaf5;
+    --input-bg: rgba(255, 255, 255, 0.9);
+    --input-border: rgba(249, 115, 22, 0.18);
+    --button-bg: #fffdf8;
+    --button-color: #7c2d12;
+  
+    --stage-box-bg: rgba(255, 255, 255, 0.62);
+    --item-bg: rgba(255, 255, 255, 0.74);
+    --item-active-bg: linear-gradient(135deg, rgba(251, 113, 133, 0.10) 0%, rgba(249, 115, 22, 0.10) 100%);
+    --topbar-bg: rgba(255, 255, 255, 0.78);
+    --segmented-bg: rgba(249, 115, 22, 0.09);
   }
   
-  /* Space Dark Theme variables */
   body.theme-dark {
-    --bg-gradient: linear-gradient(135deg, #090d16 0%, #0c0b1e 50%, #021410 100%);
-    --panel-bg: rgba(15, 23, 42, 0.85);
-    --panel-border: rgba(168, 85, 247, 0.22);
+    --bg-gradient: linear-gradient(135deg, #20120d 0%, #111827 50%, #0f172a 100%);
+    --panel-bg: rgba(17, 24, 39, 0.86);
+    --panel-border: rgba(249, 115, 22, 0.18);
     --text-primary: #f8fafc;
-    --text-muted: #c084fc;
-    --shadow-premium: 0 15px 35px rgba(0, 0, 0, 0.45), 0 5px 15px rgba(168, 85, 247, 0.1);
-    
-    --svg-canvas-bg: #0f172a;
+    --text-muted: #fdba74;
+    --shadow-premium: 0 15px 35px rgba(0, 0, 0, 0.45), 0 5px 15px rgba(249, 115, 22, 0.08);
+  
+    --svg-canvas-bg: #0b1220;
     --input-bg: rgba(30, 41, 59, 0.75);
-    --input-border: rgba(168, 85, 247, 0.25);
-    --button-bg: rgba(30, 41, 59, 0.9);
-    --button-color: #f1f5f9;
-    --stage-box-bg: rgba(30, 41, 59, 0.5);
-    --item-bg: rgba(30, 41, 59, 0.4);
-    --item-active-bg: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(13, 148, 136, 0.15) 100%);
-    --topbar-bg: rgba(15, 23, 42, 0.8);
-    --segmented-bg: rgba(168, 85, 247, 0.15);
+    --input-border: rgba(249, 115, 22, 0.20);
+    --button-bg: rgba(30, 41, 59, 0.90);
+    --button-color: #f8fafc;
+    --stage-box-bg: rgba(30, 41, 59, 0.50);
+    --item-bg: rgba(30, 41, 59, 0.42);
+    --item-active-bg: linear-gradient(135deg, rgba(251, 113, 133, 0.14) 0%, rgba(249, 115, 22, 0.14) 100%);
+    --topbar-bg: rgba(15, 23, 42, 0.82);
+    --segmented-bg: rgba(249, 115, 22, 0.14);
   }
-
-  /* AMOLED Dark Theme variables */
+  
   body.theme-amoled {
     --bg-gradient: none;
-    background-color: #000000 !important;
-    --panel-bg: rgba(10, 10, 10, 0.95);
-    --panel-border: rgba(255, 255, 255, 0.12);
+    background-color: #000 !important;
+    --panel-bg: rgba(10, 10, 10, 0.96);
+    --panel-border: rgba(255, 255, 255, 0.10);
     --text-primary: #ffffff;
-    --text-muted: #e9d5ff;
-    --shadow-premium: 0 15px 35px rgba(0, 0, 0, 0.8), 0 5px 15px rgba(168, 85, 247, 0.05);
-    
-    --svg-canvas-bg: #000000;
-    --input-bg: rgba(20, 20, 20, 0.9);
-    --input-border: rgba(255, 255, 255, 0.15);
-    --button-bg: rgba(25, 25, 25, 0.95);
+    --text-muted: #fdba74;
+    --shadow-premium: 0 15px 35px rgba(0, 0, 0, 0.82), 0 5px 15px rgba(249, 115, 22, 0.05);
+  
+    --svg-canvas-bg: #000;
+    --input-bg: rgba(20, 20, 20, 0.92);
+    --input-border: rgba(255, 255, 255, 0.14);
+    --button-bg: rgba(25, 25, 25, 0.96);
     --button-color: #ffffff;
-    --stage-box-bg: rgba(15, 15, 15, 0.9);
-    --item-bg: rgba(15, 15, 15, 0.7);
-    --item-active-bg: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(13, 148, 136, 0.2) 100%);
-    --topbar-bg: rgba(0, 0, 0, 0.9);
+    --stage-box-bg: rgba(15, 15, 15, 0.92);
+    --item-bg: rgba(15, 15, 15, 0.72);
+    --item-active-bg: linear-gradient(135deg, rgba(251, 113, 133, 0.18) 0%, rgba(249, 115, 22, 0.18) 100%);
+    --topbar-bg: rgba(0, 0, 0, 0.92);
     --segmented-bg: rgba(255, 255, 255, 0.08);
   }
   
@@ -236,7 +238,42 @@
   .p-card .meta { font-size: 12px; color: var(--text-muted); opacity: 0.8; }
   .mini-stage { width: 100%; height: auto; border: 1px solid var(--panel-border); border-radius: var(--radius-md); background: var(--svg-canvas-bg); aspect-ratio: 16/5; padding: 4px; display: flex; align-items: center; justify-content: center; }
   
-  svg { display: block; width: 100%; height: auto; background: var(--svg-canvas-bg); border: 1px solid var(--panel-border); border-radius: var(--radius-lg); box-shadow: inset 0 2px 8px rgba(0,0,0,0.04); }
+  /* Icon SVG mặc định: trong suốt */
+  svg {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    flex: 0 0 auto;
+    vertical-align: middle;
+  }
+  
+  /* SVG canvas / preview lớn */
+  #svgCanvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: var(--svg-canvas-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius-lg);
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.04);
+  }
+  
+  #homeLogoSvg,
+  #btnPreviewSvg,
+  #studioBtnPreviewSvg,
+  #pv16,
+  #pv32 {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
   
   /* Grid Background Support */
   #svgCanvas {
@@ -246,6 +283,13 @@
   #svgCanvas.grid-active {
     background-image: radial-gradient(rgba(168, 85, 247, 0.18) 1px, transparent 1px);
     background-size: 8px 8px;
+  }
+
+  .home-actions button svg,
+  .topbar button svg,
+  .segmented-control button svg {
+    width: 16px;
+    height: 16px;
   }
   
   .stagebox { background: var(--stage-box-bg); border: 1px solid var(--panel-border); border-radius: var(--radius-lg); padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
