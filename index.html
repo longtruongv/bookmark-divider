@@ -6,75 +6,83 @@
 <title>‌</title>
 <style>
   :root {
-    --bg-gradient: linear-gradient(135deg, #fff7ed 0%, #fef3c7 45%, #ffe4e6 100%);
+    /* Sunrise Day Theme */
+    --bg-gradient: linear-gradient(135deg, #fff5eb 0%, #fef0f3 50%, #f3e8ff 100%);
     --panel-bg: rgba(255, 255, 255, 0.78);
-    --panel-border: rgba(249, 115, 22, 0.16);
+    --panel-border: rgba(244, 63, 94, 0.14);
   
-    --text-primary: #111827;
-    --text-muted: #c2410c;
+    --text-primary: #1e1b4b; 
+    --text-muted: #b45309; 
   
-    --brand-gradient: linear-gradient(135deg, #fb7185 0%, #f97316 45%, #f59e0b 100%);
-    --brand-pink: #f97316;
-    --brand-purple: #fb7185;
-    --brand-blue: #14b8a6;
+    --brand-gradient: linear-gradient(135deg, #ff6b8b 0%, #ec4899 50%, #f97316 100%);
+    --brand-pink: #ec4899;
+    --brand-purple: #a855f7;
+    --brand-orange: #f97316;
   
     --radius-lg: 24px;
     --radius-md: 14px;
-    --shadow-premium: 0 15px 35px rgba(249, 115, 22, 0.08), 0 5px 15px rgba(244, 114, 182, 0.05);
+    --shadow-premium: 0 15px 35px rgba(236, 72, 153, 0.08), 0 5px 15px rgba(249, 115, 22, 0.05);
     --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   
-    --svg-canvas-bg: #fffaf5;
+    --svg-canvas-bg: #fffcf9;
     --input-bg: rgba(255, 255, 255, 0.9);
-    --input-border: rgba(249, 115, 22, 0.18);
-    --button-bg: #fffdf8;
-    --button-color: #7c2d12;
+    --input-border: rgba(244, 63, 94, 0.16);
+    --button-bg: #fffbf8;
+    --button-color: #881337;
   
-    --stage-box-bg: rgba(255, 255, 255, 0.62);
-    --item-bg: rgba(255, 255, 255, 0.74);
-    --item-active-bg: linear-gradient(135deg, rgba(251, 113, 133, 0.10) 0%, rgba(249, 115, 22, 0.10) 100%);
-    --topbar-bg: rgba(255, 255, 255, 0.78);
-    --segmented-bg: rgba(249, 115, 22, 0.09);
+    --stage-box-bg: rgba(255, 255, 255, 0.65);
+    --item-bg: rgba(255, 255, 255, 0.75);
+    --item-active-bg: linear-gradient(135deg, rgba(236, 72, 153, 0.10) 0%, rgba(249, 115, 22, 0.10) 100%);
+    --topbar-bg: rgba(255, 255, 255, 0.82);
+    --segmented-bg: rgba(244, 63, 94, 0.08);
   }
   
   body.theme-dark {
-    --bg-gradient: linear-gradient(135deg, #20120d 0%, #111827 50%, #0f172a 100%);
-    --panel-bg: rgba(17, 24, 39, 0.86);
-    --panel-border: rgba(249, 115, 22, 0.18);
-    --text-primary: #f8fafc;
-    --text-muted: #fdba74;
-    --shadow-premium: 0 15px 35px rgba(0, 0, 0, 0.45), 0 5px 15px rgba(249, 115, 22, 0.08);
+    /* Cosmic Night Theme */
+    --bg-gradient: linear-gradient(135deg, #090514 0%, #110d26 50%, #03000a 100%);
+    --panel-bg: rgba(21, 16, 39, 0.82);
+    --panel-border: rgba(168, 85, 247, 0.22);
+    --text-primary: #f3e8ff; 
+    --text-muted: #fda4af; 
+    --shadow-premium: 0 15px 40px rgba(0, 0, 0, 0.55), 0 5px 20px rgba(168, 85, 247, 0.15);
   
-    --svg-canvas-bg: #0b1220;
-    --input-bg: rgba(30, 41, 59, 0.75);
-    --input-border: rgba(249, 115, 22, 0.20);
-    --button-bg: rgba(30, 41, 59, 0.90);
-    --button-color: #f8fafc;
-    --stage-box-bg: rgba(30, 41, 59, 0.50);
-    --item-bg: rgba(30, 41, 59, 0.42);
-    --item-active-bg: linear-gradient(135deg, rgba(251, 113, 133, 0.14) 0%, rgba(249, 115, 22, 0.14) 100%);
-    --topbar-bg: rgba(15, 23, 42, 0.82);
-    --segmented-bg: rgba(249, 115, 22, 0.14);
+    --svg-canvas-bg: #0a0618;
+    --input-bg: rgba(26, 19, 48, 0.75);
+    --input-border: rgba(168, 85, 247, 0.25);
+    --button-bg: rgba(32, 24, 61, 0.75);
+    --button-color: #f3e8ff;
+    --stage-box-bg: rgba(18, 13, 35, 0.6);
+    --item-bg: rgba(26, 19, 48, 0.45);
+    --item-active-bg: linear-gradient(135deg, rgba(192, 132, 252, 0.15) 0%, rgba(244, 63, 94, 0.15) 100%);
+    --topbar-bg: rgba(13, 9, 26, 0.85);
+    --segmented-bg: rgba(168, 85, 247, 0.15);
   }
   
   body.theme-amoled {
+    /* AMOLED Black Theme */
     --bg-gradient: none;
-    background-color: #000 !important;
-    --panel-bg: rgba(10, 10, 10, 0.96);
-    --panel-border: rgba(255, 255, 255, 0.10);
+    background-color: #000000 !important;
+    --panel-bg: #000000;
+    --panel-border: rgba(255, 255, 255, 0.18);
     --text-primary: #ffffff;
-    --text-muted: #fdba74;
-    --shadow-premium: 0 15px 35px rgba(0, 0, 0, 0.82), 0 5px 15px rgba(249, 115, 22, 0.05);
+    --text-muted: #ff7ebb; 
+    --shadow-premium: 0 0 0 transparent; 
   
-    --svg-canvas-bg: #000;
-    --input-bg: rgba(20, 20, 20, 0.92);
-    --input-border: rgba(255, 255, 255, 0.14);
-    --button-bg: rgba(25, 25, 25, 0.96);
+    --brand-gradient: linear-gradient(135deg, #ff007f 0%, #ff5e00 100%);
+    --brand-pink: #ff007f;
+    --brand-purple: #e040fb;
+    --brand-orange: #ff5e00;
+
+    --svg-canvas-bg: #000000;
+    --input-bg: #0a0a0a;
+    --input-border: rgba(255, 255, 255, 0.25);
+    --button-bg: #121212;
     --button-color: #ffffff;
-    --stage-box-bg: rgba(15, 15, 15, 0.92);
-    --item-bg: rgba(15, 15, 15, 0.72);
-    --item-active-bg: linear-gradient(135deg, rgba(251, 113, 133, 0.18) 0%, rgba(249, 115, 22, 0.18) 100%);
-    --topbar-bg: rgba(0, 0, 0, 0.92);
-    --segmented-bg: rgba(255, 255, 255, 0.08);
+    --stage-box-bg: #050505;
+    --item-bg: #080808;
+    --item-active-bg: linear-gradient(135deg, rgba(255, 0, 127, 0.18) 0%, rgba(255, 94, 0, 0.18) 100%);
+    --topbar-bg: #000000;
+    --segmented-bg: #161616;
   }
   
   * { box-sizing: border-box; transition: var(--transition), background-image 0s; }
@@ -82,11 +90,11 @@
   
   button, input, select, textarea, a { font: inherit; outline: none; }
   button { border: 1px solid var(--panel-border); background: var(--button-bg); border-radius: var(--radius-md); padding: 10px 18px; cursor: pointer; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 8px; color: var(--button-color); }
-  button:hover { background: rgba(255, 255, 255, 0.15); border-color: var(--brand-pink); box-shadow: 0 4px 15px rgba(168, 85, 247, 0.15); transform: translateY(-1px); }
+  button:hover { background: rgba(255, 255, 255, 0.12); border-color: var(--brand-pink); box-shadow: 0 4px 15px rgba(236, 72, 153, 0.15); transform: translateY(-1px); }
   button:active { transform: translateY(1px); }
   
-  .btn-primary { background: var(--brand-gradient); color: #fff; border: none; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2); }
-  .btn-primary:hover { background: var(--brand-gradient); filter: brightness(1.1); color: #fff; box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35); }
+  .btn-primary { background: var(--brand-gradient); color: #fff; border: none; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.2); }
+  .btn-primary:hover { background: var(--brand-gradient); filter: brightness(1.1); color: #fff; box-shadow: 0 6px 20px rgba(236, 72, 153, 0.35); }
   .btn-ghost { background: transparent; border-color: transparent; color: var(--text-muted); }
   .btn-ghost:hover { background: rgba(168, 85, 247, 0.08); color: var(--brand-pink); }
   .btn-danger { color: #f43f5e; background: rgba(244, 63, 94, 0.08); border-color: rgba(244, 63, 94, 0.2); }
@@ -134,29 +142,30 @@
     text-align: center; 
   }
   
-  .home-card h1 { margin: 0; font-size: 38px; font-weight: 900; letter-spacing: -0.04em; background: var(--brand-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .home-card h1 { margin: 0; font-size: 38px; font-weight: 900; letter-spacing: -0.04em; background: var(--brand-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: capitalize; }
   .home-card p { margin: 0; color: var(--text-muted); font-size: 15px; line-height: 1.6; max-width: 50ch; }
   
+  /* Drag interactive items animation */
   .bookmark-link {
     display: inline-flex;
     align-items: center;
     gap: 14px;
     text-decoration: none;
     color: #fff;
-    border: 2px dashed rgba(168, 85, 247, 0.3);
+    border: 2px dashed rgba(255, 255, 255, 0.35);
     background: var(--brand-gradient);
     padding: 16px 32px;
     border-radius: 999px;
     font-weight: 700;
     cursor: grab;
     user-select: none;
-    box-shadow: 0 10px 25px rgba(168, 85, 247, 0.25);
+    box-shadow: 0 10px 25px rgba(236, 72, 153, 0.25);
     transform: translateZ(0);
     transition: var(--transition);
   }
   .bookmark-link:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(168, 85, 247, 0.35);
+    box-shadow: 0 15px 30px rgba(236, 72, 153, 0.35);
     border-color: rgba(255, 255, 255, 0.5);
   }
   .bookmark-link:active { cursor: grabbing; transform: translateY(1px); }
@@ -206,7 +215,7 @@
   .field { display: grid; gap: 6px; }
   .field label, .section-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
   .field input, .field select, .field textarea { width: 100%; border: 1px solid var(--input-border); border-radius: var(--radius-md); padding: 11px 14px; background: var(--input-bg); color: var(--text-primary); transition: var(--transition); }
-  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--brand-pink); background: var(--button-bg); box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.15); }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--brand-pink); background: var(--button-bg); box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.15); }
   .field textarea { min-height: 80px; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; resize: vertical; }
   
   .list { display: grid; gap: 10px; }
@@ -215,7 +224,6 @@
   .item.active { background: var(--item-active-bg); border-color: var(--brand-pink); }
   .item small { color: var(--text-muted); font-size: 11px; opacity: 0.8; }
 
-  /* Draggable Quick Bookmark drag button styling */
   .quick-drag-btn {
     display: inline-flex;
     align-items: center;
@@ -233,22 +241,94 @@
     color: #fff;
     background: var(--brand-gradient);
     border-color: transparent;
-    box-shadow: 0 4px 10px rgba(249, 115, 22, 0.25);
+    box-shadow: 0 4px 10px rgba(236, 72, 153, 0.25);
+    transform: scale(1.1);
   }
-  .quick-drag-btn:active {
-    cursor: grabbing;
-  }
-  .quick-drag-btn svg {
-    width: 15px;
-    height: 15px;
-    stroke: currentColor;
-    fill: none;
-  }
+  .quick-drag-btn:active { cursor: grabbing; transform: scale(0.95); }
+  .quick-drag-btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; }
   
+  /* Elegant Pure CSS Tooltip container */
+  .has-tooltip {
+    position: relative;
+  }
+  .tooltip-text {
+    visibility: hidden;
+    width: 220px;
+    background: var(--panel-bg);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--panel-border);
+    color: var(--text-primary);
+    text-align: center;
+    border-radius: var(--radius-md);
+    padding: 8px 12px;
+    position: absolute;
+    z-index: 10002;
+    bottom: 125%; 
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    opacity: 0;
+    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: var(--shadow-premium);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
+    pointer-events: none;
+  }
+  .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--panel-border) transparent transparent transparent;
+  }
+  .has-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .drag-guide-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--brand-gradient);
+    color: #fff;
+    text-align: center;
+    padding: 14px 20px;
+    font-weight: 800;
+    font-size: 15px;
+    z-index: 10005;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    transform: translateY(-110%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .drag-guide-banner.active {
+    transform: translateY(0);
+  }
+  .drag-guide-banner svg {
+    animation: bounceY 0.8s infinite alternate;
+    stroke: currentColor;
+    width: 18px;
+    height: 18px;
+  }
+  @keyframes bounceY {
+    from { transform: translateY(3px); }
+    to { transform: translateY(-5px); }
+  }
+
   svg { display: inline-block; width: 16px; height: 16px; background: transparent !important; border: 0 !important; box-shadow: none !important; border-radius: 0 !important; flex: 0 0 auto; vertical-align: middle; }
   
   #svgCanvas { display: block; width: 100%; height: auto; background: var(--svg-canvas-bg); border: 1px solid var(--panel-border); border-radius: var(--radius-lg); box-shadow: inset 0 2px 8px rgba(0,0,0,0.04); transition: var(--transition), background-image 0s; }
-  #svgCanvas.grid-active { background-image: radial-gradient(rgba(168, 85, 247, 0.18) 1px, transparent 1px); background-size: 8px 8px; }
+  #svgCanvas.grid-active { background-image: radial-gradient(rgba(236, 72, 153, 0.18) 1px, transparent 1px); background-size: 8px 8px; }
   
   #homeLogoSvg, #btnPreviewSvg, #studioBtnPreviewSvg, #pv16, #pv32 { display: block; width: 100%; height: auto; background: transparent; border: 0; box-shadow: none; }
   
@@ -263,6 +343,45 @@
   .modal-box { background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-premium); padding: 32px; width: min(420px, 90%); display: grid; gap: 20px; text-align: center; }
   .modal-box p { margin: 0; font-size: 15px; font-weight: 600; color: var(--text-primary); line-height: 1.5; }
 
+  .context-menu {
+    position: fixed;
+    background: var(--panel-bg);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-premium);
+    padding: 6px;
+    z-index: 10001;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 180px;
+    animation: contextFadeIn 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes contextFadeIn {
+    from { opacity: 0; transform: scale(0.96) translateY(-4px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .context-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .context-menu-item:hover {
+    background: var(--item-active-bg);
+    color: var(--brand-pink);
+  }
+  .context-menu-item.danger { color: #f43f5e; }
+  .context-menu-item.danger:hover { background: rgba(244, 63, 94, 0.12); color: #f43f5e; }
+  .context-menu-divider { height: 1px; background: var(--panel-border); margin: 4px 6px; }
+
   @media (max-width: 1120px) {
     .main-container { grid-template-columns: 1fr; height: auto; overflow: visible; }
     .scroll { max-height: none; }
@@ -275,15 +394,27 @@
 <!-- TOAST CONTAINER -->
 <div id="toastContainer" class="toast-container"></div>
 
+<!-- CONTEXT MENU CONTAINER -->
+<div id="contextMenu" class="context-menu hidden"></div>
+
+<!-- DRAG GUIDANCE TOP BANNER -->
+<div id="dragGuideBanner" class="drag-guide-banner">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="5 12 12 5 19 12"></polyline>
+  </svg>
+  <span id="dragGuideText" data-i18n="drag_guide_title">↑ Drag and drop directly onto your browser's Bookmark Bar up here! ↑</span>
+</div>
+
 <!-- HOME PAGE -->
 <section id="homePage" class="page">
   <div class="home-card">
     <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
       <select class="lang-selector home-theme-select" title="Select Theme Style">
-        <option value="system" data-i18n="theme_system">💻 Auto</option>
-        <option value="light" data-i18n="theme_light">☀️ Light Mode</option>
-        <option value="dark" data-i18n="theme_dark">🌌 Dark Mode</option>
-        <option value="amoled" data-i18n="theme_amoled">🕶️ AMOLED Dark</option>
+        <option value="system" data-i18n="theme_system">💻 System Auto</option>
+        <option value="light" data-i18n="theme_light">☀️ Sunrise Day</option>
+        <option value="dark" data-i18n="theme_dark">🌌 Cosmic Night</option>
+        <option value="amoled" data-i18n="theme_amoled">🕶️ AMOLED Black</option>
       </select>
 
       <select class="lang-selector home-lang-select">
@@ -295,7 +426,7 @@
     <div style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
       <svg id="homeLogoSvg" viewBox="0 0 64 64"></svg>
     </div>
-    <h1 data-i18n="app_title">Bookmark Bar Divider</h1>
+    <h1 data-i18n="app_title">bookmark bar divider</h1>
     <p data-i18n="home_desc">Smart Bookmark Bar Divider designer. Create beautiful separator icons and drag them directly to your bookmark bar.</p>
     
     <a id="bookmarkLink" class="bookmark-link" href="#" draggable="true">
@@ -339,9 +470,9 @@
     
     <select class="lang-selector studio-theme-select" style="padding: 6px 10px;" title="Select Theme Style">
       <option value="system" data-i18n="theme_system">💻 Auto</option>
-      <option value="light" data-i18n="theme_light">☀️ Light Mode</option>
-      <option value="dark" data-i18n="theme_dark">🌌 Dark Mode</option>
-      <option value="amoled" data-i18n="theme_amoled">🕶️ AMOLED Dark</option>
+      <option value="light" data-i18n="theme_light">☀️ Light</option>
+      <option value="dark" data-i18n="theme_dark">🌌 Space</option>
+      <option value="amoled" data-i18n="theme_amoled">🕶️ AMOLED</option>
     </select>
 
     <select class="lang-selector studio-lang-select" style="padding: 6px 10px;">
@@ -382,6 +513,12 @@
           </button>
           <input id="importInput" type="file" accept="application/json" class="hidden" />
         </div>
+        
+        <!-- Helpful quick-drag instruction box -->
+        <div style="background: rgba(236, 72, 153, 0.08); border: 1px solid rgba(236, 72, 153, 0.16); padding: 10px 14px; border-radius: var(--radius-md); font-size: 11px; line-height: 1.4; color: var(--text-primary);" data-i18n-html="quick_drag_hint">
+          💡 <strong>Quick Drag:</strong> Simply grab the 🔖 icon next to any saved project below and drop it onto your browser bar!
+        </div>
+
         <div class="field">
           <label data-i18n="search_label">Quick Search</label>
           <input id="searchInput" data-i18n-placeholder="search_placeholder">
@@ -391,7 +528,7 @@
     </aside>
 
     <!-- CENTER PREVIEW PANEL -->
-    <section class="panel scroll">
+    <section class="panel scroll" id="previewPanel">
       <div class="head">
         <h3 data-i18n="preview_title">Live Preview</h3>
         <div style="display: flex; align-items: center; gap: 8px;">
@@ -410,7 +547,7 @@
           </a>
         </div>
 
-        <div class="stagebox">
+        <div class="stagebox" id="mainStageBox">
           <svg id="svgCanvas" class="grid-active" viewBox="0 0 64 64" style="max-width: 240px; aspect-ratio: 1;"></svg>
         </div>
         
@@ -593,7 +730,6 @@
     };
   };
 
-  // High quality professional translations keeping standard technical terms intact
   const I18N = {
     en: {
       app_title: "Bookmark Bar Divider",
@@ -649,9 +785,9 @@
       btn_snapshot: "Take Backup Snapshot",
       grid_toggle: "Show Grid",
       theme_system: "💻 System Auto",
-      theme_light: "☀️ Light Mode",
-      theme_dark: "🌌 Dark Mode",
-      theme_amoled: "🕶️ AMOLED Dark",
+      theme_light: "☀️ Sunrise Day Theme",
+      theme_dark: "🌌 Cosmic Night Theme",
+      theme_amoled: "🕶️ AMOLED Black Theme",
       drag_link_default: "Drag up to Bookmark Bar",
       drag_link_named: "Divider: {name}",
       drag_link_blank: "Drag up (Hidden Name)",
@@ -681,14 +817,29 @@
       btn_confirm_ok: "Confirm",
       btn_confirm_cancel: "Cancel",
       locale: "en-US",
-      quick_drag_title: "Drag to Bookmark Bar / Kéo vào Bookmark Bar"
+      quick_drag_title: "Drag to Bookmark Bar",
+      
+      // Right Click Context menu strings
+      ctx_select: "Select Divider",
+      ctx_rename: "Rename Divider",
+      ctx_duplicate: "Duplicate",
+      ctx_export: "Export JSON",
+      ctx_delete: "Delete",
+      ctx_copy_url: "Copy Share URL",
+      ctx_toggle_grid: "Toggle Grid Alignment",
+      ctx_snapshot: "Take Snapshot",
+
+      // New translation strings for visual drag effects
+      drag_guide_title: "↑ Drag and drop directly onto your browser's Bookmark Bar up here! ↑",
+      quick_drag_tooltip: "Hold and drag me straight up onto your browser's Bookmark Bar!",
+      quick_drag_hint: "💡 <strong>Quick Drag:</strong> Drag the bookmark button next to any item below straight to your browser bar!"
     },
     vi: {
       app_title: "Bookmark Bar Divider",
       home_desc: "Trình thiết kế Divider cho thanh Bookmark. Tạo các icon phân tách tối giản và kéo thả trực tiếp lên Bookmark Bar.",
       create_new: "Tạo Divider Mới",
       enter_studio: "Vào Design Studio",
-      hint_blank: "💡 **Mẹo:** Để tạo một divider ẩn tên (chỉ hiển thị icon), bạn chỉ cần để trống ô **Divider Name**.",
+      hint_blank: "💡 **Mẹo:** Để tạo một dải phân cách ẩn tên (chỉ hiển thị icon), bạn chỉ cần để trống ô **Tên Divider**.",
       studio_title: "Divider Studio",
       studio_meta: "Thiết kế Bookmark Divider",
       tab_home: "Home",
@@ -736,10 +887,10 @@
       revisions: "Version History",
       btn_snapshot: "Take Backup Snapshot",
       grid_toggle: "Show Grid",
-      theme_system: "💻 System Auto",
-      theme_light: "☀️ Light Mode",
-      theme_dark: "🌌 Dark Mode",
-      theme_amoled: "🕶️ AMOLED Dark",
+      theme_system: "💻 Chế độ Tự động",
+      theme_light: "☀️ Chế độ Sáng",
+      theme_dark: "🌌 Chế độ Tối",
+      theme_amoled: "🕶️ Chế độ AMOLED",
       drag_link_default: "Kéo thả lên Bookmark Bar",
       drag_link_named: "Divider: {name}",
       drag_link_blank: "Kéo thả lên Bookmark Bar (Ẩn tên)",
@@ -769,7 +920,22 @@
       btn_confirm_ok: "Xác nhận",
       btn_confirm_cancel: "Hủy",
       locale: "vi-VN",
-      quick_drag_title: "Drag to Bookmark Bar / Kéo vào Bookmark Bar"
+      quick_drag_title: "Kéo thả lên Bookmark Bar",
+      
+      // Right Click Context menu strings
+      ctx_select: "Kích hoạt Divider",
+      ctx_rename: "Đổi tên nhanh",
+      ctx_duplicate: "Nhân đôi thiết kế",
+      ctx_export: "Xuất dữ liệu JSON",
+      ctx_delete: "Xóa dải phân cách",
+      ctx_copy_url: "Sao chép Link chia sẻ",
+      ctx_toggle_grid: "Bật/Tắt Lưới Canvas",
+      ctx_snapshot: "Sao lưu Snapshot",
+
+      // New translation strings for visual drag effects
+      drag_guide_title: "↑ Kéo thả trực tiếp lên thanh Bookmark (Thanh dấu trang) phía trên này! ↑",
+      quick_drag_tooltip: "Giữ và kéo nút này thả trực tiếp lên thanh Bookmark của bạn!",
+      quick_drag_hint: "💡 <strong>Kéo nhanh:</strong> Kéo giữ nút bookmark bên cạnh mỗi dự án thả lên thanh Bookmark của trình duyệt!"
     }
   };
 
@@ -834,7 +1000,7 @@
     createdAt: now(),
     updatedAt: now(),
     line: {
-      color: '#6366f1',
+      color: '#ec4899', 
       y1: 8,
       y2: 56,
       stroke: 6,
@@ -925,7 +1091,6 @@
     link.href = 'data:image/svg+xml;utf8,' + encodeURIComponent(svgMarkup);
   };
 
-  // Helper for converting individual project configurations to deep link bookmark URLs
   const getEncodedConfigForProject = p => {
     return btoa(unescape(encodeURIComponent(JSON.stringify({
       n: p.name, c: p.line.color, y1: p.line.y1, y2: p.line.y2, s: p.line.stroke,
@@ -995,7 +1160,7 @@
       const activeCls = p.id === st.active ? 'active' : '';
       const pUrl = shareUrlForProject(p);
       return `
-        <div class="item ${activeCls}" data-id="${p.id}">
+        <div class="item ${activeCls}" data-id="${p.id}" id="project-item-${p.id}">
           <div style="width: 24px; height: 24px; background: #fff; border-radius: 6px; padding: 2px; flex-shrink: 0;">
             <svg viewBox="0 0 64 64">${generateSvgContent(p.line, 64)}</svg>
           </div>
@@ -1003,20 +1168,23 @@
             <b style="display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px; color: var(--text-primary);">${esc(p.name || t('untitled_proj'))}</b>
             <small style="display:block; opacity:0.7; font-size:11px; color: var(--text-muted);">${t('edited_at', { time: fmt(p.updatedAt || p.createdAt) })}</small>
           </div>
-          <a class="quick-drag-btn" 
-             href="${pUrl}" 
-             data-id="${p.id}"
-             draggable="true" 
-             title="${esc(t('quick_drag_title'))}">
-             <svg viewBox="0 0 24 24" stroke-width="2.5">
-               <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
-             </svg>
-          </a>
+          <div class="has-tooltip">
+            <a class="quick-drag-btn" 
+               href="${pUrl}" 
+               data-id="${p.id}"
+               draggable="true" 
+               title="${esc(t('quick_drag_title'))}">
+               <svg viewBox="0 0 24 24" stroke-width="2.5">
+                 <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+               </svg>
+            </a>
+            <span class="tooltip-text">${esc(t('quick_drag_tooltip'))}</span>
+          </div>
         </div>
       `;
     }).join('') || `<div class="tiny" style="padding:10px 0; text-align:center;">${t('no_projects')}</div>`;
 
-    // Dynamic programmatic bookmark link bindings for each list quick drag icon button
+    // Bind quick bookmark drag elements with beautiful drag transitions
     document.querySelectorAll('.quick-drag-btn').forEach(btn => {
       const id = btn.dataset.id;
       const p = st.projects.find(x => x.id === id);
@@ -1029,12 +1197,28 @@
         e.dataTransfer.setData('text/uri-list', pUrl);
         e.dataTransfer.setData('text/plain', pUrl);
         e.dataTransfer.setData('text/html', `<a href="${esc(pUrl)}">${esc(p.name || '')}</a>`);
+        // Add subtle active dragging state
+        btn.closest('.item').style.opacity = '0.5';
+        $('dragGuideBanner').classList.add('active');
+      });
+
+      btn.addEventListener('dragend', () => {
+        btn.closest('.item').style.opacity = '1';
+        $('dragGuideBanner').classList.remove('active');
       });
       
       btn.addEventListener('click', e => {
         e.stopPropagation();
         e.preventDefault();
         copyToClipboard(pUrl, t('toast_copy_drag'));
+      });
+    });
+
+    document.querySelectorAll('.item[data-id]').forEach(item => {
+      item.addEventListener('contextmenu', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        showProjectContextMenu(e, item.dataset.id);
       });
     });
   };
@@ -1135,6 +1319,22 @@
     });
   };
 
+  const deleteProjectById = id => {
+    const idx = st.projects.findIndex(p => p.id === id);
+    if (idx < 0) return;
+    const p = st.projects[idx];
+    customConfirm(t('confirm_delete', { name: p.name || t('untitled_proj') }), () => {
+      st.projects.splice(idx, 1);
+      if (!st.projects.length) st.projects = [def()];
+      if (st.active === id) {
+        setActive(st.projects[0].id);
+      }
+      render();
+      save();
+      toast(t('toast_delete_success'), 'success');
+    });
+  };
+
   const importJson = file => {
     const reader = new FileReader();
     reader.onload = () => {
@@ -1159,15 +1359,18 @@
     reader.readAsText(file);
   };
 
-  const exportJson = () => {
-    const p = cur();
-    const dataStr = JSON.stringify({ ...p, shareUrl: shareUrl() }, null, 2);
+  const exportJsonOfProject = p => {
+    const dataStr = JSON.stringify({ ...p, shareUrl: shareUrlForProject(p) }, null, 2);
     const blob = new Blob([dataStr], { type: 'application/json' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
     a.download = `divider-${safe(p.name)}.json`;
     a.click();
     toast(t('toast_save_success'), 'success');
+  };
+
+  const exportJson = () => {
+    exportJsonOfProject(cur());
   };
 
   const copyToClipboard = (text, successMsg) => {
@@ -1183,8 +1386,182 @@
     }
   };
 
+  const showContextMenu = (e, options) => {
+    const menu = $('contextMenu');
+    let html = '';
+    
+    options.forEach(opt => {
+      if (opt.isDivider) {
+        html += `<div class="context-menu-divider"></div>`;
+      } else {
+        html += `
+          <div class="context-menu-item ${opt.className || ''}" data-action="${opt.action}">
+            ${opt.icon || ''}
+            <span>${opt.text}</span>
+          </div>
+        `;
+      }
+    });
+
+    menu.innerHTML = html;
+    menu.classList.remove('hidden');
+
+    const menuWidth = 200; 
+    const menuHeight = menu.offsetHeight || 220;
+    let x = e.clientX;
+    let y = e.clientY;
+
+    if (x + menuWidth > window.innerWidth) {
+      x = window.innerWidth - menuWidth - 10;
+    }
+    if (y + menuHeight > window.innerHeight) {
+      y = window.innerHeight - menuHeight - 10;
+    }
+
+    menu.style.left = `${x}px`;
+    menu.style.top = `${y}px`;
+
+    menu.querySelectorAll('.context-menu-item').forEach(item => {
+      item.onclick = (event) => {
+        event.stopPropagation();
+        const action = item.dataset.action;
+        const found = options.find(o => o.action === action);
+        if (found && found.callback) found.callback();
+        hideContextMenu();
+      };
+    });
+  };
+
+  const hideContextMenu = () => {
+    $('contextMenu').classList.add('hidden');
+  };
+
+  const showProjectContextMenu = (e, projId) => {
+    const p = st.projects.find(x => x.id === projId);
+    if (!p) return;
+
+    const options = [
+      {
+        action: 'select',
+        text: t('ctx_select'),
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`,
+        callback: () => {
+          setActive(projId);
+          render();
+        }
+      },
+      {
+        action: 'rename',
+        text: t('ctx_rename'),
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>`,
+        callback: () => {
+          setActive(projId);
+          render();
+          setTimeout(() => {
+            $('editNameInput').focus();
+            $('editNameInput').select();
+          }, 80);
+        }
+      },
+      {
+        action: 'duplicate',
+        text: t('ctx_duplicate'),
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`,
+        callback: () => {
+          setActive(projId);
+          duplicateProject();
+        }
+      },
+      { isDivider: true },
+      {
+        action: 'export',
+        text: t('ctx_export'),
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`,
+        callback: () => {
+          exportJsonOfProject(p);
+        }
+      },
+      {
+        action: 'delete',
+        className: 'danger',
+        text: t('ctx_delete'),
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>`,
+        callback: () => {
+          deleteProjectById(projId);
+        }
+      }
+    ];
+
+    showContextMenu(e, options);
+  };
+
+  const showPreviewContextMenu = (e) => {
+    const options = [
+      {
+        action: 'copy_url',
+        text: t('ctx_copy_url'),
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>`,
+        callback: () => {
+          copyToClipboard(shareUrl(), t('toast_copy_share'));
+        }
+      },
+      {
+        action: 'download_json',
+        text: t('ctx_export'),
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`,
+        callback: () => {
+          exportJson();
+        }
+      },
+      { isDivider: true },
+      {
+        action: 'toggle_grid',
+        text: t('ctx_toggle_grid'),
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg>`,
+        callback: () => {
+          const chk = $('gridToggle');
+          chk.checked = !chk.checked;
+          $('svgCanvas').classList.toggle('grid-active', chk.checked);
+        }
+      },
+      {
+        action: 'snapshot',
+        text: t('ctx_snapshot'),
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2 2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`,
+        callback: () => {
+          snap(t('manual_snap'));
+          render();
+          toast(t('toast_snapshot'), 'success');
+        }
+      }
+    ];
+
+    showContextMenu(e, options);
+  };
+
   const bindEvents = () => {
-    // Target exclusively language selects to avoid any theme property collision
+    $('projectList').addEventListener('contextmenu', e => {
+      const item = e.target.closest('.item');
+      if (!item) {
+        e.preventDefault();
+        hideContextMenu();
+      }
+    });
+
+    $('mainStageBox').addEventListener('contextmenu', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      showPreviewContextMenu(e);
+    });
+
+    window.addEventListener('click', hideContextMenu);
+    window.addEventListener('scroll', hideContextMenu, true);
+    window.addEventListener('resize', hideContextMenu);
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Escape') hideContextMenu();
+    });
+
+    // Language Selectors
     document.querySelectorAll('.home-lang-select, .studio-lang-select').forEach(selector => {
       selector.addEventListener('change', e => {
         st.lang = e.target.value;
@@ -1193,6 +1570,7 @@
       });
     });
 
+    // Theme Selectors
     document.querySelectorAll('.home-theme-select, .studio-theme-select').forEach(selector => {
       selector.addEventListener('change', e => setThemeMode(e.target.value));
     });
@@ -1232,7 +1610,14 @@
         e.dataTransfer.setData('text/uri-list', u);
         e.dataTransfer.setData('text/plain', u);
         e.dataTransfer.setData('text/html', `<a href="${esc(u)}">${esc(cur().name || '')}</a>`);
+        // Trigger visual top banner guidance
+        $('dragGuideBanner').classList.add('active');
       });
+
+      linkEl.addEventListener('dragend', () => {
+        $('dragGuideBanner').classList.remove('active');
+      });
+
       linkEl.addEventListener('click', e => {
         e.preventDefault();
         copyToClipboard(shareUrl(), t('toast_copy_drag'));
@@ -1268,9 +1653,8 @@
       $(id).addEventListener('input', () => { pushUndo(); triggerUpdate(); });
     });
 
-    // Project selection inside list container
     $('projectList').onclick = e => {
-      if (e.target.closest('.quick-drag-btn')) return; // ignore clicks targeting the drag handles
+      if (e.target.closest('.quick-drag-btn')) return;
       const item = e.target.closest('.item');
       if (item) { setActive(item.dataset.id); render(); }
     };
