@@ -594,9 +594,15 @@
   const THEME_KEY = 'bbd_theme_v4_style'; // Enhanced theme storage
   
   const $ = id => document.getElementById(id);
+  const $$ = selector => Array.from(document.querySelectorAll(selector));
   const now = () => new Date().toISOString();
   const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
   const clone = v => JSON.parse(JSON.stringify(v));
+  const langSelectors = $$('.home-lang-select, .studio-lang-select');
+  const themeSelectors = $$('.home-theme-select, .studio-theme-select');
+  const i18nTextEls = $$('[data-i18n]');
+  const i18nHtmlEls = $$('[data-i18n-html]');
+  const i18nPlaceholderEls = $$('[data-i18n-placeholder]');
   const safe = s => String(s || 'divider').toLowerCase().replace(/[^a-z0-9-_]+/g, '-').replace(/^-+|-+$/g, '') || 'divider';
   const esc = s => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 
@@ -815,23 +821,22 @@
   };
 
   const applyLanguage = () => {
-    document.querySelectorAll('[data-i18n]').forEach(el => {
+    i18nTextEls.forEach(el => {
       const key = el.getAttribute('data-i18n');
       el.textContent = t(key);
     });
 
-    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    i18nHtmlEls.forEach(el => {
       const key = el.getAttribute('data-i18n-html');
       el.innerHTML = t(key);
     });
 
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    i18nPlaceholderEls.forEach(el => {
       const key = el.getAttribute('data-i18n-placeholder');
       el.setAttribute('placeholder', t(key));
     });
 
-    document.querySelectorAll('.home-lang-select').forEach(sel => sel.value = st.lang);
-    document.querySelectorAll('.studio-lang-select').forEach(sel => sel.value = st.lang);
+    langSelectors.forEach(sel => sel.value = st.lang);
   };
 
   // Theme Management Engine supporting system preference detection
@@ -851,8 +856,7 @@
     }
     
     // Sync Select elements
-    document.querySelectorAll('.home-theme-select').forEach(sel => sel.value = st.themeMode);
-    document.querySelectorAll('.studio-theme-select').forEach(sel => sel.value = st.themeMode);
+    themeSelectors.forEach(sel => sel.value = st.themeMode);
   };
 
   const setThemeMode = (mode) => {
@@ -1109,13 +1113,17 @@
     $('boxRx').classList.toggle('hidden', isLine);
   };
 
-  const render = () => {
-    applyLanguage();
+  const renderVisuals = () => {
     renderStages();
     renderControls();
+    updateBookmarkElements();
+  };
+
+  const render = () => {
+    applyLanguage();
+    renderVisuals();
     renderProjectList();
     renderSnapshots();
-    updateBookmarkElements();
   };
 
   const snap = (note = t('manual_snap')) => {
@@ -1212,8 +1220,8 @@
   };
 
   const bindEvents = () => {
-    // Language Select change listener
-    document.querySelectorAll('.lang-selector').forEach(selector => {
+    // Language selection change listener
+    langSelectors.forEach(selector => {
       selector.addEventListener('change', e => {
         st.lang = e.target.value;
         save();
@@ -1222,7 +1230,7 @@
     });
 
     // Theme selector change listener (Home & Studio)
-    document.querySelectorAll('.home-theme-select, .studio-theme-select').forEach(selector => {
+    themeSelectors.forEach(selector => {
       selector.addEventListener('change', e => {
         setThemeMode(e.target.value);
       });
@@ -1258,7 +1266,6 @@
     $('saveBtn').onclick = () => {
       cur().updatedAt = now();
       save();
-      render();
       toast(t('toast_save_success'), 'success');
     };
 
@@ -1322,13 +1329,14 @@
       render();
     };
 
-    [$('shape'), $('orientation'), $('color'), $('y1'), $('y2'), $('stroke'), strokeEvent => {}, $('cap'), $('width'), $('rx')].forEach((el, index) => {
-      if (typeof el === 'function') return;
-      el.addEventListener('input', () => {
-        pushUndo();
-        triggerUpdate();
+    ['shape', 'orientation', 'color', 'y1', 'y2', 'stroke', 'cap', 'width', 'rx']
+      .map(id => $(id))
+      .forEach(el => {
+        el.addEventListener('input', () => {
+          pushUndo();
+          triggerUpdate();
+        });
       });
-    });
 
     // Project switching listener in list
     $('projectList').onclick = e => {
