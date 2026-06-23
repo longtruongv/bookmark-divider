@@ -1,0 +1,725 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bookmark Divider Editor</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+.toolbar{
+    display:flex;
+    gap:8px;
+    padding:10px;
+    border-bottom:1px solid #ddd;
+    flex-wrap:wrap;
+}
+
+.main{
+    flex:1;
+    display:grid;
+    grid-template-columns:250px 1fr 300px;
+    overflow:hidden;
+}
+
+.panel{
+    border-right:1px solid #ddd;
+    overflow:auto;
+    padding:10px;
+}
+
+.panel:last-child{
+    border-right:none;
+}
+
+.center{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+}
+
+canvas{
+    border:1px solid #999;
+    background:white;
+    image-rendering:pixelated;
+}
+
+.layer{
+    padding:6px;
+    margin-bottom:4px;
+    border:1px solid #ddd;
+    cursor:pointer;
+}
+
+.layer.selected{
+    background:#e8f0ff;
+}
+
+.property-row{
+    margin-bottom:10px;
+}
+
+.property-row label{
+    display:block;
+    font-size:12px;
+    margin-bottom:3px;
+}
+
+.property-row input{
+    width:100%;
+}
+
+.small-preview{
+    border:1px solid #ccc;
+}
+
+button{
+    cursor:pointer;
+}
+
+h3{
+    margin-top:0;
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+
+<button id="addLine">Line</button>
+<button id="addRect">Rectangle</button>
+<button id="addCircle">Circle</button>
+<button id="addText">Text</button>
+
+<input type="file" id="fileInput">
+
+<button id="undoBtn">Undo</button>
+<button id="redoBtn">Redo</button>
+
+<button id="exportSvgBtn">Export SVG</button>
+<button id="exportPngBtn">Export PNG</button>
+
+</div>
+
+<div class="main">
+
+<div class="panel">
+<h3>Layers</h3>
+<div id="layers"></div>
+</div>
+
+<div class="center">
+
+<canvas id="editor" width="512" height="512"></canvas>
+
+<div>
+Preview favicon:
+<br>
+<canvas id="preview16" width="16" height="16" class="small-preview"></canvas>
+</div>
+
+</div>
+
+<div class="panel">
+<h3>Properties</h3>
+<div id="properties">
+Select an object
+</div>
+</div>
+
+</div>
+
+<script>
+
+const canvas = document.getElementById('editor');
+const ctx = canvas.getContext('2d');
+
+const preview16 = document.getElementById('preview16');
+const previewCtx = preview16.getContext('2d');
+
+const SIZE = 64;
+const SCALE = 8;
+
+let objects = [];
+let selected = null;
+
+let dragging = false;
+let dragOffsetX = 0;
+let dragOffsetY = 0;
+
+let undoStack = [];
+let redoStack = [];
+
+function saveState(){
+    undoStack.push(JSON.stringify(objects));
+    if(undoStack.length > 50){
+        undoStack.shift();
+    }
+    redoStack = [];
+}
+
+function autosave(){
+    localStorage.setItem(
+        "bookmarkDividerProject",
+        JSON.stringify(objects)
+    );
+}
+
+function loadAutosave(){
+    const data = localStorage.getItem(
+        "bookmarkDividerProject"
+    );
+
+    if(data){
+        objects = JSON.parse(data);
+    }
+}
+
+function redraw(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    ctx.strokeStyle="#eee";
+
+    for(let i=0;i<=64;i++){
+        ctx.beginPath();
+        ctx.moveTo(i*SCALE,0);
+        ctx.lineTo(i*SCALE,512);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(0,i*SCALE);
+        ctx.lineTo(512,i*SCALE);
+        ctx.stroke();
+    }
+
+    objects.forEach((obj,index)=>{
+
+        if(obj.type==="rect"){
+            ctx.fillStyle=obj.fill;
+            ctx.fillRect(
+                obj.x*SCALE,
+                obj.y*SCALE,
+                obj.w*SCALE,
+                obj.h*SCALE
+            );
+        }
+
+        if(obj.type==="circle"){
+            ctx.fillStyle=obj.fill;
+            ctx.beginPath();
+            ctx.arc(
+                obj.x*SCALE,
+                obj.y*SCALE,
+                obj.r*SCALE,
+                0,
+                Math.PI*2
+            );
+            ctx.fill();
+        }
+
+        if(obj.type==="line"){
+            ctx.strokeStyle=obj.fill;
+            ctx.lineWidth=obj.stroke*SCALE;
+            ctx.beginPath();
+            ctx.moveTo(
+                obj.x1*SCALE,
+                obj.y1*SCALE
+            );
+            ctx.lineTo(
+                obj.x2*SCALE,
+                obj.y2*SCALE
+            );
+            ctx.stroke();
+        }
+
+        if(obj.type==="text"){
+            ctx.fillStyle=obj.fill;
+            ctx.font=`${obj.size*SCALE}px Arial`;
+            ctx.fillText(
+                obj.text,
+                obj.x*SCALE,
+                obj.y*SCALE
+            );
+        }
+
+        if(obj.type==="image" && obj.img){
+            ctx.drawImage(
+                obj.img,
+                obj.x*SCALE,
+                obj.y*SCALE,
+                obj.w*SCALE,
+                obj.h*SCALE
+            );
+        }
+
+        if(index===selected){
+            ctx.strokeStyle="red";
+            ctx.lineWidth=2;
+
+            const b=getBounds(obj);
+
+            ctx.strokeRect(
+                b.x*SCALE,
+                b.y*SCALE,
+                b.w*SCALE,
+                b.h*SCALE
+            );
+        }
+
+    });
+
+    redrawPreview();
+    renderLayers();
+    renderProperties();
+    autosave();
+}
+
+function redrawPreview(){
+
+    previewCtx.clearRect(0,0,16,16);
+
+    const temp=document.createElement("canvas");
+    temp.width=64;
+    temp.height=64;
+
+    const t=temp.getContext("2d");
+
+    objects.forEach(obj=>{
+
+        if(obj.type==="rect"){
+            t.fillStyle=obj.fill;
+            t.fillRect(obj.x,obj.y,obj.w,obj.h);
+        }
+
+        if(obj.type==="circle"){
+            t.fillStyle=obj.fill;
+            t.beginPath();
+            t.arc(obj.x,obj.y,obj.r,0,Math.PI*2);
+            t.fill();
+        }
+
+        if(obj.type==="line"){
+            t.strokeStyle=obj.fill;
+            t.lineWidth=obj.stroke;
+            t.beginPath();
+            t.moveTo(obj.x1,obj.y1);
+            t.lineTo(obj.x2,obj.y2);
+            t.stroke();
+        }
+
+        if(obj.type==="text"){
+            t.fillStyle=obj.fill;
+            t.font=`${obj.size}px Arial`;
+            t.fillText(obj.text,obj.x,obj.y);
+        }
+
+        if(obj.type==="image" && obj.img){
+            t.drawImage(
+                obj.img,
+                obj.x,
+                obj.y,
+                obj.w,
+                obj.h
+            );
+        }
+
+    });
+
+    previewCtx.drawImage(temp,0,0,16,16);
+}
+
+function getBounds(obj){
+
+    if(obj.type==="rect"){
+        return obj;
+    }
+
+    if(obj.type==="circle"){
+        return {
+            x:obj.x-obj.r,
+            y:obj.y-obj.r,
+            w:obj.r*2,
+            h:obj.r*2
+        };
+    }
+
+    if(obj.type==="line"){
+        return {
+            x:Math.min(obj.x1,obj.x2),
+            y:Math.min(obj.y1,obj.y2),
+            w:Math.abs(obj.x2-obj.x1),
+            h:Math.abs(obj.y2-obj.y1)
+        };
+    }
+
+    if(obj.type==="text"){
+        return {
+            x:obj.x,
+            y:obj.y-obj.size,
+            w:obj.text.length*obj.size,
+            h:obj.size
+        };
+    }
+
+    if(obj.type==="image"){
+        return obj;
+    }
+}
+
+function renderLayers(){
+
+    const div=document.getElementById("layers");
+    div.innerHTML="";
+
+    objects.forEach((o,i)=>{
+
+        const el=document.createElement("div");
+
+        el.className=
+            "layer"+
+            (i===selected ? " selected":"");
+
+        el.textContent=
+            i+" : "+o.type;
+
+        el.onclick=()=>{
+            selected=i;
+            redraw();
+        };
+
+        div.appendChild(el);
+
+    });
+}
+
+function renderProperties(){
+
+    const p=document.getElementById("properties");
+
+    if(selected===null){
+        p.innerHTML="Select an object";
+        return;
+    }
+
+    const obj=objects[selected];
+
+    let html="";
+
+    Object.keys(obj).forEach(key=>{
+
+        if(
+            key==="img" ||
+            typeof obj[key]==="object"
+        ){
+            return;
+        }
+
+        html+=`
+        <div class="property-row">
+            <label>${key}</label>
+            <input data-key="${key}"
+                   value="${obj[key]}">
+        </div>
+        `;
+    });
+
+    p.innerHTML=html;
+
+    p.querySelectorAll("input")
+    .forEach(input=>{
+
+        input.onchange=()=>{
+
+            const k=input.dataset.key;
+
+            let v=input.value;
+
+            if(!isNaN(v)){
+                v=Number(v);
+            }
+
+            obj[k]=v;
+
+            redraw();
+        };
+
+    });
+}
+
+canvas.addEventListener("mousedown",e=>{
+
+    const x=e.offsetX/SCALE;
+    const y=e.offsetY/SCALE;
+
+    selected=null;
+
+    for(let i=objects.length-1;i>=0;i--){
+
+        const b=getBounds(objects[i]);
+
+        if(
+            x>=b.x &&
+            x<=b.x+b.w &&
+            y>=b.y &&
+            y<=b.y+b.h
+        ){
+            selected=i;
+            dragging=true;
+            dragOffsetX=x-b.x;
+            dragOffsetY=y-b.y;
+            break;
+        }
+    }
+
+    redraw();
+});
+
+canvas.addEventListener("mousemove",e=>{
+
+    if(!dragging || selected===null){
+        return;
+    }
+
+    const obj=objects[selected];
+
+    const x=e.offsetX/SCALE;
+    const y=e.offsetY/SCALE;
+
+    if(obj.x!==undefined){
+        obj.x=x-dragOffsetX;
+    }
+
+    if(obj.y!==undefined){
+        obj.y=y-dragOffsetY;
+    }
+
+    redraw();
+});
+
+window.addEventListener("mouseup",()=>{
+    dragging=false;
+});
+
+function addObject(obj){
+    saveState();
+    objects.push(obj);
+    selected=objects.length-1;
+    redraw();
+}
+
+document.getElementById("addRect").onclick=()=>{
+
+    addObject({
+        type:"rect",
+        x:30,
+        y:5,
+        w:4,
+        h:54,
+        fill:"#000000"
+    });
+
+};
+
+document.getElementById("addCircle").onclick=()=>{
+
+    addObject({
+        type:"circle",
+        x:32,
+        y:32,
+        r:10,
+        fill:"#000000"
+    });
+
+};
+
+document.getElementById("addLine").onclick=()=>{
+
+    addObject({
+        type:"line",
+        x1:32,
+        y1:4,
+        x2:32,
+        y2:60,
+        stroke:2,
+        fill:"#000000"
+    });
+
+};
+
+document.getElementById("addText").onclick=()=>{
+
+    addObject({
+        type:"text",
+        x:5,
+        y:55,
+        size:8,
+        text:"divider",
+        fill:"#000000"
+    });
+
+};
+
+document.getElementById("fileInput")
+.addEventListener("change",e=>{
+
+    const file=e.target.files[0];
+    if(!file) return;
+
+    const reader=new FileReader();
+
+    reader.onload=ev=>{
+
+        const img=new Image();
+
+        img.onload=()=>{
+
+            addObject({
+                type:"image",
+                x:8,
+                y:8,
+                w:48,
+                h:48,
+                src:ev.target.result,
+                img:img
+            });
+
+        };
+
+        img.src=ev.target.result;
+    };
+
+    reader.readAsDataURL(file);
+});
+
+document.getElementById("undoBtn").onclick=()=>{
+
+    if(!undoStack.length) return;
+
+    redoStack.push(
+        JSON.stringify(objects)
+    );
+
+    objects=
+        JSON.parse(
+            undoStack.pop()
+        );
+
+    selected=null;
+
+    redraw();
+};
+
+document.getElementById("redoBtn").onclick=()=>{
+
+    if(!redoStack.length) return;
+
+    undoStack.push(
+        JSON.stringify(objects)
+    );
+
+    objects=
+        JSON.parse(
+            redoStack.pop()
+        );
+
+    selected=null;
+
+    redraw();
+};
+
+document.getElementById("exportSvgBtn")
+.onclick=()=>{
+
+    let svg=`
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 64 64">
+    `;
+
+    objects.forEach(o=>{
+
+        if(o.type==="rect"){
+            svg+=`
+            <rect
+            x="${o.x}"
+            y="${o.y}"
+            width="${o.w}"
+            height="${o.h}"
+            fill="${o.fill}"/>
+            `;
+        }
+
+        if(o.type==="circle"){
+            svg+=`
+            <circle
+            cx="${o.x}"
+            cy="${o.y}"
+            r="${o.r}"
+            fill="${o.fill}"/>
+            `;
+        }
+
+        if(o.type==="line"){
+            svg+=`
+            <line
+            x1="${o.x1}"
+            y1="${o.y1}"
+            x2="${o.x2}"
+            y2="${o.y2}"
+            stroke="${o.fill}"
+            stroke-width="${o.stroke}"/>
+            `;
+        }
+    });
+
+    svg+="</svg>";
+
+    const blob=new Blob(
+        [svg],
+        {type:"image/svg+xml"}
+    );
+
+    const a=document.createElement("a");
+
+    a.href=
+        URL.createObjectURL(blob);
+
+    a.download="favicon.svg";
+
+    a.click();
+};
+
+document.getElementById("exportPngBtn")
+.onclick=()=>{
+
+    const a=document.createElement("a");
+
+    a.href=
+        canvas.toDataURL("image/png");
+
+    a.download="favicon.png";
+
+    a.click();
+};
+
+loadAutosave();
+redraw();
+
+</script>
+</body>
+</html>
+```
