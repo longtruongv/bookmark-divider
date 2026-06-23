@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="vi">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -41,6 +41,22 @@
   .segmented-control { display: inline-flex; background: rgba(244, 63, 94, 0.08); padding: 4px; border-radius: var(--radius-md); border: 1px solid rgba(244, 63, 94, 0.1); }
   .segmented-control button { border: none; background: transparent; border-radius: 10px; padding: 6px 16px; font-size: 13px; font-weight: 700; color: var(--text-muted); }
   .segmented-control button.active { background: #fff; color: var(--brand-pink); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+
+  /* Premium Language Selector Selector */
+  .lang-selector {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: var(--radius-md);
+    padding: 8px 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  }
+  .lang-selector:hover {
+    border-color: var(--brand-pink);
+    background: #fff;
+  }
 
   .page { min-height: 100vh; display: grid; place-items: center; padding: 24px; box-sizing: border-box; }
   
@@ -177,59 +193,74 @@
 <!-- HOME PAGE -->
 <section id="homePage" class="page">
   <div class="home-card">
+    <!-- Top Lang switch for Home -->
+    <div style="width: 100%; display: flex; justify-content: flex-end;">
+      <select class="lang-selector home-lang-select">
+        <option value="en">🇬🇧 English</option>
+        <option value="vi">🇻🇳 Tiếng Việt</option>
+      </select>
+    </div>
+
     <div style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
       <svg id="homeLogoSvg" viewBox="0 0 64 64" style="border:none; background:transparent; width:100%; height:100%;"></svg>
     </div>
-    <h1>bookmark bar divider</h1>
-    <p>Trình thiết kế dải phân cách Bookmark thông minh. Tạo các biểu tượng phân tách tuyệt đẹp, kéo thả trực tiếp lên thanh dấu trang.</p>
+    <h1 data-i18n="app_title">bookmark bar divider</h1>
+    <p data-i18n="home_desc">Smart Bookmark Bar Divider designer. Create beautiful separator icons and drag them directly to your bookmark bar.</p>
     
     <a id="bookmarkLink" class="bookmark-link" href="#" draggable="true">
       <span class="bookmark-icon-preview">
         <svg id="btnPreviewSvg" viewBox="0 0 64 64"></svg>
       </span>
-      <span id="bookmarkLinkText">Kéo lên Bookmark Bar</span>
+      <span id="bookmarkLinkText">Drag to Bookmark Bar</span>
     </a>
     
     <div class="home-actions">
-      <button id="newBtn" class="btn-primary">Tạo Divider Mới</button>
-      <button id="enterStudioBtn" class="btn-ghost">Vào Studio Thiết Kế</button>
+      <button id="newBtn" class="btn-primary" data-i18n="create_new">Create New Divider</button>
+      <button id="enterStudioBtn" class="btn-ghost" data-i18n="enter_studio">Enter Design Studio</button>
     </div>
-    <div class="subtle">💡 Để tạo bookmark ẩn tên chỉ hiển thị biểu tượng, bạn chỉ cần xóa sạch nội dung ô <strong>Tên Divider</strong>.</div>
+    <div class="subtle" data-i18n-html="hint_blank">💡 To create a bookmark that only shows the icon without text, simply clear the <strong>Divider Name</strong> field.</div>
   </div>
 </section>
 
 <!-- MAIN STUDIO (COMPACT EDITOR & INTEGRATED PROJECT MANAGER) -->
 <section id="studioPage" class="studio hidden">
   <div class="topbar">
-    <div class="brand"><strong>Divider Studio</strong><span id="topMeta">Đang thiết kế...</span></div>
+    <div class="brand"><strong data-i18n="studio_title">Divider Studio</strong><span id="topMeta">Designing...</span></div>
     
     <div class="segmented-control">
-      <button id="tabHomeBtn">Trang chủ</button>
-      <button id="tabStudioBtn" class="active">Studio</button>
+      <button id="tabHomeBtn" data-i18n="tab_home">Home</button>
+      <button id="tabStudioBtn" class="active" data-i18n="tab_studio">Studio</button>
     </div>
     
     <div class="spacer"></div>
-    <button id="undoBtn" class="btn-ghost" title="Hoàn tác">Phục hồi</button>
-    <button id="redoBtn" class="btn-ghost" title="Làm lại">Lặp lại</button>
-    <button id="saveBtn" class="btn-primary">Lưu Dự Án</button>
+    
+    <!-- Lang Switcher in Studio Topbar -->
+    <select class="lang-selector studio-lang-select" style="padding: 6px 10px;">
+      <option value="en">🇬🇧 EN</option>
+      <option value="vi">🇻🇳 VI</option>
+    </select>
+
+    <button id="undoBtn" class="btn-ghost" data-i18n="btn_undo">Undo</button>
+    <button id="redoBtn" class="btn-ghost" data-i18n="btn_redo">Redo</button>
+    <button id="saveBtn" class="btn-primary" data-i18n="btn_save">Save Project</button>
   </div>
   
   <div class="main-container">
     <!-- LEFT SIDEBAR: PROJECTS -->
     <aside class="panel scroll">
       <div class="head">
-        <h3>Dự án của bạn</h3>
+        <h3 data-i18n="your_projects">Your Projects</h3>
         <span class="tiny" id="projectCount">0</span>
       </div>
       <div class="body">
         <div class="row" style="margin-bottom: 4px;">
-          <button id="studioNewBtn" class="btn-primary" style="flex: 1;">+ Thêm Mới</button>
-          <button id="studioImportBtn" class="btn-ghost" title="Nhập JSON">Nhập</button>
+          <button id="studioNewBtn" class="btn-primary" style="flex: 1;" data-i18n="add_new">+ Add New</button>
+          <button id="studioImportBtn" class="btn-ghost" data-i18n="btn_import">Import</button>
           <input id="importInput" type="file" accept="application/json" class="hidden" />
         </div>
         <div class="field">
-          <label>Tìm kiếm nhanh</label>
-          <input id="searchInput" placeholder="Nhập tên tìm kiếm...">
+          <label data-i18n="search_label">Quick Search</label>
+          <input id="searchInput" data-i18n-placeholder="search_placeholder">
         </div>
         <div class="list" id="projectList"></div>
       </div>
@@ -238,8 +269,8 @@
     <!-- CENTER PREVIEW PANEL -->
     <section class="panel scroll">
       <div class="head">
-        <h3>Bản Xem Trước (Stage)</h3>
-        <span class="tiny">Kéo thả để cài đặt</span>
+        <h3 data-i18n="preview_title">Stage Preview</h3>
+        <span class="tiny" data-i18n="preview_subtitle">Drag and drop to install</span>
       </div>
       <div class="body" style="grid-template-rows: auto 1fr auto; gap: 20px; align-items: center;">
         
@@ -249,7 +280,7 @@
             <span class="bookmark-icon-preview">
               <svg id="studioBtnPreviewSvg" viewBox="0 0 64 64"></svg>
             </span>
-            <span id="studioBookmarkLinkText">Kéo thả lên Bookmark Bar</span>
+            <span id="studioBookmarkLinkText">Drag up to Bookmark Bar</span>
           </a>
         </div>
 
@@ -259,13 +290,13 @@
         
         <div class="preview-grid">
           <div class="stagebox">
-            <div class="tiny" style="margin-bottom: 8px;">Kích thước Favicon (16x16)</div>
+            <div class="tiny" style="margin-bottom: 8px;" data-i18n="preview_16">Favicon Size (16x16)</div>
             <div style="width: 32px; height: 32px; background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 6px; padding: 4px; display: flex; align-items: center; justify-content: center;">
               <svg id="pv16" viewBox="0 0 16 16" style="border:none; box-shadow:none; width: 100%; height: 100%;"></svg>
             </div>
           </div>
           <div class="stagebox">
-            <div class="tiny" style="margin-bottom: 8px;">Kích thước Tab (32x32)</div>
+            <div class="tiny" style="margin-bottom: 8px;" data-i18n="preview_32">Tab Size (32x32)</div>
             <div style="width: 48px; height: 48px; background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 6px; padding: 6px; display: flex; align-items: center; justify-content: center;">
               <svg id="pv32" viewBox="0 0 32 32" style="border:none; box-shadow:none; width: 100%; height: 100%;"></svg>
             </div>
@@ -277,88 +308,88 @@
     <!-- RIGHT SIDEBAR: CONTROLS -->
     <aside class="panel scroll">
       <div class="head">
-        <h3>Thông số</h3>
-        <span class="tiny">Chỉnh Sửa</span>
+        <h3 data-i18n="properties">Properties</h3>
+        <span class="tiny" data-i18n="edit">Edit</span>
       </div>
       <div class="body">
         <div class="field">
-          <label>Tên Divider</label>
-          <input id="editNameInput" placeholder="(Để trống để không hiển thị tên)">
+          <label data-i18n="field_name">Divider Name</label>
+          <input id="editNameInput" data-i18n-placeholder="placeholder_name">
         </div>
         
         <div class="field">
-          <label>Hình dáng</label>
+          <label data-i18n="field_shape">Shape</label>
           <select id="shape">
-            <option value="line">Đường thẳng tối giản</option>
-            <option value="rect">Hộp chữ nhật bo góc</option>
+            <option value="line" data-i18n="opt_line">Minimalist line</option>
+            <option value="rect" data-i18n="opt_rect">Rounded rectangle box</option>
           </select>
         </div>
 
         <div class="field">
-          <label>Chiều hiển thị</label>
+          <label data-i18n="field_orientation">Orientation</label>
           <select id="orientation">
-            <option value="vertical">Dọc (Vertical)</option>
-            <option value="horizontal">Ngang (Horizontal)</option>
+            <option value="vertical" data-i18n="opt_vertical">Vertical</option>
+            <option value="horizontal" data-i18n="opt_horizontal">Horizontal</option>
           </select>
         </div>
 
         <div class="field">
-          <label>Màu sắc</label>
+          <label data-i18n="field_color">Color</label>
           <input id="color" type="color" style="height: 44px; padding: 3px; cursor: pointer;">
         </div>
 
         <!-- Dynamic inputs shown adaptively based on configuration -->
         <div class="grid" style="display: grid; gap: 12px;">
           <div class="field">
-            <label id="lblY1">Đầu Trên / Trái</label>
+            <label id="lblY1">Top End</label>
             <input id="y1" type="range" min="0" max="64" value="6">
           </div>
           <div class="field">
-            <label id="lblY2">Đầu Dưới / Phải</label>
+            <label id="lblY2">Bottom End</label>
             <input id="y2" type="range" min="0" max="64" value="58">
           </div>
           
           <!-- Line specific options -->
           <div class="field" id="boxStroke">
-            <label>Độ dày viền</label>
+            <label data-i18n="field_stroke">Border Thickness</label>
             <input id="stroke" type="range" min="1" max="24" value="4">
           </div>
           <div class="field" id="boxCap">
-            <label>Bo đầu nét vẽ</label>
+            <label data-i18n="field_cap">Line Cap style</label>
             <select id="cap">
-              <option value="round">Tròn (Round)</option>
-              <option value="butt">Bằng (Butt)</option>
-              <option value="square">Vuông (Square)</option>
+              <option value="round" data-i18n="opt_round">Round</option>
+              <option value="butt" data-i18n="opt_butt">Butt</option>
+              <option value="square" data-i18n="opt_square">Square</option>
             </select>
           </div>
 
           <!-- Rounded Rectangle specific options -->
           <div class="field hidden" id="boxWidth">
-            <label>Độ dày khối</label>
+            <label data-i18n="field_width">Block Thickness</label>
             <input id="width" type="range" min="1" max="48" value="8">
           </div>
           <div class="field hidden" id="boxRx">
-            <label>Bo góc (Radius)</label>
+            <label data-i18n="field_rx">Corner Radius (Rx)</label>
             <input id="rx" type="range" min="0" max="24" value="4">
           </div>
         </div>
 
         <div class="row" style="margin-top: 10px;">
-          <button id="dupBtn" class="btn-ghost" style="flex: 1;">Nhân đôi</button>
-          <button id="delBtn" class="btn-danger" style="flex: 1;">Xóa bỏ</button>
+          <button id="dupBtn" class="btn-ghost" style="flex: 1;" data-i18n="btn_duplicate">Duplicate</button>
+          <button id="delBtn" class="btn-danger" style="flex: 1;" data-i18n="btn_delete">Delete</button>
         </div>
 
-        <div class="section-title" style="margin-top: 15px;">Dữ liệu JSON & Chia sẻ</div>
+        <div class="section-title" style="margin-top: 15px;" data-i18n="share_json">JSON Data & Share</div>
         <div class="field">
-          <textarea id="shareUrl" readonly style="font-size: 11px;" placeholder="URL Chia sẻ cấu hình"></textarea>
+          <textarea id="shareUrl" readonly style="font-size: 11px;" data-i18n-placeholder="placeholder_share"></textarea>
         </div>
         <div class="row">
-          <button id="copyUrlBtn" class="btn-ghost" style="flex: 1; font-size: 12px;">Sao chép URL</button>
-          <button id="exportJsonBtn" class="btn-ghost" style="flex: 1; font-size: 12px;">Xuất JSON</button>
+          <button id="copyUrlBtn" class="btn-ghost" style="flex: 1; font-size: 12px;" data-i18n="btn_copy_url">Copy URL</button>
+          <button id="exportJsonBtn" class="btn-ghost" style="flex: 1; font-size: 12px;" data-i18n="btn_export">Export JSON</button>
         </div>
 
-        <div class="section-title" style="margin-top: 15px;">Điểm khôi phục (Revisions)</div>
-        <button id="saveSnapBtn" class="btn-ghost" style="width: 100%;">+ Lưu Snapshot hiện tại</button>
+        <div class="section-title" style="margin-top: 15px;" data-i18n="revisions">Revisions</div>
+        <button id="saveSnapBtn" class="btn-ghost" style="width: 100%;" data-i18n="btn_snapshot">+ Save current Snapshot</button>
         <div class="list" id="snapList" style="margin-top: 8px;"></div>
       </div>
     </aside>
@@ -369,18 +400,188 @@
 (() => {
   const KEY = 'bbd_projects_pinksky_v4';
   const ACTIVE = 'bbd_active_pinksky_v4';
+  const LANG_KEY = 'bbd_lang_v4';
   
   const $ = id => document.getElementById(id);
   const now = () => new Date().toISOString();
   const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
   const clone = v => JSON.parse(JSON.stringify(v));
   const safe = s => String(s || 'divider').toLowerCase().replace(/[^a-z0-9-_]+/g, '-').replace(/^-+|-+$/g, '') || 'divider';
-  const fmt = d => new Date(d).toLocaleString('vi-VN');
   const esc = s => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
+
+  // Highly Extensible i18n Dictionary
+  const I18N = {
+    en: {
+      app_title: "bookmark bar divider",
+      home_desc: "Smart Bookmark Bar Divider designer. Create beautiful separator icons and drag them directly to your bookmark bar.",
+      create_new: "Create New Divider",
+      enter_studio: "Enter Design Studio",
+      hint_blank: "💡 To create a bookmark that only shows the icon without text, simply clear the <strong>Divider Name</strong> field.",
+      studio_title: "Divider Studio",
+      tab_home: "Home",
+      tab_studio: "Studio",
+      btn_undo: "Undo",
+      btn_redo: "Redo",
+      btn_save: "Save Project",
+      your_projects: "Your Projects",
+      add_new: "+ Add New",
+      btn_import: "Import",
+      search_label: "Quick Search",
+      search_placeholder: "Enter search query...",
+      preview_title: "Stage Preview",
+      preview_subtitle: "Drag and drop to install",
+      preview_16: "Favicon Size (16x16)",
+      preview_32: "Tab Size (32x32)",
+      properties: "Properties",
+      edit: "Edit",
+      field_name: "Divider Name",
+      placeholder_name: "(Leave blank for icon-only)",
+      field_shape: "Shape",
+      opt_line: "Minimalist line",
+      opt_rect: "Rounded rectangle box",
+      field_orientation: "Orientation",
+      opt_vertical: "Vertical",
+      opt_horizontal: "Horizontal",
+      field_color: "Color",
+      lbl_top: "Top End",
+      lbl_bottom: "Bottom End",
+      lbl_left: "Left End",
+      lbl_right: "Right End",
+      field_stroke: "Border Thickness",
+      field_cap: "Line Cap style",
+      opt_round: "Round",
+      opt_butt: "Butt",
+      opt_square: "Square",
+      field_width: "Block Thickness",
+      field_rx: "Corner Radius (Rx)",
+      btn_duplicate: "Duplicate",
+      btn_delete: "Delete",
+      share_json: "JSON Data & Share",
+      placeholder_share: "Share configuration URL",
+      btn_copy_url: "Copy URL",
+      btn_export: "Export JSON",
+      revisions: "Revisions",
+      btn_snapshot: "+ Save current Snapshot",
+      
+      // Dynamic strings (including placeholder replacements)
+      drag_link_default: "Drag up to Bookmark Bar",
+      drag_link_named: "Divider: {name}",
+      drag_link_blank: "Drag up (Hidden Name)",
+      drag_link_home_default: "Drag to Bookmark Bar",
+      drag_link_home_named: "Drag Divider: {name}",
+      untitled_proj: "Untitled (Icon-only)",
+      edited_at: "Edited: {time}",
+      no_projects: "No projects found",
+      no_snapshots: "No backup snapshots saved yet",
+      manual_snap: "Manual backup snapshot",
+      toast_new_project: "Added a new divider!",
+      toast_duplicate: "Duplicated the design!",
+      toast_delete_success: "Deleted project successfully",
+      toast_import_success: "Configuration imported successfully!",
+      toast_import_error: "Invalid JSON configuration!",
+      toast_save_success: "All changes saved!",
+      toast_copy_drag: "Drag-and-drop link copied!",
+      toast_copy_share: "Share link copied!",
+      toast_copy_json: "JSON config copied!",
+      toast_undo: "Undone last action!",
+      toast_redo: "Redone last action!",
+      toast_snapshot: "Created a backup snapshot!",
+      toast_apply_json: "Updated from JSON!",
+      confirm_delete: "Are you sure you want to delete divider \"{name}\"?",
+      confirm_restore: "Are you sure you want to restore the design from this backup point?",
+      btn_restore: "Restore",
+      btn_confirm_ok: "Confirm",
+      btn_confirm_cancel: "Cancel",
+      locale: "en-US"
+    },
+    vi: {
+      app_title: "bookmark bar divider",
+      home_desc: "Trình thiết kế dải phân cách Bookmark thông minh. Tạo các biểu tượng phân tách tuyệt đẹp, kéo thả trực tiếp lên thanh dấu trang.",
+      create_new: "Tạo Divider Mới",
+      enter_studio: "Vào Studio Thiết Kế",
+      hint_blank: "💡 Để tạo bookmark ẩn tên chỉ hiển thị biểu tượng, bạn chỉ cần xóa sạch nội dung ô <strong>Tên Divider</strong>.",
+      studio_title: "Divider Studio",
+      tab_home: "Trang chủ",
+      tab_studio: "Studio",
+      btn_undo: "Hoàn tác",
+      btn_redo: "Làm lại",
+      btn_save: "Lưu Dự Án",
+      your_projects: "Dự án của bạn",
+      add_new: "+ Thêm Mới",
+      btn_import: "Nhập",
+      search_label: "Tìm kiếm nhanh",
+      search_placeholder: "Nhập tên tìm kiếm...",
+      preview_title: "Bản Xem Trước (Stage)",
+      preview_subtitle: "Kéo thả để cài đặt",
+      preview_16: "Kích thước Favicon (16x16)",
+      preview_32: "Kích thước Tab (32x32)",
+      properties: "Thông số",
+      edit: "Chỉnh Sửa",
+      field_name: "Tên Divider",
+      placeholder_name: "(Để trống để không hiển thị tên)",
+      field_shape: "Hình dáng",
+      opt_line: "Đường thẳng tối giản",
+      opt_rect: "Hộp chữ nhật bo góc",
+      field_orientation: "Chiều hiển thị",
+      opt_vertical: "Dọc (Vertical)",
+      opt_horizontal: "Ngang (Horizontal)",
+      field_color: "Màu sắc",
+      lbl_top: "Đầu Trên",
+      lbl_bottom: "Đầu Dưới",
+      lbl_left: "Đầu Trái",
+      lbl_right: "Đầu Phải",
+      field_stroke: "Độ dày viền",
+      field_cap: "Bo đầu nét vẽ",
+      opt_round: "Tròn (Round)",
+      opt_butt: "Bằng (Butt)",
+      opt_square: "Vuông (Square)",
+      field_width: "Độ dày khối",
+      field_rx: "Bo góc (Radius)",
+      btn_duplicate: "Nhân đôi",
+      btn_delete: "Xóa bỏ",
+      share_json: "Dữ liệu JSON & Chia sẻ",
+      placeholder_share: "URL Chia sẻ cấu hình",
+      btn_copy_url: "Sao chép URL",
+      btn_export: "Xuất JSON",
+      revisions: "Điểm khôi phục",
+      btn_snapshot: "+ Lưu Snapshot hiện tại",
+      
+      drag_link_default: "Kéo thả lên Bookmark Bar",
+      drag_link_named: "Dải phân cách: {name}",
+      drag_link_blank: "Kéo thả lên Bookmark Bar (Ẩn tên)",
+      drag_link_home_default: "Kéo lên Bookmark Bar",
+      drag_link_home_named: "Kéo phân cách: {name}",
+      untitled_proj: "Untitled (Chỉ Icon)",
+      edited_at: "Chỉnh sửa: {time}",
+      no_projects: "Không tìm thấy dự án nào",
+      no_snapshots: "Chưa lưu snapshot dự phòng nào",
+      manual_snap: "Bản sao lưu thủ công",
+      toast_new_project: "Đã thêm một dải phân cách mới!",
+      toast_duplicate: "Đã nhân bản thiết kế!",
+      toast_delete_success: "Đã xóa dự án thành công",
+      toast_import_success: "Đã import tệp cấu hình thành công!",
+      toast_import_error: "Tệp JSON không hợp lệ hoặc bị lỗi cấu trúc!",
+      toast_save_success: "Đã lưu tất cả thay đổi!",
+      toast_copy_drag: "Đã sao chép liên kết drag-and-drop!",
+      toast_copy_share: "Đã sao chép liên kết chia sẻ!",
+      toast_copy_json: "Đã copy cấu hình JSON!",
+      toast_undo: "Đã quay lại thao tác trước!",
+      toast_redo: "Đã lặp lại thao tác hủy bỏ!",
+      toast_snapshot: "Đã tạo một điểm snapshot dự phòng!",
+      toast_apply_json: "Đã cập nhật từ JSON!",
+      confirm_delete: "Bạn có muốn xóa dải phân cách \"{name}\" này không?",
+      confirm_restore: "Bạn có muốn phục hồi thiết kế từ điểm sao lưu này?",
+      btn_restore: "Phục hồi",
+      btn_confirm_ok: "Đồng ý",
+      btn_confirm_cancel: "Hủy bỏ",
+      locale: "vi-VN"
+    }
+  };
 
   // State
   const st = {
     page: 'home',
+    lang: 'en', // Defaulting to English as instructed
     projects: [],
     active: null,
     undo: [],
@@ -388,10 +589,54 @@
     searchQuery: ''
   };
 
+  // Translation helper function
+  const t = (key, vars = {}) => {
+    const langDict = I18N[st.lang] || I18N['en'];
+    let val = langDict[key] || I18N['en'][key] || key;
+    Object.keys(vars).forEach(k => {
+      val = val.replace(`{${k}}`, vars[k]);
+    });
+    return val;
+  };
+
+  // Convert dates gracefully based on current language locale
+  const fmt = d => {
+    try {
+      return new Date(d).toLocaleString(t('locale'));
+    } catch(e) {
+      return new Date(d).toLocaleString();
+    }
+  };
+
+  // Apply Language to DOM elements
+  const applyLanguage = () => {
+    // 1. Static text mapping
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      el.textContent = t(key);
+    });
+
+    // 2. HTML embedded static texts
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      el.innerHTML = t(key);
+    });
+
+    // 3. Attribute placeholders mapping
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      el.setAttribute('placeholder', t(key));
+    });
+
+    // Synchronize selector elements
+    document.querySelectorAll('.home-lang-select').forEach(sel => sel.value = st.lang);
+    document.querySelectorAll('.studio-lang-select').forEach(sel => sel.value = st.lang);
+  };
+
   // Default structure
   const def = () => ({
     id: uid(),
-    name: 'Divider Mới',
+    name: '',
     createdAt: now(),
     updatedAt: now(),
     line: {
@@ -400,7 +645,7 @@
       y2: 56,
       stroke: 6,
       cap: 'round',
-      shape: 'rect', // default to premium rounded rect
+      shape: 'rect', 
       rx: 6,
       width: 12,
       orientation: 'vertical'
@@ -441,11 +686,11 @@
     btnRow.style.cssText = 'display:flex; justify-content:end; gap:12px;';
     const cancelBtn = document.createElement('button');
     cancelBtn.className = 'btn-ghost';
-    cancelBtn.textContent = 'Hủy bỏ';
+    cancelBtn.textContent = t('btn_confirm_cancel');
     const confirmBtn = document.createElement('button');
     confirmBtn.className = 'btn-primary';
     confirmBtn.style.cssText = 'background:var(--brand-pink);';
-    confirmBtn.textContent = 'Đồng ý';
+    confirmBtn.textContent = t('btn_confirm_ok');
     btnRow.appendChild(cancelBtn);
     btnRow.appendChild(confirmBtn);
     content.appendChild(text);
@@ -467,6 +712,10 @@
       line: { ...def().line, ...(p.line || {}) },
       revisions: p.revisions || []
     }));
+    
+    // Load language with English fallback
+    st.lang = localStorage.getItem(LANG_KEY) || 'en';
+    
     const savedActive = localStorage.getItem(ACTIVE);
     st.active = st.projects.some(p => p.id === savedActive) ? savedActive : st.projects[0].id;
   };
@@ -474,6 +723,7 @@
   const save = () => {
     localStorage.setItem(KEY, JSON.stringify(st.projects));
     localStorage.setItem(ACTIVE, st.active);
+    localStorage.setItem(LANG_KEY, st.lang);
   };
 
   const cur = () => st.projects.find(p => p.id === st.active) || st.projects[0];
@@ -491,7 +741,6 @@
     st.redo = [];
   };
 
-  // Render HTML markup for custom SVGs dynamically
   const generateSvgContent = (lineObj, size = 64) => {
     const { color, y1, y2, stroke, cap, shape, rx, width, orientation } = lineObj;
     const ratio = size / 64;
@@ -530,7 +779,7 @@
     let link = document.querySelector("link[rel~='icon']");
     if (!link) {
       link = document.createElement('link');
-      link.rel = 'icon';
+      link.rel='icon';
       link.type = 'image/svg+xml';
       document.head.appendChild(link);
     }
@@ -572,12 +821,12 @@
     // Setup for home drag anchor
     $('bookmarkLink').href = url;
     $('bookmarkLink').dataset.url = url;
-    $('bookmarkLinkText').textContent = isBlank ? 'Kéo dải phân cách này' : `Kéo phân cách: ${p.name}`;
+    $('bookmarkLinkText').textContent = isBlank ? t('drag_link_default') : t('drag_link_home_named', { name: p.name });
     
     // Setup for studio drag anchor
     $('studioBookmarkLink').href = url;
     $('studioBookmarkLink').dataset.url = url;
-    $('studioBookmarkLinkText').textContent = isBlank ? 'Kéo lên Bookmark Bar (Ẩn tên)' : `Dải phân cách: ${p.name}`;
+    $('studioBookmarkLinkText').textContent = isBlank ? t('drag_link_blank') : t('drag_link_named', { name: p.name });
     
     $('shareUrl').value = url;
   };
@@ -622,12 +871,12 @@
             <svg viewBox="0 0 64 64" style="border:none; box-shadow:none; background:transparent;">${previewMarkup}</svg>
           </div>
           <div style="flex: 1; min-width: 0;">
-            <b style="display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px;">${esc(p.name || 'Untitled (Chỉ Icon)')}</b>
-            <small style="display:block; opacity:0.7; font-size:11px;">Chỉnh sửa: ${fmt(p.updatedAt || p.createdAt)}</small>
+            <b style="display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px;">${esc(p.name || t('untitled_proj'))}</b>
+            <small style="display:block; opacity:0.7; font-size:11px;">${t('edited_at', { time: fmt(p.updatedAt || p.createdAt) })}</small>
           </div>
         </div>
       `;
-    }).join('') || '<div class="tiny" style="padding:10px 0; text-align:center;">Không tìm thấy dự án nào</div>';
+    }).join('') || `<div class="tiny" style="padding:10px 0; text-align:center;">${t('no_projects')}</div>`;
   };
 
   const renderSnapshots = () => {
@@ -635,17 +884,17 @@
     $('snapList').innerHTML = p.revisions.map((r, i) => `
       <div class="item" style="padding: 10px 12px; font-size: 12px;">
         <div style="flex:1;">
-          <b style="display:block;">${esc(r.note || 'Snapshot')}</b>
+          <b style="display:block;">${esc(r.note || t('manual_snap'))}</b>
           <small style="opacity: 0.7;">${fmt(r.at)}</small>
         </div>
-        <button class="btn-ghost" data-restore="${i}" style="padding: 4px 8px; font-size: 11px;">Phục hồi</button>
+        <button class="btn-ghost" data-restore="${i}" style="padding: 4px 8px; font-size: 11px;">${t('btn_restore')}</button>
       </div>
-    `).join('') || '<div class="tiny" style="padding:10px 0; text-align:center;">Chưa lưu snapshot dự phòng nào</div>';
+    `).join('') || `<div class="tiny" style="padding:10px 0; text-align:center;">${t('no_snapshots')}</div>`;
   };
 
   const renderControls = () => {
     const p = cur();
-    $('topMeta').textContent = p.name ? `Chỉnh sửa: ${p.name}` : 'Thiết kế dải phân cách tối giản';
+    $('topMeta').textContent = p.name ? `${t('edit')}: ${p.name}` : t('studio_meta');
     $('editNameInput').value = p.name;
     $('shape').value = p.line.shape;
     $('orientation').value = p.line.orientation;
@@ -657,13 +906,13 @@
     $('width').value = p.line.width || 8;
     $('rx').value = p.line.rx || 4;
 
-    // Adapt layout names dynamically
+    // Adapt layout label names dynamically based on orientation
     if (p.line.orientation === 'horizontal') {
-      $('lblY1').textContent = 'Đầu Trái (Left)';
-      $('lblY2').textContent = 'Đầu Phải (Right)';
+      $('lblY1').textContent = t('lbl_left');
+      $('lblY2').textContent = t('lbl_right');
     } else {
-      $('lblY1').textContent = 'Đầu Trên (Top)';
-      $('lblY2').textContent = 'Đầu Dưới (Bottom)';
+      $('lblY1').textContent = t('lbl_top');
+      $('lblY2').textContent = t('lbl_bottom');
     }
 
     // Toggle specific option blocks based on shape
@@ -675,6 +924,7 @@
   };
 
   const render = () => {
+    applyLanguage();
     renderStages();
     renderControls();
     renderProjectList();
@@ -682,7 +932,7 @@
     updateBookmarkElements();
   };
 
-  const snap = (note = 'Snapshot') => {
+  const snap = (note = t('manual_snap')) => {
     const p = cur();
     p.revisions.unshift({
       id: uid(),
@@ -699,14 +949,14 @@
     setActive(p.id);
     render();
     save();
-    toast('Đã thêm một dải phân cách mới!', 'success');
+    toast(t('toast_new_project'), 'success');
   };
 
   const duplicateProject = () => {
     const src = cur();
     const p = clone(src);
     p.id = uid();
-    p.name = src.name ? `${src.name} (Bản sao)` : 'Divider (Bản sao)';
+    p.name = src.name ? `${src.name} (Copy)` : 'Divider (Copy)';
     p.createdAt = now();
     p.updatedAt = now();
     p.revisions = [];
@@ -714,15 +964,15 @@
     setActive(p.id);
     render();
     save();
-    toast('Đã nhân bản thiết kế!', 'success');
+    toast(t('toast_duplicate'), 'success');
   };
 
   const deleteProject = () => {
     const activeId = st.active;
     const idx = st.projects.findIndex(p => p.id === activeId);
     if (idx < 0) return;
-    const name = st.projects[idx].name || 'Chỉ có Icon';
-    customConfirm(`Bạn có muốn xóa dải phân cách "${name}" này không?`, () => {
+    const name = st.projects[idx].name || t('untitled_proj');
+    customConfirm(t('confirm_delete', { name: name }), () => {
       st.projects.splice(idx, 1);
       if (!st.projects.length) {
         st.projects = [def()];
@@ -730,7 +980,7 @@
       setActive(st.projects[0].id);
       render();
       save();
-      toast('Đã xóa dự án thành công', 'success');
+      toast(t('toast_delete_success'), 'success');
     });
   };
 
@@ -743,7 +993,7 @@
           ...def(),
           ...parsed,
           id: parsed.id || uid(),
-          name: parsed.name || 'Imported Divider',
+          name: parsed.name || '',
           line: { ...def().line, ...(parsed.line || {}) },
           revisions: parsed.revisions || []
         };
@@ -756,9 +1006,9 @@
         setActive(imported.id);
         render();
         save();
-        toast('Đã import tệp cấu hình thành công!', 'success');
+        toast(t('toast_import_success'), 'success');
       } catch {
-        toast('Tệp JSON không hợp lệ hoặc bị lỗi cấu trúc!', 'error');
+        toast(t('toast_import_error'), 'error');
       }
     };
     reader.readAsText(file);
@@ -772,10 +1022,19 @@
     a.href = URL.createObjectURL(blob);
     a.download = `divider-${safe(p.name)}.json`;
     a.click();
-    toast('Đã xuất file cấu hình JSON thành công!');
+    toast(t('toast_save_success'), 'success');
   };
 
   const bindEvents = () => {
+    // Language Select change listener
+    document.querySelectorAll('.lang-selector').forEach(selector => {
+      selector.addEventListener('change', e => {
+        st.lang = e.target.value;
+        save();
+        render();
+      });
+    });
+
     // Navigation & Tab togglers
     $('newBtn').onclick = () => { addProject(); showPage('studio'); };
     $('enterStudioBtn').onclick = () => showPage('studio');
@@ -795,7 +1054,7 @@
       cur().updatedAt = now();
       save();
       render();
-      toast('Đã lưu tất cả thay đổi!', 'success');
+      toast(t('toast_save_success'), 'success');
     };
 
     $('dupBtn').onclick = duplicateProject;
@@ -820,7 +1079,7 @@
         dummy.select();
         document.execCommand('copy');
         document.body.removeChild(dummy);
-        toast('Đã sao chép liên kết drag-and-drop!', 'success');
+        toast(t('toast_copy_drag'), 'success');
       });
     };
     setupDrag($('bookmarkLink'));
@@ -833,7 +1092,7 @@
       dummy.select();
       document.execCommand('copy');
       document.body.removeChild(dummy);
-      toast('Đã sao chép liên kết chia sẻ!', 'success');
+      toast(t('toast_copy_share'), 'success');
     };
 
     // Live controller inputs
@@ -887,7 +1146,7 @@
       const idx = st.projects.findIndex(p => p.id === st.active);
       st.projects[idx] = restored;
       render();
-      toast('Đã quay lại thao tác trước!');
+      toast(t('toast_undo'));
     };
 
     $('redoBtn').onclick = () => {
@@ -897,27 +1156,27 @@
       const idx = st.projects.findIndex(p => p.id === st.active);
       st.projects[idx] = redone;
       render();
-      toast('Đã lặp lại thao tác hủy bỏ!');
+      toast(t('toast_redo'));
     };
 
     // Revisions & Snapshots
     $('saveSnapBtn').onclick = () => {
-      snap('Bản sao lưu thủ công');
+      snap(t('manual_snap'));
       render();
-      toast('Đã tạo một điểm snapshot dự phòng!', 'success');
+      toast(t('toast_snapshot'), 'success');
     };
 
     $('snapList').onclick = e => {
       const restoreBtn = e.target.closest('[data-restore]');
       if (restoreBtn) {
         const idx = +restoreBtn.dataset.restore;
-        customConfirm('Bạn có chắc muốn phục hồi thiết kế từ điểm sao lưu này?', () => {
+        customConfirm(t('confirm_restore'), () => {
           pushUndo();
           const p = cur();
           p.line = clone(p.revisions[idx].line);
           p.updatedAt = now();
           render();
-          toast('Đã khôi phục thiết kế thành công!', 'success');
+          toast(t('toast_apply_json'), 'success');
         });
       }
     };
@@ -927,7 +1186,7 @@
     load();
     bindEvents();
 
-    // Deep Link Cấu hình từ URL Base64
+    // Deep Link configuration from URL Base64
     const params = new URL(location.href).searchParams;
     const dParam = params.get('d');
     const pParam = params.get('p');
@@ -937,7 +1196,7 @@
         const decoded = JSON.parse(decodeURIComponent(escape(atob(dParam))));
         const imported = {
           id: pParam || uid(),
-          name: decoded.n || 'Imported Design',
+          name: decoded.n || '',
           createdAt: now(),
           updatedAt: now(),
           line: {
@@ -961,7 +1220,7 @@
         }
         st.active = imported.id;
       } catch (e) {
-        console.error("Lỗi đọc cấu hình URL", e);
+        console.error("URL configuration read error", e);
       }
     } else if (pParam) {
       const found = st.projects.find(x => x.id === pParam);
