@@ -3,78 +3,86 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>‌</title> <!-- Default to zero-width non-joiner for elegant empty titles -->
+<title>‌</title>
 <style>
   :root {
-    --bg: #f8fafc;
-    --panel: #ffffff;
-    --line: #e2e8f0;
-    --muted: #64748b;
-    --brand: #155eef;
-    --brand-hover: #004eeb;
-    --soft: #f0f5ff;
-    --shadow: 0 12px 30px rgba(16, 24, 40, 0.06), 0 4px 12px rgba(16, 24, 40, 0.04);
-    --radius-lg: 20px;
-    --radius-md: 12px;
+    --bg-gradient: linear-gradient(135deg, #fdf2f8 0%, #f3e8ff 50%, #e0f2fe 100%);
+    --panel-bg: rgba(255, 255, 255, 0.85);
+    --panel-border: rgba(244, 63, 94, 0.15);
+    --text-primary: #1e1b4b;
+    --text-muted: #6b21a8;
+    --brand-gradient: linear-gradient(135deg, #ec4899 0%, #a855f7 50%, #0ea5e9 100%);
+    --brand-pink: #ec4899;
+    --brand-purple: #a855f7;
+    --brand-blue: #0ea5e9;
+    --radius-lg: 24px;
+    --radius-md: 14px;
+    --shadow-premium: 0 15px 35px rgba(236, 72, 153, 0.08), 0 5px 15px rgba(14, 165, 233, 0.04);
+    --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
   
-  * { box-sizing: border-box; transition: background-color 0.15s ease, border-color 0.15s ease; }
-  html, body { height: 100%; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: #0f172a; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; transition: var(--transition); }
+  html, body { height: 100%; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg-gradient); color: var(--text-primary); -webkit-font-smoothing: antialiased; }
   
   button, input, select, textarea, a { font: inherit; outline: none; }
-  button { border: 1px solid var(--line); background: #fff; border-radius: var(--radius-md); padding: 10px 16px; cursor: pointer; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 8px; color: #334155; }
-  button:hover { background: #f8fafc; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border-color: #cbd5e1; }
+  button { border: 1px solid rgba(168, 85, 247, 0.2); background: #fff; border-radius: var(--radius-md); padding: 10px 18px; cursor: pointer; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 8px; color: #4a044e; }
+  button:hover { background: rgba(255, 255, 255, 0.9); border-color: var(--brand-purple); box-shadow: 0 4px 15px rgba(168, 85, 247, 0.1); transform: translateY(-1px); }
   button:active { transform: translateY(1px); }
   
-  .primary { background: var(--brand); color: #fff; border-color: var(--brand); }
-  .primary:hover { background: var(--brand-hover); border-color: var(--brand-hover); color: #fff; }
-  .ghost { background: transparent; border-color: transparent; }
-  .ghost:hover { background: #f1f5f9; border-color: transparent; }
-  .danger { color: #dc2626; background: #fef2f2; border-color: #fecaca; }
-  .danger:hover { background: #fee2e2; border-color: #fca5a5; }
+  .btn-primary { background: var(--brand-gradient); color: #fff; border: none; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.2); }
+  .btn-primary:hover { background: var(--brand-gradient); filter: brightness(1.05); color: #fff; box-shadow: 0 6px 20px rgba(236, 72, 153, 0.3); }
+  .btn-ghost { background: transparent; border-color: transparent; color: var(--text-muted); }
+  .btn-ghost:hover { background: rgba(255, 255, 255, 0.5); color: var(--brand-pink); }
+  .btn-danger { color: #be123c; background: #fff1f2; border-color: #fecdd3; }
+  .btn-danger:hover { background: #ffe4e6; border-color: #fda4af; }
   .hidden { display: none !important; }
+
+  /* Tab switching layout */
+  .segmented-control { display: inline-flex; background: rgba(244, 63, 94, 0.08); padding: 4px; border-radius: var(--radius-md); border: 1px solid rgba(244, 63, 94, 0.1); }
+  .segmented-control button { border: none; background: transparent; border-radius: 10px; padding: 6px 16px; font-size: 13px; font-weight: 700; color: var(--text-muted); }
+  .segmented-control button.active { background: #fff; color: var(--brand-pink); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
 
   .page { min-height: 100vh; display: grid; place-items: center; padding: 24px; box-sizing: border-box; }
   
-  /* Premium Home Card styling */
+  /* Home Landing card styling */
   .home-card { 
-    width: min(640px, 100%); 
-    background: rgba(255, 255, 255, 0.95); 
-    backdrop-filter: blur(16px); 
-    border: 1px solid rgba(226, 232, 240, 0.8); 
-    border-radius: 28px; 
-    box-shadow: var(--shadow); 
-    padding: 40px; 
+    width: min(680px, 100%); 
+    background: var(--panel-bg); 
+    backdrop-filter: blur(20px); 
+    border: 1px solid var(--panel-border); 
+    border-radius: var(--radius-lg); 
+    box-shadow: var(--shadow-premium); 
+    padding: 48px; 
     display: grid; 
-    gap: 24px; 
+    gap: 28px; 
     justify-items: center; 
     text-align: center; 
   }
   
-  .home-card h1 { margin: 0; font-size: 36px; font-weight: 800; letter-spacing: -0.04em; color: #0f172a; }
-  .home-card p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.6; max-width: 48ch; }
+  .home-card h1 { margin: 0; font-size: 38px; font-weight: 900; letter-spacing: -0.04em; background: var(--brand-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .home-card p { margin: 0; color: var(--text-muted); font-size: 15px; line-height: 1.6; max-width: 50ch; }
   
   .bookmark-link {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     text-decoration: none;
     color: #fff;
-    border: 2px dashed rgba(21, 94, 239, 0.25);
-    background: linear-gradient(135deg, #155eef, #004eeb);
-    padding: 14px 28px;
+    border: 2px dashed rgba(236, 72, 153, 0.3);
+    background: var(--brand-gradient);
+    padding: 16px 32px;
     border-radius: 999px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: grab;
     user-select: none;
-    box-shadow: 0 10px 20px rgba(21, 94, 239, 0.15);
+    box-shadow: 0 10px 25px rgba(236, 72, 153, 0.2);
     transform: translateZ(0);
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: var(--transition);
   }
   .bookmark-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 24px rgba(21, 94, 239, 0.25);
-    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(236, 72, 153, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
   }
   .bookmark-link:active {
     cursor: grabbing;
@@ -84,11 +92,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
-    background: rgba(255, 255, 255, 0.2);
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.25);
     border-radius: 50%;
-    padding: 3px;
+    padding: 4px;
     backdrop-filter: blur(4px);
   }
   .bookmark-icon-preview svg {
@@ -100,68 +108,71 @@
   }
   
   .home-actions, .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: center; width: 100%; }
-  .subtle { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .subtle { font-size: 13px; color: var(--text-muted); opacity: 0.8; line-height: 1.5; }
 
-  .manager { min-height: 100vh; display: grid; grid-template-rows: auto 1fr; }
+  /* Elegant Studio Layout (Merged Editor + Projects Manager) */
+  .studio { min-height: 100vh; display: grid; grid-template-rows: auto 1fr; }
   .topbar { 
     position: sticky; 
     top: 0; 
     z-index: 10; 
     display: flex; 
-    gap: 12px; 
+    gap: 16px; 
     flex-wrap: wrap; 
     align-items: center; 
-    padding: 14px 24px; 
-    background: rgba(255, 255, 255, 0.85); 
-    backdrop-filter: blur(12px); 
-    border-bottom: 1px solid var(--line); 
+    padding: 16px 28px; 
+    background: rgba(255, 255, 255, 0.75); 
+    backdrop-filter: blur(16px); 
+    border-bottom: 1px solid var(--panel-border); 
   }
   .brand { min-width: 180px; display: grid; gap: 2px; }
-  .brand strong { font-size: 15px; color: #0f172a; font-weight: 700; }
-  .brand span, .tiny { font-size: 12px; color: var(--muted); font-weight: 500; }
+  .brand strong { font-size: 16px; color: var(--text-primary); font-weight: 800; background: var(--brand-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .brand span, .tiny { font-size: 12px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
   .spacer { flex: 1; }
   
-  .main { display: grid; grid-template-columns: 280px minmax(360px, 1fr) 320px; gap: 16px; padding: 16px; align-items: start; height: calc(100vh - 65px); box-sizing: border-box; }
-  .panel { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; height: 100%; }
-  .head { padding: 16px 20px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 10px; background: #fafafa; }
-  .head h3 { margin: 0; font-size: 14px; font-weight: 700; color: #1e293b; text-transform: uppercase; letter-spacing: 0.05em; }
-  .body { padding: 20px; display: grid; gap: 16px; overflow-y: auto; flex: 1; }
+  .main-container { display: grid; grid-template-columns: 290px minmax(360px, 1fr) 330px; gap: 16px; padding: 16px; align-items: start; height: calc(100vh - 75px); box-sizing: border-box; }
+  .panel { background: var(--panel-bg); backdrop-filter: blur(12px); border: 1px solid var(--panel-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-premium); overflow: hidden; display: flex; flex-direction: column; height: 100%; }
+  .head { padding: 16px 20px; border-bottom: 1px solid var(--panel-border); display: flex; justify-content: space-between; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.5); }
+  .head h3 { margin: 0; font-size: 13px; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.08em; }
+  .body { padding: 20px; display: grid; gap: 18px; overflow-y: auto; flex: 1; }
   .scroll { overflow-y: auto; }
   
-  /* Form elements */
+  /* Modern Form Controls */
   .field { display: grid; gap: 6px; }
-  .field label, .section { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
-  .field input, .field select, .field textarea { width: 100%; border: 1px solid var(--line); border-radius: var(--radius-md); padding: 10px 14px; background: #fff; color: #0f172a; transition: border 0.15s, box-shadow 0.15s; }
-  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(21, 94, 239, 0.15); }
+  .field label, .section-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .field input, .field select, .field textarea { width: 100%; border: 1px solid rgba(168, 85, 247, 0.15); border-radius: var(--radius-md); padding: 11px 14px; background: rgba(255, 255, 255, 0.8); color: var(--text-primary); transition: var(--transition); }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--brand-pink); background: #fff; box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.12); }
   .field textarea { min-height: 80px; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; resize: vertical; }
   
-  /* Project lists & cards */
-  .list { display: grid; gap: 8px; }
-  .item { padding: 12px 16px; border: 1px solid var(--line); border-radius: var(--radius-md); background: #fff; display: flex; justify-content: space-between; gap: 12px; align-items: center; cursor: pointer; }
-  .item:hover { border-color: #cbd5e1; background: #f8fafc; }
-  .item.active { background: var(--soft); border-color: #93c5fd; }
-  .item small { color: var(--muted); font-size: 11px; }
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  /* Dynamic Slider Component Styling */
+  input[type="range"] { -webkit-appearance: none; appearance: none; height: 6px; background: rgba(168, 85, 247, 0.15); border-radius: 999px; outline: none; padding: 0; border: none; }
+  input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--brand-pink); cursor: pointer; border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.15); transition: transform 0.1s; }
+  input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); background: var(--brand-purple); }
+
+  /* Beautiful Sidebar List Cards */
+  .list { display: grid; gap: 10px; }
+  .item { padding: 12px 16px; border: 1px solid rgba(168, 85, 247, 0.12); border-radius: var(--radius-md); background: rgba(255, 255, 255, 0.7); display: flex; justify-content: space-between; gap: 12px; align-items: center; cursor: pointer; }
+  .item:hover { border-color: var(--brand-purple); background: rgba(255, 255, 255, 0.9); }
+  .item.active { background: linear-gradient(135deg, rgba(236, 72, 153, 0.08) 0%, rgba(168, 85, 247, 0.08) 100%); border-color: var(--brand-pink); }
+  .item small { color: var(--text-muted); font-size: 11px; opacity: 0.8; }
   
-  .p-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 16px; display: grid; gap: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-  .p-card.active { background: var(--soft); border-color: #93c5fd; }
-  .p-card .meta { font-size: 12px; color: var(--muted); line-height: 1.45; }
-  .mini { width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius-md); background: #fff; aspect-ratio: 16/5; padding: 4px; }
+  .p-card { background: rgba(255, 255, 255, 0.6); border: 1px solid var(--panel-border); border-radius: var(--radius-md); padding: 14px; display: grid; gap: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.01); }
+  .p-card.active { background: linear-gradient(135deg, rgba(236, 72, 153, 0.05), rgba(14, 165, 233, 0.05)); border-color: var(--brand-pink); }
+  .p-card .meta { font-size: 12px; color: var(--text-muted); opacity: 0.8; }
+  .mini-stage { width: 100%; height: auto; border: 1px solid var(--panel-border); border-radius: var(--radius-md); background: #fff; aspect-ratio: 16/5; padding: 4px; display: flex; align-items: center; justify-content: center; }
   
-  svg { display: block; width: 100%; height: auto; background: #f8fafc; border: 1px solid var(--line); border-radius: var(--radius-lg); }
-  .stagebox { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-  .preview { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  svg { display: block; width: 100%; height: auto; background: #fff; border: 1px solid rgba(168, 85, 247, 0.1); border-radius: var(--radius-lg); box-shadow: inset 0 2px 8px rgba(0,0,0,0.02); }
+  .stagebox { background: rgba(255, 255, 255, 0.6); border: 1px solid var(--panel-border); border-radius: var(--radius-lg); padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
+  .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%; }
 
   @media (max-width: 1120px) {
-    .main { grid-template-columns: 1fr; height: auto; overflow: visible; }
+    .main-container { grid-template-columns: 1fr; height: auto; overflow: visible; }
     .scroll { max-height: none; }
-    .preview { grid-template-columns: 1fr; }
+    .preview-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
-
 
 <!-- HOME PAGE -->
 <section id="homePage" class="page">
@@ -169,125 +180,186 @@
     <div style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
       <svg id="homeLogoSvg" viewBox="0 0 64 64" style="border:none; background:transparent; width:100%; height:100%;"></svg>
     </div>
-    <h1 id="homeTitle">bookmark bar divider</h1>
-    <p>Tạo bookmark phân cách tối giản cho Bookmark Bar. Kéo thả trực tiếp nút bên dưới lên thanh Bookmark để hoàn tất.</p>
+    <h1>bookmark bar divider</h1>
+    <p>Trình thiết kế dải phân cách Bookmark thông minh. Tạo các biểu tượng phân tách tuyệt đẹp, kéo thả trực tiếp lên thanh dấu trang.</p>
     
-    <!-- Drag to bookmark link is placed high up for accessibility -->
     <a id="bookmarkLink" class="bookmark-link" href="#" draggable="true">
       <span class="bookmark-icon-preview">
         <svg id="btnPreviewSvg" viewBox="0 0 64 64"></svg>
       </span>
-      <span id="bookmarkLinkText">Kéo tôi vào Bookmark Bar</span>
+      <span id="bookmarkLinkText">Kéo lên Bookmark Bar</span>
     </a>
     
     <div class="home-actions">
-      <button id="newBtn" class="primary">New Divider</button>
-      <button id="projectsBtn" class="ghost">Open Projects</button>
+      <button id="newBtn" class="btn-primary">Tạo Divider Mới</button>
+      <button id="enterStudioBtn" class="btn-ghost">Vào Studio Thiết Kế</button>
     </div>
-    <div class="subtle">💡 Để bookmark chỉ hiển thị hình icon không có tên, hãy xóa sạch nội dung ô <strong>Project Name</strong> khi chỉnh sửa.</div>
+    <div class="subtle">💡 Để tạo bookmark ẩn tên chỉ hiển thị biểu tượng, bạn chỉ cần xóa sạch nội dung ô <strong>Tên Divider</strong>.</div>
   </div>
 </section>
 
-<!-- PROJECTS MANAGEMENT PAGE -->
-<section id="projectsPage" class="page hidden">
-  <div class="manager-card manager" style="width: min(1200px, 100%); height: calc(100vh - 48px); max-height: 900px; background: #fff; border-radius: var(--radius-lg); border: 1px solid var(--line); box-shadow: var(--shadow); overflow: hidden;">
-    <div class="topbar">
-      <div class="brand"><strong>Projects</strong><span>Quản lý danh sách Divider</span></div>
-      <button id="backHomeBtn" class="ghost">Home</button>
-      <button id="newFromProjectsBtn" class="primary">New Divider</button>
-      <div class="spacer"></div>
-      <button id="importBtn" class="ghost">Import JSON</button>
-      <input id="importInput" type="file" accept="application/json" class="hidden" />
-    </div>
-    <div class="main" style="height: calc(100% - 65px);">
-      <!-- Sidebar List -->
-      <aside class="panel scroll">
-        <div class="head"><h3>Danh sách</h3><span class="tiny" id="countLabel">0</span></div>
-        <div class="body">
-          <div class="field"><label>Tìm kiếm</label><input id="searchInput" placeholder="Tìm tên divider..."></div>
-          <div class="list" id="projectList"></div>
-        </div>
-      </aside>
-
-      <!-- Central Visual Overview -->
-      <section class="panel scroll">
-        <div class="head"><h3>Tổng quan</h3><span class="tiny">Quản lý trực quan</span></div>
-        <div class="body">
-          <div id="projectCards" class="card-grid"></div>
-        </div>
-      </section>
-
-      <!-- Project details / Export / Configs -->
-      <aside class="panel scroll">
-        <div class="head"><h3>Đang chọn</h3><span class="tiny">Phiên bản / Chia sẻ</span></div>
-        <div class="body">
-          <div class="field"><label>Project name</label><input id="nameInput" placeholder="(Để trống để không hiện tên)"></div>
-          <div class="row">
-            <button id="openEditBtn" class="primary" style="flex:1;">Edit Design</button>
-            <button id="dupBtn" class="ghost">Duplicate</button>
-            <button id="delBtn" class="danger">Delete</button>
-          </div>
-          <div class="section" style="margin-top: 12px;">Bản sao lưu (Snapshots)</div>
-          <div class="list" id="snapList"></div>
-          <div class="field"><label>Share / Bookmark URL</label><textarea id="shareUrl" readonly></textarea></div>
-          <div class="row">
-            <button id="copyUrlBtn" class="ghost" style="flex:1;">Copy URL</button>
-            <button id="exportJsonBtn" class="ghost" style="flex:1;">Export JSON</button>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </div>
-</section>
-
-<!-- EDIT/DESIGN PAGE -->
-<section id="editPage" class="manager hidden">
+<!-- MAIN STUDIO (COMPACT EDITOR & INTEGRATED PROJECT MANAGER) -->
+<section id="studioPage" class="studio hidden">
   <div class="topbar">
-    <div class="brand"><strong id="topName">bookmark bar divider</strong><span id="topMeta">Đang thiết kế...</span></div>
-    <button id="backProjectsBtn" class="ghost">Projects</button>
-    <button id="saveSnapBtn" class="ghost">Lưu Snapshot</button>
-    <button id="saveBtn" class="primary">Lưu dự án</button>
-    <button id="exportJsonBtn2" class="ghost">Export JSON</button>
+    <div class="brand"><strong>Divider Studio</strong><span id="topMeta">Đang thiết kế...</span></div>
+    
+    <div class="segmented-control">
+      <button id="tabHomeBtn">Trang chủ</button>
+      <button id="tabStudioBtn" class="active">Studio</button>
+    </div>
+    
     <div class="spacer"></div>
-    <button id="undoBtn" class="ghost">Undo</button>
-    <button id="redoBtn" class="ghost">Redo</button>
+    <button id="undoBtn" class="btn-ghost" title="Hoàn tác">Phục hồi</button>
+    <button id="redoBtn" class="btn-ghost" title="Làm lại">Lặp lại</button>
+    <button id="saveBtn" class="btn-primary">Lưu Dự Án</button>
   </div>
-  <div class="main">
-    <!-- Projects Quick List -->
+  
+  <div class="main-container">
+    <!-- LEFT SIDEBAR: PROJECTS -->
     <aside class="panel scroll">
-      <div class="head"><h3>Projects</h3><span class="tiny" id="projectCount">0</span></div>
+      <div class="head">
+        <h3>Dự án của bạn</h3>
+        <span class="tiny" id="projectCount">0</span>
+      </div>
       <div class="body">
-        <div class="field"><label>Tên dự án</label><input id="editNameInput" placeholder="(Để trống để ẩn chữ hoàn toàn)"></div>
-        <div class="section" style="margin-top: 12px;">Chuyển nhanh</div>
-        <div class="list" id="editProjectList"></div>
+        <div class="row" style="margin-bottom: 4px;">
+          <button id="studioNewBtn" class="btn-primary" style="flex: 1;">+ Thêm Mới</button>
+          <button id="studioImportBtn" class="btn-ghost" title="Nhập JSON">Nhập</button>
+          <input id="importInput" type="file" accept="application/json" class="hidden" />
+        </div>
+        <div class="field">
+          <label>Tìm kiếm nhanh</label>
+          <input id="searchInput" placeholder="Nhập tên tìm kiếm...">
+        </div>
+        <div class="list" id="projectList"></div>
       </div>
     </aside>
 
-    <!-- Visual Editor Section -->
+    <!-- CENTER PREVIEW PANEL -->
     <section class="panel scroll">
-      <div class="head"><h3>Bản xem trước (Preview)</h3><span class="tiny">Thiết kế đường phân cách dọc</span></div>
-      <div class="body" style="grid-template-rows: 1fr auto; gap: 20px;">
-        <div class="stagebox"><svg id="svg" viewBox="0 0 64 64"></svg></div>
-        <div class="preview">
-          <div class="stagebox"><div class="tiny" style="margin-bottom:6px;">64×64 Icon</div><svg id="pv64" viewBox="0 0 64 64"></svg></div>
-          <div class="stagebox"><div class="tiny" style="margin-bottom:6px;">16×16 Tab Preview</div><svg id="pv16" viewBox="0 0 16 16"></svg></div>
+      <div class="head">
+        <h3>Bản Xem Trước (Stage)</h3>
+        <span class="tiny">Kéo thả để cài đặt</span>
+      </div>
+      <div class="body" style="grid-template-rows: auto 1fr auto; gap: 20px; align-items: center;">
+        
+        <!-- Interactive Bookmark Anchor for easy instant dragging/dropping -->
+        <div style="display: flex; justify-content: center; width: 100%;">
+          <a id="studioBookmarkLink" class="bookmark-link" href="#" draggable="true" style="width: 100%; justify-content: center;">
+            <span class="bookmark-icon-preview">
+              <svg id="studioBtnPreviewSvg" viewBox="0 0 64 64"></svg>
+            </span>
+            <span id="studioBookmarkLinkText">Kéo thả lên Bookmark Bar</span>
+          </a>
+        </div>
+
+        <div class="stagebox">
+          <svg id="svgCanvas" viewBox="0 0 64 64" style="max-width: 240px; aspect-ratio: 1;"></svg>
+        </div>
+        
+        <div class="preview-grid">
+          <div class="stagebox">
+            <div class="tiny" style="margin-bottom: 8px;">Kích thước Favicon (16x16)</div>
+            <div style="width: 32px; height: 32px; background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 6px; padding: 4px; display: flex; align-items: center; justify-content: center;">
+              <svg id="pv16" viewBox="0 0 16 16" style="border:none; box-shadow:none; width: 100%; height: 100%;"></svg>
+            </div>
+          </div>
+          <div class="stagebox">
+            <div class="tiny" style="margin-bottom: 8px;">Kích thước Tab (32x32)</div>
+            <div style="width: 48px; height: 48px; background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 6px; padding: 6px; display: flex; align-items: center; justify-content: center;">
+              <svg id="pv32" viewBox="0 0 32 32" style="border:none; box-shadow:none; width: 100%; height: 100%;"></svg>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Properties Controllers -->
+    <!-- RIGHT SIDEBAR: CONTROLS -->
     <aside class="panel scroll">
-      <div class="head"><h3>Thuộc tính</h3><span class="tiny">Tùy biến nét vẽ</span></div>
+      <div class="head">
+        <h3>Thông số</h3>
+        <span class="tiny">Chỉnh Sửa</span>
+      </div>
       <div class="body">
-        <div class="field"><label>Màu sắc nét vẽ (Color)</label><input id="color" type="color" style="height: 42px; padding: 2px; cursor: pointer; border-radius: 8px;"></div>
-        <div class="grid">
-          <div class="field"><label>Đầu trên (Top)</label><input id="y1" type="range" min="0" max="64" value="6" step="1"></div>
-          <div class="field"><label>Đầu dưới (Bottom)</label><input id="y2" type="range" min="0" max="64" value="58" step="1"></div>
-          <div class="field"><label>Độ dày (Stroke)</label><input id="stroke" type="range" min="1" max="24" value="4" step="1"></div>
-          <div class="field"><label>Bo đầu (Cap)</label><select id="cap"><option value="round">Tròn (Round)</option><option value="butt">Bằng (Butt)</option><option value="square">Vuông (Square)</option></select></div>
+        <div class="field">
+          <label>Tên Divider</label>
+          <input id="editNameInput" placeholder="(Để trống để không hiển thị tên)">
         </div>
-        <div class="field" style="margin-top:12px;"><label>JSON Data</label><textarea id="json" spellcheck="false"></textarea></div>
-        <div class="row"><button id="applyJsonBtn" class="ghost" style="flex:1;">Apply JSON</button><button id="copyJsonBtn" class="ghost" style="flex:1;">Copy JSON</button></div>
+        
+        <div class="field">
+          <label>Hình dáng</label>
+          <select id="shape">
+            <option value="line">Đường thẳng tối giản</option>
+            <option value="rect">Hộp chữ nhật bo góc</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Chiều hiển thị</label>
+          <select id="orientation">
+            <option value="vertical">Dọc (Vertical)</option>
+            <option value="horizontal">Ngang (Horizontal)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Màu sắc</label>
+          <input id="color" type="color" style="height: 44px; padding: 3px; cursor: pointer;">
+        </div>
+
+        <!-- Dynamic inputs shown adaptively based on configuration -->
+        <div class="grid" style="display: grid; gap: 12px;">
+          <div class="field">
+            <label id="lblY1">Đầu Trên / Trái</label>
+            <input id="y1" type="range" min="0" max="64" value="6">
+          </div>
+          <div class="field">
+            <label id="lblY2">Đầu Dưới / Phải</label>
+            <input id="y2" type="range" min="0" max="64" value="58">
+          </div>
+          
+          <!-- Line specific options -->
+          <div class="field" id="boxStroke">
+            <label>Độ dày viền</label>
+            <input id="stroke" type="range" min="1" max="24" value="4">
+          </div>
+          <div class="field" id="boxCap">
+            <label>Bo đầu nét vẽ</label>
+            <select id="cap">
+              <option value="round">Tròn (Round)</option>
+              <option value="butt">Bằng (Butt)</option>
+              <option value="square">Vuông (Square)</option>
+            </select>
+          </div>
+
+          <!-- Rounded Rectangle specific options -->
+          <div class="field hidden" id="boxWidth">
+            <label>Độ dày khối</label>
+            <input id="width" type="range" min="1" max="48" value="8">
+          </div>
+          <div class="field hidden" id="boxRx">
+            <label>Bo góc (Radius)</label>
+            <input id="rx" type="range" min="0" max="24" value="4">
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px;">
+          <button id="dupBtn" class="btn-ghost" style="flex: 1;">Nhân đôi</button>
+          <button id="delBtn" class="btn-danger" style="flex: 1;">Xóa bỏ</button>
+        </div>
+
+        <div class="section-title" style="margin-top: 15px;">Dữ liệu JSON & Chia sẻ</div>
+        <div class="field">
+          <textarea id="shareUrl" readonly style="font-size: 11px;" placeholder="URL Chia sẻ cấu hình"></textarea>
+        </div>
+        <div class="row">
+          <button id="copyUrlBtn" class="btn-ghost" style="flex: 1; font-size: 12px;">Sao chép URL</button>
+          <button id="exportJsonBtn" class="btn-ghost" style="flex: 1; font-size: 12px;">Xuất JSON</button>
+        </div>
+
+        <div class="section-title" style="margin-top: 15px;">Điểm khôi phục (Revisions)</div>
+        <button id="saveSnapBtn" class="btn-ghost" style="width: 100%;">+ Lưu Snapshot hiện tại</button>
+        <div class="list" id="snapList" style="margin-top: 8px;"></div>
       </div>
     </aside>
   </div>
@@ -295,32 +367,49 @@
 
 <script>
 (() => {
-  const KEY='bbd_projects_min_v3', ACTIVE='bbd_active_min_v3';
-  const $=id=>document.getElementById(id);
-  const now=()=>new Date().toISOString();
-  const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,8);
-  const clone=v=>JSON.parse(JSON.stringify(v));
-  const safe=s=>String(s||'project').toLowerCase().replace(/[^a-z0-9-_]+/g,'-').replace(/^-+|-+$/g,'')||'divider';
-  const fmt=d=>new Date(d).toLocaleString();
-  const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-
-  // Application Global State
-  const st={page:'home',projects:[],active:null,undo:[],redo:[],selected:null};
+  const KEY = 'bbd_projects_pinksky_v4';
+  const ACTIVE = 'bbd_active_pinksky_v4';
   
-  // Element mapper
-  const ui={
-    homePage:$('homePage'), projectsPage:$('projectsPage'), editPage:$('editPage'), bookmarkLink:$('bookmarkLink'),
-    bookmarkLinkText:$('bookmarkLinkText'), homeTitle:$('homeTitle'), btnPreviewSvg:$('btnPreviewSvg'), homeLogoSvg:$('homeLogoSvg'),
-    newBtn:$('newBtn'), projectsBtn:$('projectsBtn'), backHomeBtn:$('backHomeBtn'), newFromProjectsBtn:$('newFromProjectsBtn'), importBtn:$('importBtn'), importInput:$('importInput'),
-    projectList:$('projectList'), projectCards:$('projectCards'), countLabel:$('countLabel'), searchInput:$('searchInput'), nameInput:$('nameInput'), shareUrl:$('shareUrl'),
-    openEditBtn:$('openEditBtn'), dupBtn:$('dupBtn'), delBtn:$('delBtn'), snapList:$('snapList'), copyUrlBtn:$('copyUrlBtn'), exportJsonBtn:$('exportJsonBtn'),
-    topName:$('topName'), topMeta:$('topMeta'), backProjectsBtn:$('backProjectsBtn'), saveSnapBtn:$('saveSnapBtn'), saveBtn:$('saveBtn'), exportJsonBtn2:$('exportJsonBtn2'), undoBtn:$('undoBtn'), redoBtn:$('redoBtn'),
-    projectCount:$('projectCount'), editNameInput:$('editNameInput'), editProjectList:$('editProjectList'), svg:$('svg'), pv64:$('pv64'), pv16:$('pv16'),
-    color:$('color'), y1:$('y1'), y2:$('y2'), stroke:$('stroke'), cap:$('cap'), json:$('json'), applyJsonBtn:$('applyJsonBtn'), copyJsonBtn:$('copyJsonBtn')
+  const $ = id => document.getElementById(id);
+  const now = () => new Date().toISOString();
+  const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+  const clone = v => JSON.parse(JSON.stringify(v));
+  const safe = s => String(s || 'divider').toLowerCase().replace(/[^a-z0-9-_]+/g, '-').replace(/^-+|-+$/g, '') || 'divider';
+  const fmt = d => new Date(d).toLocaleString('vi-VN');
+  const esc = s => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
+
+  // State
+  const st = {
+    page: 'home',
+    projects: [],
+    active: null,
+    undo: [],
+    redo: [],
+    searchQuery: ''
   };
 
+  // Default structure
+  const def = () => ({
+    id: uid(),
+    name: 'Divider Mới',
+    createdAt: now(),
+    updatedAt: now(),
+    line: {
+      color: '#ec4899',
+      y1: 8,
+      y2: 56,
+      stroke: 6,
+      cap: 'round',
+      shape: 'rect', // default to premium rounded rect
+      rx: 6,
+      width: 12,
+      orientation: 'vertical'
+    },
+    revisions: []
+  });
+
   function toast(message, type = 'info') {
-    let container = document.getElementById('toast-container');
+    let container = $('toast-container');
     if (!container) {
       container = document.createElement('div');
       container.id = 'toast-container';
@@ -328,34 +417,34 @@
       document.body.appendChild(container);
     }
     const el = document.createElement('div');
-    el.style.cssText = 'background:#1e293b; color:#fff; padding:12px 20px; border-radius:12px; font-size:14px; font-weight:500; box-shadow:0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); transform:translateY(20px); opacity:0; transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1); pointer-events:auto; display:flex; align-items:center; gap:8px;';
-    if (type === 'error') el.style.background = '#ef4444';
-    else if (type === 'success') el.style.background = '#10b981';
+    el.style.cssText = 'background:rgba(30,27,75,0.95); color:#fff; padding:12px 22px; border-radius:14px; font-size:14px; font-weight:600; box-shadow:0 10px 25px rgba(236,72,153,0.15); transform:translateY(20px); opacity:0; transition:all 0.4s cubic-bezier(0.16, 1, 0.3, 1); pointer-events:auto; display:flex; align-items:center; gap:8px; border:1px solid rgba(255,255,255,0.1);';
+    if (type === 'error') el.style.background = 'rgba(225,29,72,0.95)';
+    else if (type === 'success') el.style.background = 'linear-gradient(135deg, #ec4899, #a855f7)';
     el.textContent = message;
     container.appendChild(el);
     requestAnimationFrame(() => { el.style.transform = 'translateY(0)'; el.style.opacity = '1'; });
     setTimeout(() => {
       el.style.transform = 'translateY(-20px)'; el.style.opacity = '0';
-      setTimeout(() => el.remove(), 300);
-    }, 3000);
+      setTimeout(() => el.remove(), 400);
+    }, 2500);
   }
 
   function customConfirm(message, onConfirm) {
     const modal = document.createElement('div');
-    modal.style.cssText = 'position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(15,23,42,0.6); backdrop-filter:blur(4px); display:flex; align-items:center; justify-content:center; z-index:10000; opacity:0; transition:opacity 0.2s ease;';
+    modal.style.cssText = 'position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(30,27,75,0.4); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; z-index:10000; opacity:0; transition:opacity 0.25s ease;';
     const content = document.createElement('div');
-    content.style.cssText = 'background:#fff; padding:24px; border-radius:20px; max-width:400px; width:90%; box-shadow:0 20px 25px -5px rgba(0,0,0,0.1); transform:scale(0.95); transition:transform 0.2s ease; display:grid; gap:16px;';
+    content.style.cssText = 'background:#fff; padding:28px; border-radius:24px; max-width:420px; width:90%; box-shadow:var(--shadow-premium); transform:scale(0.95); transition:transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); display:grid; gap:20px; border:1px solid rgba(244,63,94,0.15);';
     const text = document.createElement('p');
-    text.style.cssText = 'margin:0; font-size:15px; color:#1e293b; font-weight:500; line-height:1.5;';
+    text.style.cssText = 'margin:0; font-size:15px; color:#1e1b4b; font-weight:600; line-height:1.6;';
     text.textContent = message;
     const btnRow = document.createElement('div');
-    btnRow.style.cssText = 'display:flex; justify-content:end; gap:10px;';
+    btnRow.style.cssText = 'display:flex; justify-content:end; gap:12px;';
     const cancelBtn = document.createElement('button');
-    cancelBtn.className = 'ghost';
+    cancelBtn.className = 'btn-ghost';
     cancelBtn.textContent = 'Hủy bỏ';
     const confirmBtn = document.createElement('button');
-    confirmBtn.className = 'primary';
-    confirmBtn.style.cssText = 'background:#ef4444; border-color:#ef4444; color:#fff;';
+    confirmBtn.className = 'btn-primary';
+    confirmBtn.style.cssText = 'background:var(--brand-pink);';
     confirmBtn.textContent = 'Đồng ý';
     btnRow.appendChild(cancelBtn);
     btnRow.appendChild(confirmBtn);
@@ -364,371 +453,526 @@
     modal.appendChild(content);
     document.body.appendChild(modal);
     requestAnimationFrame(() => { modal.style.opacity = '1'; content.style.transform = 'scale(1)'; });
-    const close = () => { modal.style.opacity = '0'; content.style.transform = 'scale(0.95)'; setTimeout(() => modal.remove(), 200); };
+    const close = () => { modal.style.opacity = '0'; content.style.transform = 'scale(0.95)'; setTimeout(() => modal.remove(), 250); };
     cancelBtn.onclick = close;
     confirmBtn.onclick = () => { onConfirm(); close(); };
   }
 
-  const def=()=>({id:uid(),name:'Divider',createdAt:now(),updatedAt:now(),line:{color:'#0f172a',y1:6,y2:58,stroke:4,cap:'round'},revisions:[]});
-  
-  const load=()=>{ 
-    try { st.projects=JSON.parse(localStorage.getItem(KEY)||'[]') } catch { st.projects=[] } 
-    if(!st.projects.length) st.projects=[def()]; 
-    st.projects=st.projects.map(p=>({ ...def(), ...p, line:{...def().line,...(p.line||{})}, revisions:p.revisions||[] })); 
-    st.active=st.projects.some(p=>p.id===localStorage.getItem(ACTIVE))?localStorage.getItem(ACTIVE):st.projects[0].id; 
-  };
-  
-  const save=()=>{ 
-    localStorage.setItem(KEY,JSON.stringify(st.projects)); 
-    localStorage.setItem(ACTIVE,st.active); 
-    updateBookmarkLink(); 
-    renderHome(); 
-  };
-  
-  const cur=()=>st.projects.find(p=>p.id===st.active)||st.projects[0];
-  
-  const setActive=id=>{ 
-    st.active=id; 
-    localStorage.setItem(ACTIVE,id); 
-    sync(); 
-    render(); 
-    save(); 
-  };
-  
-  const pushUndo=()=>{ 
-    st.undo.push(JSON.stringify(cur())); 
-    if(st.undo.length>40) st.undo.shift(); 
-    st.redo=[]; 
-  };
-  
-  const snap=(note='snapshot')=>{ 
-    const p=cur(); 
-    p.revisions.unshift({id:uid(),at:now(),note,line:clone(p.line)}); 
-    p.updatedAt=now(); 
+  const load = () => {
+    try { st.projects = JSON.parse(localStorage.getItem(KEY) || '[]') } catch { st.projects = [] }
+    if (!st.projects.length) st.projects = [def()];
+    st.projects = st.projects.map(p => ({
+      ...def(),
+      ...p,
+      line: { ...def().line, ...(p.line || {}) },
+      revisions: p.revisions || []
+    }));
+    const savedActive = localStorage.getItem(ACTIVE);
+    st.active = st.projects.some(p => p.id === savedActive) ? savedActive : st.projects[0].id;
   };
 
-  const updateFavicon=()=>{
-    const p=cur();
-    const {color, y1, y2, stroke, cap}=p.line;
-    // Create an SVG optimized for standard 32x32 favicon viewports
-    const svgMarkup=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><line x1="32" y1="${y1}" x2="32" y2="${y2}" stroke="${color}" stroke-width="${stroke}" stroke-linecap="${cap}"/></svg>`;
-    let link=document.querySelector("link[rel~='icon']");
-    if(!link){
-      link=document.createElement('link');
-      link.rel='icon';
-      link.type='image/svg+xml';
+  const save = () => {
+    localStorage.setItem(KEY, JSON.stringify(st.projects));
+    localStorage.setItem(ACTIVE, st.active);
+  };
+
+  const cur = () => st.projects.find(p => p.id === st.active) || st.projects[0];
+
+  const setActive = id => {
+    st.active = id;
+    localStorage.setItem(ACTIVE, id);
+    st.undo = [];
+    st.redo = [];
+  };
+
+  const pushUndo = () => {
+    st.undo.push(JSON.stringify(cur()));
+    if (st.undo.length > 40) st.undo.shift();
+    st.redo = [];
+  };
+
+  // Render HTML markup for custom SVGs dynamically
+  const generateSvgContent = (lineObj, size = 64) => {
+    const { color, y1, y2, stroke, cap, shape, rx, width, orientation } = lineObj;
+    const ratio = size / 64;
+    const c = color;
+    const s = stroke * ratio;
+    const r = (rx || 4) * ratio;
+    const w = (width || 8) * ratio;
+    
+    if (shape === 'rect') {
+      if (orientation === 'horizontal') {
+        const xStart = y1 * ratio;
+        const xEnd = y2 * ratio;
+        const rectW = Math.max(1, xEnd - xStart);
+        const yStart = (size / 2) - (w / 2);
+        return `<rect x="${xStart}" y="${yStart}" width="${rectW}" height="${w}" rx="${r}" ry="${r}" fill="${c}" />`;
+      } else {
+        const yStart = y1 * ratio;
+        const yEnd = y2 * ratio;
+        const rectH = Math.max(1, yEnd - yStart);
+        const xStart = (size / 2) - (w / 2);
+        return `<rect x="${xStart}" y="${yStart}" width="${w}" height="${rectH}" rx="${r}" ry="${r}" fill="${c}" />`;
+      }
+    } else {
+      if (orientation === 'horizontal') {
+        return `<line x1="${y1 * ratio}" y1="${size / 2}" x2="${y2 * ratio}" y2="${size / 2}" stroke="${c}" stroke-width="${s}" stroke-linecap="${cap}" />`;
+      } else {
+        return `<line x1="${size / 2}" y1="${y1 * ratio}" x2="${size / 2}" y2="${y2 * ratio}" stroke="${c}" stroke-width="${s}" stroke-linecap="${cap}" />`;
+      }
+    }
+  };
+
+  const updateFavicon = () => {
+    const p = cur();
+    const svgContent = generateSvgContent(p.line, 32);
+    const svgMarkup = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">${svgContent}</svg>`;
+    let link = document.querySelector("link[rel~='icon']");
+    if (!link) {
+      link = document.createElement('link');
+      link.rel = 'icon';
+      link.type = 'image/svg+xml';
       document.head.appendChild(link);
     }
-    link.href='data:image/svg+xml;utf8,'+encodeURIComponent(svgMarkup);
+    link.href = 'data:image/svg+xml;utf8,' + encodeURIComponent(svgMarkup);
   };
 
-  const shareUrl=()=>{ 
-    const u=new URL(location.href); 
-    u.searchParams.set('p',cur().id); 
-    // Secure the entire setup within the link so it survives server resets and can be bookmarked offline
+  const getEncodedConfig = () => {
+    const p = cur();
     const data = {
-      n: cur().name,
-      c: cur().line.color,
-      y1: cur().line.y1,
-      y2: cur().line.y2,
-      s: cur().line.stroke,
-      cp: cur().line.cap
+      n: p.name,
+      c: p.line.color,
+      y1: p.line.y1,
+      y2: p.line.y2,
+      s: p.line.stroke,
+      cp: p.line.cap,
+      sh: p.line.shape,
+      rx: p.line.rx,
+      w: p.line.width,
+      o: p.line.orientation
     };
-    u.searchParams.set('d', btoa(unescape(encodeURIComponent(JSON.stringify(data)))));
-    return u.toString(); 
+    return btoa(unescape(encodeURIComponent(JSON.stringify(data))));
   };
 
-  const updateBookmarkLink=()=>{ 
-    const url=shareUrl(); 
-    ui.bookmarkLink.href=url; 
-    ui.bookmarkLink.dataset.url=url; 
-    ui.shareUrl.value=url; 
-
-    // Handle Title optimization for dragging & bookmark bar display
-    const rawName = cur().name;
-    const isBlank = !rawName || rawName.trim() === '';
-    
-    // Change dynamic document title. Zero-width character prevents browsers from naming it with the URL.
-    document.title = isBlank ? '‌' : rawName;
-    ui.homeTitle.textContent = isBlank ? 'Divider Bar Line' : rawName;
-    
-    // UI Label helper
-    ui.bookmarkLinkText.textContent = isBlank ? 'Kéo tôi vào Bookmark Bar (Chỉ có Icon)' : `Kéo tôi vào Bookmark Bar (${rawName})`;
+  const shareUrl = () => {
+    const u = new URL(location.href);
+    u.searchParams.set('p', cur().id);
+    u.searchParams.set('d', getEncodedConfig());
+    return u.toString();
   };
 
-  function show(page){ 
-    st.page=page; 
-    ui.homePage.classList.toggle('hidden',page!=='home'); 
-    ui.projectsPage.classList.toggle('hidden',page!=='projects'); 
-    ui.editPage.classList.toggle('hidden',page!=='edit'); 
-  }
-
-  function renderHome(){ 
-    ui.projectCards.innerHTML=st.projects.map(p=>`
-      <div class="p-card ${p.id===st.active?'active':''}">
-        <svg class="mini" viewBox="0 0 64 20"><line x1="32" y1="2" x2="32" y2="18" stroke="${p.line.color}" stroke-width="${Math.max(1,p.line.stroke/2.5)}" stroke-linecap="${p.line.cap}"/></svg>
-        <div><b>${esc(p.name || 'Untitled (Chỉ Icon)')}</b><div class="meta">${p.revisions.length} snapshots · ${fmt(p.updatedAt||p.createdAt)}</div></div>
-        <div class="row"><button data-home-open="${p.id}" class="${p.id===st.active?'primary':'ghost'}">Open</button><button data-home-edit="${p.id}" class="ghost">Edit</button></div>
-      </div>`).join('');
-  }
-
-  function renderProjectsPage(){
-    const q=(ui.searchInput.value||'').toLowerCase().trim();
-    const list=st.projects.filter(p=>p.name.toLowerCase().includes(q));
-    ui.countLabel.textContent=`${list.length}/${st.projects.length}`;
-    ui.projectList.innerHTML=list.map(p=>`<div class="item ${p.id===st.active?'active':''}"><div><b>${esc(p.name || 'Untitled (Chỉ Icon)')}</b><div><small>${p.revisions.length} snapshots</small></div></div><button data-switch="${p.id}" class="${p.id===st.active?'primary':'ghost'}">Edit</button></div>`).join('') || '<div class="tiny">Chưa có dự án nào.</div>';
-    ui.projectCards.innerHTML=list.map(p=>`
-      <div class="p-card ${p.id===st.active?'active':''}">
-        <svg class="mini" viewBox="0 0 64 20"><line x1="32" y1="2" x2="32" y2="18" stroke="${p.line.color}" stroke-width="${Math.max(1,p.line.stroke/2.5)}" stroke-linecap="${p.line.cap}"/></svg>
-        <div><b>${esc(p.name || 'Untitled (Chỉ Icon)')}</b><div class="meta">Cập nhật: ${fmt(p.updatedAt||p.createdAt)}</div></div>
-        <div class="row"><button data-card-open="${p.id}" class="${p.id===st.active?'primary':'ghost'}">Open</button><button data-card-edit="${p.id}" class="ghost">Edit</button><button data-card-dup="${p.id}" class="ghost">Duplicate</button><button data-card-del="${p.id}" class="danger">Delete</button></div>
-      </div>`).join('');
-  }
-
-  function renderSnapshots(){ ui.snapList.innerHTML=cur().revisions.map((r,i)=>`<div class="item"><div><b>${esc(r.note||'snapshot')}</b><div><small>${fmt(r.at)}</small></div></div><button data-restore="${i}" class="ghost">Restore</button></div>`).join('') || '<div class="tiny">Chưa có bản lưu snapshot nào.</div>'; }
-  function renderProjectSidebar(){ ui.projectCount.textContent=st.projects.length; ui.editNameInput.value=cur().name; ui.editProjectList.innerHTML=st.projects.map(p=>`<div class="item ${p.id===st.active?'active':''}"><div><b>${esc(p.name || 'Untitled (Chỉ Icon)')}</b><div><small>${p.revisions.length} snapshots</small></div></div><button data-edit-switch="${p.id}" class="${p.id===st.active?'primary':'ghost'}">Open</button></div>`).join(''); }
-  
-  function renderLine(){ 
-    const p=cur(); 
-    const {color,y1,y2,stroke,cap}=p.line; 
-    const line=`<line x1="32" y1="${y1}" x2="32" y2="${y2}" stroke="${color}" stroke-width="${stroke}" stroke-linecap="${cap}"/>`; 
-    ui.svg.innerHTML=line; 
-    ui.pv64.innerHTML=line; 
-    ui.btnPreviewSvg.innerHTML=line;
-    ui.homeLogoSvg.innerHTML=line;
-    ui.pv16.innerHTML=`<line x1="8" y1="${Math.max(0,y1/4)}" x2="8" y2="${Math.min(16,y2/4)}" stroke="${color}" stroke-width="${Math.max(1,stroke/4)}" stroke-linecap="${cap}"/>`; 
-    ui.json.value=JSON.stringify({...p,shareUrl:shareUrl()},null,2); 
-    updateFavicon();
-  }
-
-  function sync(){ 
-    const p=cur(); 
+  const updateBookmarkElements = () => {
+    const p = cur();
+    const url = shareUrl();
     const isBlank = !p.name || p.name.trim() === '';
-    ui.topName.textContent=isBlank ? 'Untitled (Chỉ Icon)' : p.name; 
-    ui.topMeta.textContent='Thiết kế dải ngăn cách'; 
-    ui.nameInput.value=p.name; 
-    ui.editNameInput.value=p.name; 
-    ui.color.value=p.line.color; 
-    ui.y1.value=p.line.y1; 
-    ui.y2.value=p.line.y2; 
-    ui.stroke.value=p.line.stroke; 
-    ui.cap.value=p.line.cap; 
-    ui.shareUrl.value=shareUrl(); 
-    renderProjectSidebar(); 
-    renderSnapshots(); 
-    renderProjectsPage(); 
-    updateBookmarkLink(); 
-    ui.countLabel.textContent=st.projects.length; 
-  }
-
-  function render(){ renderLine(); sync(); renderHome(); save(); }
-
-  /* NAVIGATION */
-  function openHome(){ show('home'); renderHome(); }
-  function openProjects(){ show('projects'); sync(); renderProjectsPage(); }
-  function openEdit(id=st.active){ setActive(id); show('edit'); sync(); render(); }
-
-  function addProject(){ const p=def(); st.projects.unshift(p); setActive(p.id); openEdit(p.id); }
-  function duplicateProject(id){ const src=st.projects.find(p=>p.id===id); if(!src) return; const p=clone(src); p.id=uid(); p.name=src.name ? src.name+' Copy' : 'Divider Copy'; p.createdAt=now(); p.updatedAt=now(); p.revisions=[]; st.projects.unshift(p); setActive(p.id); openEdit(p.id); }
-  function deleteProject(id=st.active){ const idx=st.projects.findIndex(p=>p.id===id); if(idx<0) return; customConfirm(`Bạn có chắc muốn xóa dự án "${st.projects[idx].name || 'Chỉ có Icon'}"?`, () => { st.projects.splice(idx,1); if(!st.projects.length) st.projects=[def()]; st.active=st.projects[0].id; openProjects(); save(); toast('Đã xóa dự án thành công', 'success'); }); }
-  function restoreSnapshot(i){ const p=cur(), s=p.revisions[i]; if(!s) return; pushUndo(); p.line=clone(s.line); p.updatedAt=now(); render(); toast('Đã khôi phục snapshot thành công', 'success'); }
-  function exportJson(project=cur()){ const blob=new Blob([JSON.stringify({...project,shareUrl:shareUrl()},null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=safe(project.name)+'.json'; a.click(); }
-  function importJson(file){ const r=new FileReader(); r.onload=()=>{ try{ const p=JSON.parse(r.result); p.id=p.id||uid(); p.name=p.name||''; p.line={...def().line,...(p.line||{})}; p.revisions=p.revisions||[]; const i=st.projects.findIndex(x=>x.id===p.id); if(i>=0) st.projects[i]=p; else st.projects.unshift(p); setActive(p.id); openProjects(); toast('Nhập file cấu hình thành công', 'success'); }catch{ toast('File JSON không hợp lệ!', 'error'); } }; r.readAsText(file); }
-
-  function bind(){
-    ui.newBtn.onclick=addProject; ui.newFromProjectsBtn.onclick=addProject; ui.projectsBtn.onclick=openProjects; ui.backHomeBtn.onclick=openHome; ui.backProjectsBtn.onclick=openProjects;
-    ui.importBtn.onclick=()=>ui.importInput.click(); ui.importInput.onchange=e=>{ const f=e.target.files[0]; e.target.value=''; if(f) importJson(f); };
-    ui.openEditBtn.onclick=()=>openEdit(st.active);
+    const displayName = isBlank ? '‌' : p.name;
     
-    // CUSTOM DRAG & DROP FOR EMPTY NAME OVERRIDE
-    ui.bookmarkLink.addEventListener('dragstart',e=>{ 
-      const u=shareUrl(); 
-      // If project has no name, we pass the empty string/blank spacer as anchor text to achieve transparent named bookmarks!
-      const pName = cur().name || '';
-      e.dataTransfer.effectAllowed='copy'; 
-      e.dataTransfer.setData('text/uri-list',u); 
-      e.dataTransfer.setData('text/plain',u); 
-      // Emulate HTML drop behavior. Browsers parse text/html payload first to populate bookmark title!
-      e.dataTransfer.setData('text/html', `<a href="${esc(u)}">${esc(pName)}</a>`);
+    document.title = isBlank ? '‌' : p.name;
+    
+    // Setup for home drag anchor
+    $('bookmarkLink').href = url;
+    $('bookmarkLink').dataset.url = url;
+    $('bookmarkLinkText').textContent = isBlank ? 'Kéo dải phân cách này' : `Kéo phân cách: ${p.name}`;
+    
+    // Setup for studio drag anchor
+    $('studioBookmarkLink').href = url;
+    $('studioBookmarkLink').dataset.url = url;
+    $('studioBookmarkLinkText').textContent = isBlank ? 'Kéo lên Bookmark Bar (Ẩn tên)' : `Dải phân cách: ${p.name}`;
+    
+    $('shareUrl').value = url;
+  };
+
+  const showPage = page => {
+    st.page = page;
+    $('homePage').classList.toggle('hidden', page !== 'home');
+    $('studioPage').classList.toggle('hidden', page !== 'studio');
+    
+    $('tabHomeBtn').classList.toggle('active', page === 'home');
+    $('tabStudioBtn').classList.toggle('active', page === 'studio');
+  };
+
+  const renderStages = () => {
+    const p = cur();
+    const draw64 = generateSvgContent(p.line, 64);
+    const draw32 = generateSvgContent(p.line, 32);
+    const draw16 = generateSvgContent(p.line, 16);
+    
+    $('homeLogoSvg').innerHTML = draw64;
+    $('btnPreviewSvg').innerHTML = draw64;
+    $('studioBtnPreviewSvg').innerHTML = draw64;
+    
+    $('svgCanvas').innerHTML = draw64;
+    $('pv32').innerHTML = draw32;
+    $('pv16').innerHTML = draw16;
+    
+    updateFavicon();
+  };
+
+  const renderProjectList = () => {
+    const q = (st.searchQuery || '').toLowerCase().trim();
+    const filtered = st.projects.filter(p => p.name.toLowerCase().includes(q));
+    $('projectCount').textContent = `${filtered.length}/${st.projects.length}`;
+    
+    $('projectList').innerHTML = filtered.map(p => {
+      const activeCls = p.id === st.active ? 'active' : '';
+      const previewMarkup = generateSvgContent(p.line, 64);
+      return `
+        <div class="item ${activeCls}" data-id="${p.id}">
+          <div style="width: 24px; height: 24px; background: #fff; border-radius: 6px; padding: 2px;">
+            <svg viewBox="0 0 64 64" style="border:none; box-shadow:none; background:transparent;">${previewMarkup}</svg>
+          </div>
+          <div style="flex: 1; min-width: 0;">
+            <b style="display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px;">${esc(p.name || 'Untitled (Chỉ Icon)')}</b>
+            <small style="display:block; opacity:0.7; font-size:11px;">Chỉnh sửa: ${fmt(p.updatedAt || p.createdAt)}</small>
+          </div>
+        </div>
+      `;
+    }).join('') || '<div class="tiny" style="padding:10px 0; text-align:center;">Không tìm thấy dự án nào</div>';
+  };
+
+  const renderSnapshots = () => {
+    const p = cur();
+    $('snapList').innerHTML = p.revisions.map((r, i) => `
+      <div class="item" style="padding: 10px 12px; font-size: 12px;">
+        <div style="flex:1;">
+          <b style="display:block;">${esc(r.note || 'Snapshot')}</b>
+          <small style="opacity: 0.7;">${fmt(r.at)}</small>
+        </div>
+        <button class="btn-ghost" data-restore="${i}" style="padding: 4px 8px; font-size: 11px;">Phục hồi</button>
+      </div>
+    `).join('') || '<div class="tiny" style="padding:10px 0; text-align:center;">Chưa lưu snapshot dự phòng nào</div>';
+  };
+
+  const renderControls = () => {
+    const p = cur();
+    $('topMeta').textContent = p.name ? `Chỉnh sửa: ${p.name}` : 'Thiết kế dải phân cách tối giản';
+    $('editNameInput').value = p.name;
+    $('shape').value = p.line.shape;
+    $('orientation').value = p.line.orientation;
+    $('color').value = p.line.color;
+    $('y1').value = p.line.y1;
+    $('y2').value = p.line.y2;
+    $('stroke').value = p.line.stroke;
+    $('cap').value = p.line.cap;
+    $('width').value = p.line.width || 8;
+    $('rx').value = p.line.rx || 4;
+
+    // Adapt layout names dynamically
+    if (p.line.orientation === 'horizontal') {
+      $('lblY1').textContent = 'Đầu Trái (Left)';
+      $('lblY2').textContent = 'Đầu Phải (Right)';
+    } else {
+      $('lblY1').textContent = 'Đầu Trên (Top)';
+      $('lblY2').textContent = 'Đầu Dưới (Bottom)';
+    }
+
+    // Toggle specific option blocks based on shape
+    const isLine = p.line.shape === 'line';
+    $('boxStroke').classList.toggle('hidden', !isLine);
+    $('boxCap').classList.toggle('hidden', !isLine);
+    $('boxWidth').classList.toggle('hidden', isLine);
+    $('boxRx').classList.toggle('hidden', isLine);
+  };
+
+  const render = () => {
+    renderStages();
+    renderControls();
+    renderProjectList();
+    renderSnapshots();
+    updateBookmarkElements();
+  };
+
+  const snap = (note = 'Snapshot') => {
+    const p = cur();
+    p.revisions.unshift({
+      id: uid(),
+      at: now(),
+      note,
+      line: clone(p.line)
     });
+    p.updatedAt = now();
+  };
+
+  const addProject = () => {
+    const p = def();
+    st.projects.unshift(p);
+    setActive(p.id);
+    render();
+    save();
+    toast('Đã thêm một dải phân cách mới!', 'success');
+  };
+
+  const duplicateProject = () => {
+    const src = cur();
+    const p = clone(src);
+    p.id = uid();
+    p.name = src.name ? `${src.name} (Bản sao)` : 'Divider (Bản sao)';
+    p.createdAt = now();
+    p.updatedAt = now();
+    p.revisions = [];
+    st.projects.unshift(p);
+    setActive(p.id);
+    render();
+    save();
+    toast('Đã nhân bản thiết kế!', 'success');
+  };
+
+  const deleteProject = () => {
+    const activeId = st.active;
+    const idx = st.projects.findIndex(p => p.id === activeId);
+    if (idx < 0) return;
+    const name = st.projects[idx].name || 'Chỉ có Icon';
+    customConfirm(`Bạn có muốn xóa dải phân cách "${name}" này không?`, () => {
+      st.projects.splice(idx, 1);
+      if (!st.projects.length) {
+        st.projects = [def()];
+      }
+      setActive(st.projects[0].id);
+      render();
+      save();
+      toast('Đã xóa dự án thành công', 'success');
+    });
+  };
+
+  const importJson = file => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const parsed = JSON.parse(reader.result);
+        const imported = {
+          ...def(),
+          ...parsed,
+          id: parsed.id || uid(),
+          name: parsed.name || 'Imported Divider',
+          line: { ...def().line, ...(parsed.line || {}) },
+          revisions: parsed.revisions || []
+        };
+        const existIdx = st.projects.findIndex(p => p.id === imported.id);
+        if (existIdx >= 0) {
+          st.projects[existIdx] = imported;
+        } else {
+          st.projects.unshift(imported);
+        }
+        setActive(imported.id);
+        render();
+        save();
+        toast('Đã import tệp cấu hình thành công!', 'success');
+      } catch {
+        toast('Tệp JSON không hợp lệ hoặc bị lỗi cấu trúc!', 'error');
+      }
+    };
+    reader.readAsText(file);
+  };
+
+  const exportJson = () => {
+    const p = cur();
+    const dataStr = JSON.stringify({ ...p, shareUrl: shareUrl() }, null, 2);
+    const blob = new Blob([dataStr], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `divider-${safe(p.name)}.json`;
+    a.click();
+    toast('Đã xuất file cấu hình JSON thành công!');
+  };
+
+  const bindEvents = () => {
+    // Navigation & Tab togglers
+    $('newBtn').onclick = () => { addProject(); showPage('studio'); };
+    $('enterStudioBtn').onclick = () => showPage('studio');
+    $('tabHomeBtn').onclick = () => showPage('home');
+    $('tabStudioBtn').onclick = () => showPage('studio');
     
-    ui.bookmarkLink.addEventListener('click',e=>{ 
-      e.preventDefault(); 
-      // Modern copy utility using standard fallback mechanism
+    // Core actions in Studio
+    $('studioNewBtn').onclick = addProject;
+    $('studioImportBtn').onclick = () => $('importInput').click();
+    $('importInput').onchange = e => {
+      const file = e.target.files[0];
+      e.target.value = '';
+      if (file) importJson(file);
+    };
+
+    $('saveBtn').onclick = () => {
+      cur().updatedAt = now();
+      save();
+      render();
+      toast('Đã lưu tất cả thay đổi!', 'success');
+    };
+
+    $('dupBtn').onclick = duplicateProject;
+    $('delBtn').onclick = deleteProject;
+    $('exportJsonBtn').onclick = exportJson;
+
+    // Interactive Drag and drop configuration inside canvas
+    const setupDrag = (linkEl) => {
+      linkEl.addEventListener('dragstart', e => {
+        const u = shareUrl();
+        const pName = cur().name || '';
+        e.dataTransfer.effectAllowed = 'copy';
+        e.dataTransfer.setData('text/uri-list', u);
+        e.dataTransfer.setData('text/plain', u);
+        e.dataTransfer.setData('text/html', `<a href="${esc(u)}">${esc(pName)}</a>`);
+      });
+      linkEl.addEventListener('click', e => {
+        e.preventDefault();
+        const dummy = document.createElement('textarea');
+        document.body.appendChild(dummy);
+        dummy.value = shareUrl();
+        dummy.select();
+        document.execCommand('copy');
+        document.body.removeChild(dummy);
+        toast('Đã sao chép liên kết drag-and-drop!', 'success');
+      });
+    };
+    setupDrag($('bookmarkLink'));
+    setupDrag($('studioBookmarkLink'));
+
+    $('copyUrlBtn').onclick = () => {
       const dummy = document.createElement('textarea');
       document.body.appendChild(dummy);
       dummy.value = shareUrl();
       dummy.select();
       document.execCommand('copy');
       document.body.removeChild(dummy);
-      toast('Đã sao chép liên kết vào clipboard!', 'success');
+      toast('Đã sao chép liên kết chia sẻ!', 'success');
+    };
+
+    // Live controller inputs
+    $('editNameInput').addEventListener('input', e => {
+      cur().name = e.target.value;
+      cur().updatedAt = now();
+      render();
     });
 
-    ui.projectCards.addEventListener('click',e=>{
-      const o=e.target.closest('[data-home-open]'), ed=e.target.closest('[data-home-edit]'), d=e.target.closest('[data-home-dup]'), del=e.target.closest('[data-home-del]');
-      if(o) setActive(o.dataset.homeOpen), openProjects();
-      if(ed) openEdit(ed.dataset.homeEdit);
-      if(d) duplicateProject(d.dataset.homeDup);
-      if(del) deleteProject(del.dataset.homeDel);
+    const triggerUpdate = () => {
+      const p = cur();
+      p.line.shape = $('shape').value;
+      p.line.orientation = $('orientation').value;
+      p.line.color = $('color').value;
+      p.line.y1 = +$('y1').value;
+      p.line.y2 = +$('y2').value;
+      p.line.stroke = +$('stroke').value;
+      p.line.cap = $('cap').value;
+      p.line.width = +$('width').value;
+      p.line.rx = +$('rx').value;
+      p.updatedAt = now();
+      render();
+    };
+
+    [$('shape'), $('orientation'), $('color'), $('y1'), $('y2'), $('stroke'), $('cap'), $('width'), $('rx')].forEach(el => {
+      el.addEventListener('input', () => {
+        pushUndo();
+        triggerUpdate();
+      });
     });
-    
-    ui.projectList.addEventListener('click',e=>{ const s=e.target.closest('[data-switch]'); if(s) openEdit(s.dataset.switch); });
-    ui.editProjectList.addEventListener('click',e=>{ const s=e.target.closest('[data-edit-switch]'); if(s) openEdit(s.dataset.editSwitch); });
-    
-    ui.snapList.addEventListener('click',e=>{ 
-      const r=e.target.closest('[data-restore]'); 
-      if(r) {
-        customConfirm('Bạn muốn phục hồi lại thiết kế từ snapshot này?', () => {
-          restoreSnapshot(+r.dataset.restore);
+
+    // Project switching listener in list
+    $('projectList').onclick = e => {
+      const item = e.target.closest('.item');
+      if (item) {
+        setActive(item.dataset.id);
+        render();
+      }
+    };
+
+    $('searchInput').addEventListener('input', e => {
+      st.searchQuery = e.target.value;
+      renderProjectList();
+    });
+
+    // Undo / Redo mechanics
+    $('undoBtn').onclick = () => {
+      if (!st.undo.length) return;
+      st.redo.push(JSON.stringify(cur()));
+      const restored = JSON.parse(st.undo.pop());
+      const idx = st.projects.findIndex(p => p.id === st.active);
+      st.projects[idx] = restored;
+      render();
+      toast('Đã quay lại thao tác trước!');
+    };
+
+    $('redoBtn').onclick = () => {
+      if (!st.redo.length) return;
+      st.undo.push(JSON.stringify(cur()));
+      const redone = JSON.parse(st.redo.pop());
+      const idx = st.projects.findIndex(p => p.id === st.active);
+      st.projects[idx] = redone;
+      render();
+      toast('Đã lặp lại thao tác hủy bỏ!');
+    };
+
+    // Revisions & Snapshots
+    $('saveSnapBtn').onclick = () => {
+      snap('Bản sao lưu thủ công');
+      render();
+      toast('Đã tạo một điểm snapshot dự phòng!', 'success');
+    };
+
+    $('snapList').onclick = e => {
+      const restoreBtn = e.target.closest('[data-restore]');
+      if (restoreBtn) {
+        const idx = +restoreBtn.dataset.restore;
+        customConfirm('Bạn có chắc muốn phục hồi thiết kế từ điểm sao lưu này?', () => {
+          pushUndo();
+          const p = cur();
+          p.line = clone(p.revisions[idx].line);
+          p.updatedAt = now();
+          render();
+          toast('Đã khôi phục thiết kế thành công!', 'success');
         });
       }
-    });
+    };
+  };
 
-    // Inputs real-time listener updates
-    [ui.color,ui.y1,ui.y2,ui.stroke,ui.cap].forEach(el=>el.addEventListener('input',()=>{ 
-      const p=cur(); 
-      p.line.color=ui.color.value; 
-      p.line.y1=+ui.y1.value; 
-      p.line.y2=+ui.y2.value; 
-      p.line.stroke=+ui.stroke.value; 
-      p.line.cap=ui.cap.value; 
-      p.updatedAt=now(); 
-      render(); 
-    }));
-    
-    // Live update names without enforcing default fallback texts
-    ui.nameInput.addEventListener('input',()=>{ 
-      cur().name=ui.nameInput.value; 
-      cur().updatedAt=now(); 
-      render(); 
-    });
-    
-    ui.editNameInput.addEventListener('input',()=>{ 
-      cur().name=ui.editNameInput.value; 
-      cur().updatedAt=now(); 
-      render(); 
-    });
-    
-    ui.saveSnapBtn.onclick=()=>{ snap('snapshot'); render(); toast('Đã lưu bản sao lưu (Snapshot)!', 'success'); };
-    ui.saveBtn.onclick=()=>{ cur().updatedAt=now(); save(); toast('Đã lưu thành công!', 'success'); };
-    ui.exportJsonBtn.onclick=()=>exportJson(); ui.exportJsonBtn2.onclick=()=>exportJson();
-    
-    ui.copyUrlBtn.onclick=()=>{ 
-      const dummy = document.createElement('textarea');
-      document.body.appendChild(dummy);
-      dummy.value = shareUrl();
-      dummy.select();
-      document.execCommand('copy');
-      document.body.removeChild(dummy);
-      toast('Đã sao chép liên kết chia sẻ!', 'success'); 
-    };
-    
-    ui.delBtn.onclick=()=>deleteProject();
-    ui.dupBtn.onclick=()=>duplicateProject(st.active);
-    
-    ui.undoBtn.onclick=()=>{ 
-      if(!st.undo.length) return; 
-      st.redo.push(JSON.stringify(cur())); 
-      st.projects[st.projects.findIndex(p=>p.id===st.active)] = JSON.parse(st.undo.pop()); 
-      render(); 
-      toast('Đã phục hồi thao tác (Undo)');
-    };
-    
-    ui.redoBtn.onclick=()=>{ 
-      if(!st.redo.length) return; 
-      st.undo.push(JSON.stringify(cur())); 
-      st.projects[st.projects.findIndex(p=>p.id===st.active)] = JSON.parse(st.redo.pop()); 
-      render(); 
-      toast('Đã lặp lại thao tác (Redo)');
-    };
-    
-    ui.searchInput.addEventListener('input',renderProjectsPage);
-    
-    ui.applyJsonBtn.onclick=()=>{ 
-      try { 
-        const p=JSON.parse(ui.json.value); 
-        p.id=p.id||uid(); 
-        p.line={...def().line,...(p.line||{})}; 
-        p.revisions=p.revisions||[]; 
-        const i=st.projects.findIndex(x=>x.id===st.active); 
-        st.projects[i]=p; 
-        setActive(p.id); 
-        openEdit(p.id); 
-        toast('Đã cập nhật từ JSON!', 'success');
-      } catch { 
-        toast('Mã JSON không đúng định dạng!', 'error'); 
-      } 
-    };
-    
-    ui.copyJsonBtn.onclick=()=>{ 
-      const dummy = document.createElement('textarea');
-      document.body.appendChild(dummy);
-      dummy.value = ui.json.value;
-      dummy.select();
-      document.execCommand('copy');
-      document.body.removeChild(dummy);
-      toast('Đã copy cấu hình JSON!', 'success'); 
-    };
-    
-    ui.json.addEventListener('focus',()=>ui.json.select());
+  const init = () => {
+    load();
+    bindEvents();
 
-    $('projectsPage').addEventListener('click',e=>{
-      const o=e.target.closest('[data-card-open]'), ed=e.target.closest('[data-card-edit]'), d=e.target.closest('[data-card-dup]'), del=e.target.closest('[data-card-del]');
-      if(o) setActive(o.dataset.cardOpen), openProjects();
-      if(ed) openEdit(ed.dataset.cardEdit);
-      if(d) duplicateProject(d.dataset.cardDup);
-      if(del) deleteProject(del.dataset.cardDel);
-    });
-  }
-
-  function init(){ 
-    load(); 
-    bind(); 
-    
+    // Deep Link Cấu hình từ URL Base64
     const params = new URL(location.href).searchParams;
     const dParam = params.get('d');
     const pParam = params.get('p');
-    
-    // Parse complete standalone design setup inside url payload
+
     if (dParam) {
       try {
         const decoded = JSON.parse(decodeURIComponent(escape(atob(dParam))));
-        const importedProject = {
+        const imported = {
           id: pParam || uid(),
-          name: decoded.n || '',
+          name: decoded.n || 'Imported Design',
           createdAt: now(),
           updatedAt: now(),
           line: {
-            color: decoded.c || '#0f172a',
-            y1: decoded.y1 !== undefined ? decoded.y1 : 6,
-            y2: decoded.y2 !== undefined ? decoded.y2 : 58,
-            stroke: decoded.s !== undefined ? decoded.s : 4,
-            cap: decoded.cp || 'round'
+            color: decoded.c || '#ec4899',
+            y1: decoded.y1 !== undefined ? decoded.y1 : 8,
+            y2: decoded.y2 !== undefined ? decoded.y2 : 56,
+            stroke: decoded.s !== undefined ? decoded.s : 6,
+            cap: decoded.cp || 'round',
+            shape: decoded.sh || 'rect',
+            rx: decoded.rx !== undefined ? decoded.rx : 6,
+            width: decoded.w !== undefined ? decoded.w : 12,
+            orientation: decoded.o || 'vertical'
           },
           revisions: []
         };
-        
-        const existingIdx = st.projects.findIndex(x => x.id === importedProject.id);
-        if (existingIdx >= 0) {
-          st.projects[existingIdx] = { ...st.projects[existingIdx], ...importedProject };
+        const existIdx = st.projects.findIndex(x => x.id === imported.id);
+        if (existIdx >= 0) {
+          st.projects[existIdx] = imported;
         } else {
-          st.projects.unshift(importedProject);
+          st.projects.unshift(imported);
         }
-        st.active = importedProject.id;
-      } catch(err) {
-        console.error("Failed to parse base64 configuration URL data", err);
+        st.active = imported.id;
+      } catch (e) {
+        console.error("Lỗi đọc cấu hình URL", e);
       }
     } else if (pParam) {
       const found = st.projects.find(x => x.id === pParam);
       if (found) st.active = pParam;
     }
-    
-    openHome(); 
+
+    showPage('home');
     render();
-    save(); 
-  }
-  
-  // Launch!
+    save();
+  };
+
   init();
 })();
 </script>
