@@ -538,7 +538,7 @@
   function bind(){
     ui.newBtn.onclick=addProject; ui.newFromProjectsBtn.onclick=addProject; ui.projectsBtn.onclick=openProjects; ui.backHomeBtn.onclick=openHome; ui.backProjectsBtn.onclick=openProjects;
     ui.importBtn.onclick=()=>ui.importInput.click(); ui.importInput.onchange=e=>{ const f=e.target.files[0]; e.target.value=''; if(f) importJson(f); };
-    ui.editBtn.onclick=()=>openEdit(st.active);
+    ui.openEditBtn.onclick=()=>openEdit(st.active);
     
     // CUSTOM DRAG & DROP FOR EMPTY NAME OVERRIDE
     ui.bookmarkLink.addEventListener('dragstart',e=>{ 
