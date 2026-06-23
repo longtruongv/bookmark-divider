@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-US">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -145,7 +145,6 @@
   .home-card h1 { margin: 0; font-size: 38px; font-weight: 900; letter-spacing: -0.04em; background: var(--brand-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: capitalize; }
   .home-card p { margin: 0; color: var(--text-muted); font-size: 15px; line-height: 1.6; max-width: 50ch; }
   
-  /* Drag interactive items animation */
   .bookmark-link {
     display: inline-flex;
     align-items: center;
@@ -247,13 +246,11 @@
   .quick-drag-btn:active { cursor: grabbing; transform: scale(0.95); }
   .quick-drag-btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; }
   
-  /* Elegant Pure CSS Tooltip container */
-  .has-tooltip {
-    position: relative;
-  }
-  .tooltip-text {
-    visibility: hidden;
-    width: 220px;
+  /* Smart Global Tooltip escaping boundaries */
+  .global-tooltip {
+    position: fixed;
+    z-index: 100000;
+    pointer-events: none;
     background: var(--panel-bg);
     backdrop-filter: blur(16px);
     border: 1px solid var(--panel-border);
@@ -261,33 +258,26 @@
     text-align: center;
     border-radius: var(--radius-md);
     padding: 8px 12px;
-    position: absolute;
-    z-index: 10002;
-    bottom: 125%; 
-    left: 50%;
-    transform: translateX(-50%) translateY(8px);
-    opacity: 0;
-    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 220px;
     box-shadow: var(--shadow-premium);
     font-size: 11px;
     font-weight: 600;
     line-height: 1.4;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Dynamic Drag Trail Effect */
+  .drag-trail-particle {
+    position: fixed;
+    border-radius: 50%;
     pointer-events: none;
-  }
-  .tooltip-text::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: var(--panel-border) transparent transparent transparent;
-  }
-  .has-tooltip:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
+    z-index: 99999;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+    box-shadow: 0 0 10px currentColor;
+    opacity: 0.6;
   }
 
   .drag-guide-banner {
@@ -397,6 +387,9 @@
 <!-- CONTEXT MENU CONTAINER -->
 <div id="contextMenu" class="context-menu hidden"></div>
 
+<!-- GLOBAL TOOLTIP -->
+<div id="globalTooltip" class="global-tooltip hidden"></div>
+
 <!-- DRAG GUIDANCE TOP BANNER -->
 <div id="dragGuideBanner" class="drag-guide-banner">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
@@ -412,9 +405,9 @@
     <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
       <select class="lang-selector home-theme-select" title="Select Theme Style">
         <option value="system" data-i18n="theme_system">💻 System Auto</option>
-        <option value="light" data-i18n="theme_light">☀️ Sunrise Day</option>
-        <option value="dark" data-i18n="theme_dark">🌌 Cosmic Night</option>
-        <option value="amoled" data-i18n="theme_amoled">🕶️ AMOLED Black</option>
+        <option value="light" data-i18n="theme_light">🌞 Bright Sun</option>
+        <option value="dark" data-i18n="theme_dark">🌚 Dark Moon</option>
+        <option value="amoled" data-i18n="theme_amoled">⬛ Pitch Black</option>
       </select>
 
       <select class="lang-selector home-lang-select">
@@ -426,7 +419,7 @@
     <div style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
       <svg id="homeLogoSvg" viewBox="0 0 64 64"></svg>
     </div>
-    <h1 data-i18n="app_title">bookmark bar divider</h1>
+    <h1 data-i18n="app_title">Bookmark Bar Divider</h1>
     <p data-i18n="home_desc">Smart Bookmark Bar Divider designer. Create beautiful separator icons and drag them directly to your bookmark bar.</p>
     
     <a id="bookmarkLink" class="bookmark-link" href="#" draggable="true">
@@ -462,7 +455,7 @@
       </button>
       <button id="tabStudioBtn" class="active">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline; vertical-align:middle; margin-right:4px;"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><circle cx="12" cy="12" r="3"/></svg>
-        <span data-i18n="tab_studio">Studio</span>
+        <span data-i18n="tab_studio">Editor</span>
       </button>
     </div>
     
@@ -470,9 +463,9 @@
     
     <select class="lang-selector studio-theme-select" style="padding: 6px 10px;" title="Select Theme Style">
       <option value="system" data-i18n="theme_system">💻 Auto</option>
-      <option value="light" data-i18n="theme_light">☀️ Light</option>
-      <option value="dark" data-i18n="theme_dark">🌌 Space</option>
-      <option value="amoled" data-i18n="theme_amoled">🕶️ AMOLED</option>
+      <option value="light" data-i18n="theme_light">🌞 Bright</option>
+      <option value="dark" data-i18n="theme_dark">🌚 Dark</option>
+      <option value="amoled" data-i18n="theme_amoled">⬛ Pitch</option>
     </select>
 
     <select class="lang-selector studio-lang-select" style="padding: 6px 10px;">
@@ -505,7 +498,7 @@
         <div class="row" style="margin-bottom: 4px;">
           <button id="studioNewBtn" class="btn-primary" style="flex: 1;">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            <span data-i18n="add_new">Add New</span>
+            <span data-i18n="add_new">Add Divider</span>
           </button>
           <button id="studioImportBtn" class="btn-ghost">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
@@ -514,9 +507,8 @@
           <input id="importInput" type="file" accept="application/json" class="hidden" />
         </div>
         
-        <!-- Helpful quick-drag instruction box -->
         <div style="background: rgba(236, 72, 153, 0.08); border: 1px solid rgba(236, 72, 153, 0.16); padding: 10px 14px; border-radius: var(--radius-md); font-size: 11px; line-height: 1.4; color: var(--text-primary);" data-i18n-html="quick_drag_hint">
-          💡 <strong>Quick Drag:</strong> Simply grab the 🔖 icon next to any saved project below and drop it onto your browser bar!
+          💡 <strong>Quick Drag:</strong> Simply grab the bookmark icon next to any saved project below and drop it onto your browser bar!
         </div>
 
         <div class="field">
@@ -688,10 +680,10 @@
 
 <script>
 (() => {
-  const KEY = 'bbd_projects_pinksky_v4';
-  const ACTIVE = 'bbd_active_pinksky_v4';
-  const LANG_KEY = 'bbd_lang_v4';
-  const THEME_KEY = 'bbd_theme_v4_style';
+  const KEY = 'bbd_projects_pinksky_v5';
+  const ACTIVE = 'bbd_active_pinksky_v5';
+  const LANG_KEY = 'bbd_lang_v5';
+  const THEME_KEY = 'bbd_theme_v5_style';
   
   const $ = id => document.getElementById(id);
   const now = () => new Date().toISOString();
@@ -699,6 +691,11 @@
   const clone = v => JSON.parse(JSON.stringify(v));
   const safe = s => String(s || 'divider').toLowerCase().replace(/[^a-z0-9-_]+/g, '-').replace(/^-+|-+$/g, '') || 'divider';
   const esc = s => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
+
+  // Drag visual variables
+  let isDragging = false;
+  let dragTrailSize = 20;
+  let dragTrailColor = '#ec4899';
 
   const toast = (message, type = 'info') => {
     const container = $('toastContainer');
@@ -785,9 +782,9 @@
       btn_snapshot: "Take Backup Snapshot",
       grid_toggle: "Show Grid",
       theme_system: "💻 System Auto",
-      theme_light: "☀️ Sunrise Day Theme",
-      theme_dark: "🌌 Cosmic Night Theme",
-      theme_amoled: "🕶️ AMOLED Black Theme",
+      theme_light: "🌞 Bright Sun",
+      theme_dark: "🌚 Dark Moon",
+      theme_amoled: "⬛ Pitch Black",
       drag_link_default: "Drag up to Bookmark Bar",
       drag_link_named: "Divider: {name}",
       drag_link_blank: "Drag up (Hidden Name)",
@@ -818,8 +815,6 @@
       btn_confirm_cancel: "Cancel",
       locale: "en-US",
       quick_drag_title: "Drag to Bookmark Bar",
-      
-      // Right Click Context menu strings
       ctx_select: "Select Divider",
       ctx_rename: "Rename Divider",
       ctx_duplicate: "Duplicate",
@@ -828,8 +823,6 @@
       ctx_copy_url: "Copy Share URL",
       ctx_toggle_grid: "Toggle Grid Alignment",
       ctx_snapshot: "Take Snapshot",
-
-      // New translation strings for visual drag effects
       drag_guide_title: "↑ Drag and drop directly onto your browser's Bookmark Bar up here! ↑",
       quick_drag_tooltip: "Hold and drag me straight up onto your browser's Bookmark Bar!",
       quick_drag_hint: "💡 <strong>Quick Drag:</strong> Drag the bookmark button next to any item below straight to your browser bar!"
@@ -888,9 +881,9 @@
       btn_snapshot: "Take Backup Snapshot",
       grid_toggle: "Show Grid",
       theme_system: "💻 Chế độ Tự động",
-      theme_light: "☀️ Chế độ Sáng",
-      theme_dark: "🌌 Chế độ Tối",
-      theme_amoled: "🕶️ Chế độ AMOLED",
+      theme_light: "🌞 Bright Sun",
+      theme_dark: "🌚 Dark Moon",
+      theme_amoled: "⬛ Pitch Black",
       drag_link_default: "Kéo thả lên Bookmark Bar",
       drag_link_named: "Divider: {name}",
       drag_link_blank: "Kéo thả lên Bookmark Bar (Ẩn tên)",
@@ -921,8 +914,6 @@
       btn_confirm_cancel: "Hủy",
       locale: "vi-VN",
       quick_drag_title: "Kéo thả lên Bookmark Bar",
-      
-      // Right Click Context menu strings
       ctx_select: "Kích hoạt Divider",
       ctx_rename: "Đổi tên nhanh",
       ctx_duplicate: "Nhân đôi thiết kế",
@@ -931,8 +922,6 @@
       ctx_copy_url: "Sao chép Link chia sẻ",
       ctx_toggle_grid: "Bật/Tắt Lưới Canvas",
       ctx_snapshot: "Sao lưu Snapshot",
-
-      // New translation strings for visual drag effects
       drag_guide_title: "↑ Kéo thả trực tiếp lên thanh Bookmark (Thanh dấu trang) phía trên này! ↑",
       quick_drag_tooltip: "Giữ và kéo nút này thả trực tiếp lên thanh Bookmark của bạn!",
       quick_drag_hint: "💡 <strong>Kéo nhanh:</strong> Kéo giữ nút bookmark bên cạnh mỗi dự án thả lên thanh Bookmark của trình duyệt!"
@@ -1168,24 +1157,57 @@
             <b style="display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px; color: var(--text-primary);">${esc(p.name || t('untitled_proj'))}</b>
             <small style="display:block; opacity:0.7; font-size:11px; color: var(--text-muted);">${t('edited_at', { time: fmt(p.updatedAt || p.createdAt) })}</small>
           </div>
-          <div class="has-tooltip">
-            <a class="quick-drag-btn" 
-               href="${pUrl}" 
-               data-id="${p.id}"
-               draggable="true" 
-               title="${esc(t('quick_drag_title'))}">
-               <svg viewBox="0 0 24 24" stroke-width="2.5">
-                 <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
-               </svg>
-            </a>
-            <span class="tooltip-text">${esc(t('quick_drag_tooltip'))}</span>
-          </div>
+          <a class="quick-drag-btn" 
+             href="${pUrl}" 
+             data-id="${p.id}"
+             draggable="true" 
+             data-tooltip="${esc(t('quick_drag_tooltip'))}">
+             <svg viewBox="0 0 24 24" stroke-width="2.5">
+               <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+             </svg>
+          </a>
         </div>
       `;
     }).join('') || `<div class="tiny" style="padding:10px 0; text-align:center;">${t('no_projects')}</div>`;
 
-    // Bind quick bookmark drag elements with beautiful drag transitions
+    // Global tooltip initialization
+    let tooltipTimeout;
+    const tooltip = $('globalTooltip');
+
     document.querySelectorAll('.quick-drag-btn').forEach(btn => {
+      
+      // Smart Tooltip behavior
+      btn.addEventListener('mouseenter', e => {
+        clearTimeout(tooltipTimeout);
+        const rect = btn.getBoundingClientRect();
+        tooltip.textContent = btn.dataset.tooltip;
+        tooltip.classList.remove('hidden');
+
+        let left = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2);
+        let top = rect.top - tooltip.offsetHeight - 8;
+
+        if (left + tooltip.offsetWidth > window.innerWidth - 10) {
+            left = window.innerWidth - tooltip.offsetWidth - 10;
+        }
+        if (left < 10) left = 10;
+
+        tooltip.style.left = left + 'px';
+        tooltip.style.top = top + 'px';
+        
+        // Wait for frame to ensure display block transitions
+        requestAnimationFrame(() => {
+          tooltip.style.opacity = '1';
+          tooltip.style.transform = 'translateY(0)';
+        });
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        tooltip.style.opacity = '0';
+        tooltip.style.transform = 'translateY(8px)';
+        tooltipTimeout = setTimeout(() => tooltip.classList.add('hidden'), 200);
+      });
+
+      // Individual Project isolated drag mechanics
       const id = btn.dataset.id;
       const p = st.projects.find(x => x.id === id);
       if (!p) return;
@@ -1193,18 +1215,39 @@
       
       btn.addEventListener('dragstart', e => {
         e.stopPropagation();
+        
+        // Create an explicit image representing ONLY this project's svg
+        const dragImg = new Image();
+        const svgStr = generateSvgContent(p.line, 64);
+        const cleanSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">${svgStr}</svg>`;
+        dragImg.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(cleanSvg)));
+        
+        // Append temporarily to satisfy browser drag constraints, position offscreen
+        dragImg.style.position = 'absolute';
+        dragImg.style.top = '-1000px';
+        document.body.appendChild(dragImg);
+        
+        e.dataTransfer.setDragImage(dragImg, 32, 32);
+        setTimeout(() => dragImg.remove(), 50); // cleanup
+
         e.dataTransfer.effectAllowed = 'copy';
         e.dataTransfer.setData('text/uri-list', pUrl);
         e.dataTransfer.setData('text/plain', pUrl);
         e.dataTransfer.setData('text/html', `<a href="${esc(pUrl)}">${esc(p.name || '')}</a>`);
-        // Add subtle active dragging state
+        
         btn.closest('.item').style.opacity = '0.5';
         $('dragGuideBanner').classList.add('active');
+
+        // Start custom drag visual effects
+        isDragging = true;
+        dragTrailSize = 14; 
+        dragTrailColor = p.line.color;
       });
 
       btn.addEventListener('dragend', () => {
         btn.closest('.item').style.opacity = '1';
         $('dragGuideBanner').classList.remove('active');
+        isDragging = false;
       });
       
       btn.addEventListener('click', e => {
@@ -1222,6 +1265,30 @@
       });
     });
   };
+
+  // Create beautiful particles following the mouse during a drag
+  document.addEventListener('dragover', (e) => {
+     if (!isDragging) return;
+     if (e.clientX === 0 && e.clientY === 0) return; // Ignore end-drag ghost coordinates
+     
+     const particle = document.createElement('div');
+     particle.className = 'drag-trail-particle';
+     particle.style.left = e.clientX + 'px';
+     particle.style.top = e.clientY + 'px';
+     particle.style.width = dragTrailSize + 'px';
+     particle.style.height = dragTrailSize + 'px';
+     particle.style.background = dragTrailColor;
+     
+     document.body.appendChild(particle);
+     
+     // Force layout to ensure transition works
+     particle.offsetHeight;
+     
+     particle.style.transform = `translate(-50%, -50%) scale(0)`;
+     particle.style.opacity = '0';
+     
+     setTimeout(() => particle.remove(), 400); 
+  });
 
   const renderSnapshots = () => {
     $('snapList').innerHTML = cur().revisions.map((r, i) => `
@@ -1411,12 +1478,8 @@
     let x = e.clientX;
     let y = e.clientY;
 
-    if (x + menuWidth > window.innerWidth) {
-      x = window.innerWidth - menuWidth - 10;
-    }
-    if (y + menuHeight > window.innerHeight) {
-      y = window.innerHeight - menuHeight - 10;
-    }
+    if (x + menuWidth > window.innerWidth) x = window.innerWidth - menuWidth - 10;
+    if (y + menuHeight > window.innerHeight) y = window.innerHeight - menuHeight - 10;
 
     menu.style.left = `${x}px`;
     menu.style.top = `${y}px`;
@@ -1445,10 +1508,7 @@
         action: 'select',
         text: t('ctx_select'),
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`,
-        callback: () => {
-          setActive(projId);
-          render();
-        }
+        callback: () => { setActive(projId); render(); }
       },
       {
         action: 'rename',
@@ -1467,28 +1527,21 @@
         action: 'duplicate',
         text: t('ctx_duplicate'),
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`,
-        callback: () => {
-          setActive(projId);
-          duplicateProject();
-        }
+        callback: () => { setActive(projId); duplicateProject(); }
       },
       { isDivider: true },
       {
         action: 'export',
         text: t('ctx_export'),
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`,
-        callback: () => {
-          exportJsonOfProject(p);
-        }
+        callback: () => { exportJsonOfProject(p); }
       },
       {
         action: 'delete',
         className: 'danger',
         text: t('ctx_delete'),
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>`,
-        callback: () => {
-          deleteProjectById(projId);
-        }
+        callback: () => { deleteProjectById(projId); }
       }
     ];
 
@@ -1501,17 +1554,13 @@
         action: 'copy_url',
         text: t('ctx_copy_url'),
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>`,
-        callback: () => {
-          copyToClipboard(shareUrl(), t('toast_copy_share'));
-        }
+        callback: () => { copyToClipboard(shareUrl(), t('toast_copy_share')); }
       },
       {
         action: 'download_json',
         text: t('ctx_export'),
         icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`,
-        callback: () => {
-          exportJson();
-        }
+        callback: () => { exportJson(); }
       },
       { isDivider: true },
       {
@@ -1535,17 +1584,13 @@
         }
       }
     ];
-
     showContextMenu(e, options);
   };
 
   const bindEvents = () => {
     $('projectList').addEventListener('contextmenu', e => {
       const item = e.target.closest('.item');
-      if (!item) {
-        e.preventDefault();
-        hideContextMenu();
-      }
+      if (!item) { e.preventDefault(); hideContextMenu(); }
     });
 
     $('mainStageBox').addEventListener('contextmenu', e => {
@@ -1557,20 +1602,15 @@
     window.addEventListener('click', hideContextMenu);
     window.addEventListener('scroll', hideContextMenu, true);
     window.addEventListener('resize', hideContextMenu);
-    window.addEventListener('keydown', e => {
-      if (e.key === 'Escape') hideContextMenu();
-    });
+    window.addEventListener('keydown', e => { if (e.key === 'Escape') hideContextMenu(); });
 
-    // Language Selectors
     document.querySelectorAll('.home-lang-select, .studio-lang-select').forEach(selector => {
       selector.addEventListener('change', e => {
         st.lang = e.target.value;
-        save();
-        render();
+        save(); render();
       });
     });
 
-    // Theme Selectors
     document.querySelectorAll('.home-theme-select, .studio-theme-select').forEach(selector => {
       selector.addEventListener('change', e => setThemeMode(e.target.value));
     });
@@ -1594,8 +1634,7 @@
 
     $('saveBtn').onclick = () => {
       cur().updatedAt = now();
-      save();
-      render();
+      save(); render();
       toast(t('toast_save_success'), 'success');
     };
 
@@ -1603,19 +1642,37 @@
     $('delBtn').onclick = deleteProject;
     $('exportJsonBtn').onclick = exportJson;
 
-    const setupDrag = (linkEl) => {
+    // Setting up the main drag links representing active project
+    const setupMainDrag = (linkEl) => {
       linkEl.addEventListener('dragstart', e => {
+        isDragging = true;
+        dragTrailSize = 25; 
+        dragTrailColor = cur().line.color;
+
+        const dragImg = new Image();
+        const svgStr = generateSvgContent(cur().line, 64);
+        const cleanSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">${svgStr}</svg>`;
+        dragImg.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(cleanSvg)));
+        
+        dragImg.style.position = 'absolute';
+        dragImg.style.top = '-1000px';
+        document.body.appendChild(dragImg);
+        
+        e.dataTransfer.setDragImage(dragImg, 32, 32);
+        setTimeout(() => dragImg.remove(), 50);
+
         const u = shareUrl();
         e.dataTransfer.effectAllowed = 'copy';
         e.dataTransfer.setData('text/uri-list', u);
         e.dataTransfer.setData('text/plain', u);
         e.dataTransfer.setData('text/html', `<a href="${esc(u)}">${esc(cur().name || '')}</a>`);
-        // Trigger visual top banner guidance
+        
         $('dragGuideBanner').classList.add('active');
       });
 
       linkEl.addEventListener('dragend', () => {
         $('dragGuideBanner').classList.remove('active');
+        isDragging = false;
       });
 
       linkEl.addEventListener('click', e => {
@@ -1623,8 +1680,9 @@
         copyToClipboard(shareUrl(), t('toast_copy_drag'));
       });
     };
-    setupDrag($('bookmarkLink'));
-    setupDrag($('studioBookmarkLink'));
+    
+    setupMainDrag($('bookmarkLink'));
+    setupMainDrag($('studioBookmarkLink'));
 
     $('copyUrlBtn').onclick = () => copyToClipboard(shareUrl(), t('toast_copy_share'));
 
@@ -1669,8 +1727,7 @@
       st.redo.push(JSON.stringify(cur()));
       const idx = st.projects.findIndex(p => p.id === st.active);
       st.projects[idx] = JSON.parse(st.undo.pop());
-      render();
-      toast(t('toast_undo'));
+      render(); toast(t('toast_undo'));
     };
 
     $('redoBtn').onclick = () => {
@@ -1678,14 +1735,12 @@
       st.undo.push(JSON.stringify(cur()));
       const idx = st.projects.findIndex(p => p.id === st.active);
       st.projects[idx] = JSON.parse(st.redo.pop());
-      render();
-      toast(t('toast_redo'));
+      render(); toast(t('toast_redo'));
     };
 
     $('saveSnapBtn').onclick = () => {
       snap(t('manual_snap'));
-      render();
-      toast(t('toast_snapshot'), 'success');
+      render(); toast(t('toast_snapshot'), 'success');
     };
 
     $('snapList').onclick = e => {
@@ -1696,8 +1751,7 @@
           pushUndo();
           cur().line = clone(cur().revisions[idx].line);
           cur().updatedAt = now();
-          render();
-          toast(t('toast_apply_json'), 'success');
+          render(); toast(t('toast_apply_json'), 'success');
         });
       }
     };
