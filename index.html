@@ -6,46 +6,100 @@
 <title>‌</title>
 <style>
   :root {
-    --bg-gradient: linear-gradient(135deg, #fdf2f8 0%, #f3e8ff 50%, #e0f2fe 100%);
-    --panel-bg: rgba(255, 255, 255, 0.85);
-    --panel-border: rgba(244, 63, 94, 0.15);
-    --text-primary: #1e1b4b;
-    --text-muted: #6b21a8;
-    --brand-gradient: linear-gradient(135deg, #ec4899 0%, #a855f7 50%, #0ea5e9 100%);
-    --brand-pink: #ec4899;
-    --brand-purple: #a855f7;
-    --brand-blue: #0ea5e9;
+    --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #f5f3ff 50%, #ecfdf5 100%);
+    --panel-bg: rgba(255, 255, 255, 0.8);
+    --panel-border: rgba(99, 102, 241, 0.15);
+    --text-primary: #0f172a;
+    --text-muted: #4f46e5;
+    --brand-gradient: linear-gradient(135deg, #6366f1 0%, #9333ea 50%, #0d9488 100%);
+    --brand-pink: #9333ea;
+    --brand-purple: #6366f1;
+    --brand-blue: #0d9488;
     --radius-lg: 24px;
     --radius-md: 14px;
-    --shadow-premium: 0 15px 35px rgba(236, 72, 153, 0.08), 0 5px 15px rgba(14, 165, 233, 0.04);
+    --shadow-premium: 0 15px 35px rgba(99, 102, 241, 0.08), 0 5px 15px rgba(13, 148, 136, 0.04);
     --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    --svg-canvas-bg: #ffffff;
+    --input-bg: rgba(255, 255, 255, 0.85);
+    --input-border: rgba(99, 102, 241, 0.15);
+    --button-bg: #ffffff;
+    --button-color: #1e1b4b;
+    --stage-box-bg: rgba(255, 255, 255, 0.6);
+    --item-bg: rgba(255, 255, 255, 0.7);
+    --item-active-bg: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(13, 148, 136, 0.08) 100%);
+    --topbar-bg: rgba(255, 255, 255, 0.75);
+    --segmented-bg: rgba(99, 102, 241, 0.08);
   }
   
-  * { box-sizing: border-box; transition: var(--transition); }
+  /* Space Dark Theme variables */
+  body.theme-dark {
+    --bg-gradient: linear-gradient(135deg, #090d16 0%, #0c0b1e 50%, #021410 100%);
+    --panel-bg: rgba(15, 23, 42, 0.85);
+    --panel-border: rgba(168, 85, 247, 0.22);
+    --text-primary: #f8fafc;
+    --text-muted: #c084fc;
+    --shadow-premium: 0 15px 35px rgba(0, 0, 0, 0.45), 0 5px 15px rgba(168, 85, 247, 0.1);
+    
+    --svg-canvas-bg: #0f172a;
+    --input-bg: rgba(30, 41, 59, 0.75);
+    --input-border: rgba(168, 85, 247, 0.25);
+    --button-bg: rgba(30, 41, 59, 0.9);
+    --button-color: #f1f5f9;
+    --stage-box-bg: rgba(30, 41, 59, 0.5);
+    --item-bg: rgba(30, 41, 59, 0.4);
+    --item-active-bg: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(13, 148, 136, 0.15) 100%);
+    --topbar-bg: rgba(15, 23, 42, 0.8);
+    --segmented-bg: rgba(168, 85, 247, 0.15);
+  }
+
+  /* AMOLED Dark Theme variables */
+  body.theme-amoled {
+    --bg-gradient: none;
+    background-color: #000000 !important;
+    --panel-bg: rgba(10, 10, 10, 0.95);
+    --panel-border: rgba(255, 255, 255, 0.12);
+    --text-primary: #ffffff;
+    --text-muted: #e9d5ff;
+    --shadow-premium: 0 15px 35px rgba(0, 0, 0, 0.8), 0 5px 15px rgba(168, 85, 247, 0.05);
+    
+    --svg-canvas-bg: #000000;
+    --input-bg: rgba(20, 20, 20, 0.9);
+    --input-border: rgba(255, 255, 255, 0.15);
+    --button-bg: rgba(25, 25, 25, 0.95);
+    --button-color: #ffffff;
+    --stage-box-bg: rgba(15, 15, 15, 0.9);
+    --item-bg: rgba(15, 15, 15, 0.7);
+    --item-active-bg: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(13, 148, 136, 0.2) 100%);
+    --topbar-bg: rgba(0, 0, 0, 0.9);
+    --segmented-bg: rgba(255, 255, 255, 0.08);
+  }
+  
+  * { box-sizing: border-box; transition: var(--transition), background-image 0s; }
   html, body { height: 100%; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg-gradient); color: var(--text-primary); -webkit-font-smoothing: antialiased; }
   
   button, input, select, textarea, a { font: inherit; outline: none; }
-  button { border: 1px solid rgba(168, 85, 247, 0.2); background: #fff; border-radius: var(--radius-md); padding: 10px 18px; cursor: pointer; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 8px; color: #4a044e; }
-  button:hover { background: rgba(255, 255, 255, 0.9); border-color: var(--brand-purple); box-shadow: 0 4px 15px rgba(168, 85, 247, 0.1); transform: translateY(-1px); }
+  button { border: 1px solid var(--panel-border); background: var(--button-bg); border-radius: var(--radius-md); padding: 10px 18px; cursor: pointer; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 8px; color: var(--button-color); }
+  button:hover { background: rgba(255, 255, 255, 0.15); border-color: var(--brand-pink); box-shadow: 0 4px 15px rgba(168, 85, 247, 0.15); transform: translateY(-1px); }
   button:active { transform: translateY(1px); }
   
-  .btn-primary { background: var(--brand-gradient); color: #fff; border: none; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.2); }
-  .btn-primary:hover { background: var(--brand-gradient); filter: brightness(1.05); color: #fff; box-shadow: 0 6px 20px rgba(236, 72, 153, 0.3); }
+  .btn-primary { background: var(--brand-gradient); color: #fff; border: none; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2); }
+  .btn-primary:hover { background: var(--brand-gradient); filter: brightness(1.1); color: #fff; box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35); }
   .btn-ghost { background: transparent; border-color: transparent; color: var(--text-muted); }
-  .btn-ghost:hover { background: rgba(255, 255, 255, 0.5); color: var(--brand-pink); }
-  .btn-danger { color: #be123c; background: #fff1f2; border-color: #fecdd3; }
-  .btn-danger:hover { background: #ffe4e6; border-color: #fda4af; }
+  .btn-ghost:hover { background: rgba(168, 85, 247, 0.08); color: var(--brand-pink); }
+  .btn-danger { color: #f43f5e; background: rgba(244, 63, 94, 0.08); border-color: rgba(244, 63, 94, 0.2); }
+  .btn-danger:hover { background: rgba(244, 63, 94, 0.15); border-color: rgba(244, 63, 94, 0.3); }
   .hidden { display: none !important; }
 
   /* Tab switching layout */
-  .segmented-control { display: inline-flex; background: rgba(244, 63, 94, 0.08); padding: 4px; border-radius: var(--radius-md); border: 1px solid rgba(244, 63, 94, 0.1); }
+  .segmented-control { display: inline-flex; background: var(--segmented-bg); padding: 4px; border-radius: var(--radius-md); border: 1px solid var(--panel-border); }
   .segmented-control button { border: none; background: transparent; border-radius: 10px; padding: 6px 16px; font-size: 13px; font-weight: 700; color: var(--text-muted); }
-  .segmented-control button.active { background: #fff; color: var(--brand-pink); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+  .segmented-control button.active { background: var(--button-bg); color: var(--brand-pink); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
 
-  /* Premium Language Selector Selector */
+  /* Premium Language & Theme Selector Controls */
   .lang-selector {
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(168, 85, 247, 0.2);
+    background: var(--button-bg);
+    border: 1px solid var(--panel-border);
     border-radius: var(--radius-md);
     padding: 8px 12px;
     font-weight: 600;
@@ -55,7 +109,17 @@
   }
   .lang-selector:hover {
     border-color: var(--brand-pink);
-    background: #fff;
+    background: var(--button-bg);
+  }
+
+  /* Sliders value display */
+  .val-badge {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--brand-pink);
+    background: rgba(168, 85, 247, 0.12);
+    padding: 1px 6px;
+    border-radius: 6px;
   }
 
   .page { min-height: 100vh; display: grid; place-items: center; padding: 24px; box-sizing: border-box; }
@@ -84,20 +148,20 @@
     gap: 14px;
     text-decoration: none;
     color: #fff;
-    border: 2px dashed rgba(236, 72, 153, 0.3);
+    border: 2px dashed rgba(168, 85, 247, 0.3);
     background: var(--brand-gradient);
     padding: 16px 32px;
     border-radius: 999px;
     font-weight: 700;
     cursor: grab;
     user-select: none;
-    box-shadow: 0 10px 25px rgba(236, 72, 153, 0.2);
+    box-shadow: 0 10px 25px rgba(168, 85, 247, 0.25);
     transform: translateZ(0);
     transition: var(--transition);
   }
   .bookmark-link:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(236, 72, 153, 0.3);
+    box-shadow: 0 15px 30px rgba(168, 85, 247, 0.35);
     border-color: rgba(255, 255, 255, 0.5);
   }
   .bookmark-link:active {
@@ -137,7 +201,7 @@
     flex-wrap: wrap; 
     align-items: center; 
     padding: 16px 28px; 
-    background: rgba(255, 255, 255, 0.75); 
+    background: var(--topbar-bg); 
     backdrop-filter: blur(16px); 
     border-bottom: 1px solid var(--panel-border); 
   }
@@ -148,7 +212,7 @@
   
   .main-container { display: grid; grid-template-columns: 290px minmax(360px, 1fr) 330px; gap: 16px; padding: 16px; align-items: start; height: calc(100vh - 75px); box-sizing: border-box; }
   .panel { background: var(--panel-bg); backdrop-filter: blur(12px); border: 1px solid var(--panel-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-premium); overflow: hidden; display: flex; flex-direction: column; height: 100%; }
-  .head { padding: 16px 20px; border-bottom: 1px solid var(--panel-border); display: flex; justify-content: space-between; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.5); }
+  .head { padding: 16px 20px; border-bottom: 1px solid var(--panel-border); display: flex; justify-content: space-between; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.05); }
   .head h3 { margin: 0; font-size: 13px; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.08em; }
   .body { padding: 20px; display: grid; gap: 18px; overflow-y: auto; flex: 1; }
   .scroll { overflow-y: auto; }
@@ -156,29 +220,35 @@
   /* Modern Form Controls */
   .field { display: grid; gap: 6px; }
   .field label, .section-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
-  .field input, .field select, .field textarea { width: 100%; border: 1px solid rgba(168, 85, 247, 0.15); border-radius: var(--radius-md); padding: 11px 14px; background: rgba(255, 255, 255, 0.8); color: var(--text-primary); transition: var(--transition); }
-  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--brand-pink); background: #fff; box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.12); }
+  .field input, .field select, .field textarea { width: 100%; border: 1px solid var(--input-border); border-radius: var(--radius-md); padding: 11px 14px; background: var(--input-bg); color: var(--text-primary); transition: var(--transition); }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--brand-pink); background: var(--button-bg); box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.15); }
   .field textarea { min-height: 80px; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; resize: vertical; }
   
-  /* Dynamic Slider Component Styling */
-  input[type="range"] { -webkit-appearance: none; appearance: none; height: 6px; background: rgba(168, 85, 247, 0.15); border-radius: 999px; outline: none; padding: 0; border: none; }
-  input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--brand-pink); cursor: pointer; border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.15); transition: transform 0.1s; }
-  input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); background: var(--brand-purple); }
-
   /* Beautiful Sidebar List Cards */
   .list { display: grid; gap: 10px; }
-  .item { padding: 12px 16px; border: 1px solid rgba(168, 85, 247, 0.12); border-radius: var(--radius-md); background: rgba(255, 255, 255, 0.7); display: flex; justify-content: space-between; gap: 12px; align-items: center; cursor: pointer; }
-  .item:hover { border-color: var(--brand-purple); background: rgba(255, 255, 255, 0.9); }
-  .item.active { background: linear-gradient(135deg, rgba(236, 72, 153, 0.08) 0%, rgba(168, 85, 247, 0.08) 100%); border-color: var(--brand-pink); }
+  .item { padding: 12px 16px; border: 1px solid var(--panel-border); border-radius: var(--radius-md); background: var(--item-bg); display: flex; justify-content: space-between; gap: 12px; align-items: center; cursor: pointer; }
+  .item:hover { border-color: var(--brand-pink); background: var(--button-bg); }
+  .item.active { background: var(--item-active-bg); border-color: var(--brand-pink); }
   .item small { color: var(--text-muted); font-size: 11px; opacity: 0.8; }
   
-  .p-card { background: rgba(255, 255, 255, 0.6); border: 1px solid var(--panel-border); border-radius: var(--radius-md); padding: 14px; display: grid; gap: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.01); }
-  .p-card.active { background: linear-gradient(135deg, rgba(236, 72, 153, 0.05), rgba(14, 165, 233, 0.05)); border-color: var(--brand-pink); }
+  .p-card { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--panel-border); border-radius: var(--radius-md); padding: 14px; display: grid; gap: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.01); }
+  .p-card.active { background: var(--item-active-bg); border-color: var(--brand-pink); }
   .p-card .meta { font-size: 12px; color: var(--text-muted); opacity: 0.8; }
-  .mini-stage { width: 100%; height: auto; border: 1px solid var(--panel-border); border-radius: var(--radius-md); background: #fff; aspect-ratio: 16/5; padding: 4px; display: flex; align-items: center; justify-content: center; }
+  .mini-stage { width: 100%; height: auto; border: 1px solid var(--panel-border); border-radius: var(--radius-md); background: var(--svg-canvas-bg); aspect-ratio: 16/5; padding: 4px; display: flex; align-items: center; justify-content: center; }
   
-  svg { display: block; width: 100%; height: auto; background: #fff; border: 1px solid rgba(168, 85, 247, 0.1); border-radius: var(--radius-lg); box-shadow: inset 0 2px 8px rgba(0,0,0,0.02); }
-  .stagebox { background: rgba(255, 255, 255, 0.6); border: 1px solid var(--panel-border); border-radius: var(--radius-lg); padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
+  svg { display: block; width: 100%; height: auto; background: var(--svg-canvas-bg); border: 1px solid var(--panel-border); border-radius: var(--radius-lg); box-shadow: inset 0 2px 8px rgba(0,0,0,0.04); }
+  
+  /* Grid Background Support */
+  #svgCanvas {
+    background: var(--svg-canvas-bg);
+    transition: var(--transition), background-image 0s;
+  }
+  #svgCanvas.grid-active {
+    background-image: radial-gradient(rgba(168, 85, 247, 0.18) 1px, transparent 1px);
+    background-size: 8px 8px;
+  }
+  
+  .stagebox { background: var(--stage-box-bg); border: 1px solid var(--panel-border); border-radius: var(--radius-lg); padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
   .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%; }
 
   @media (max-width: 1120px) {
@@ -193,8 +263,16 @@
 <!-- HOME PAGE -->
 <section id="homePage" class="page">
   <div class="home-card">
-    <!-- Top Lang switch for Home -->
-    <div style="width: 100%; display: flex; justify-content: flex-end;">
+    <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+      <!-- Theme Selector Dropdown on Homepage -->
+      <select class="lang-selector home-theme-select" title="Select Theme Style">
+        <option value="system" data-i18n="theme_system">💻 Auto Theme</option>
+        <option value="light" data-i18n="theme_light">☀️ Light Theme</option>
+        <option value="dark" data-i18n="theme_dark">🌌 Space Dark</option>
+        <option value="amoled" data-i18n="theme_amoled">🕶️ AMOLED Dark</option>
+      </select>
+
+      <!-- Language Selector -->
       <select class="lang-selector home-lang-select">
         <option value="en">🇬🇧 English</option>
         <option value="vi">🇻🇳 Tiếng Việt</option>
@@ -215,8 +293,14 @@
     </a>
     
     <div class="home-actions">
-      <button id="newBtn" class="btn-primary" data-i18n="create_new">Create New Divider</button>
-      <button id="enterStudioBtn" class="btn-ghost" data-i18n="enter_studio">Enter Design Studio</button>
+      <button id="newBtn" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <span data-i18n="create_new">Create New Divider</span>
+      </button>
+      <button id="enterStudioBtn" class="btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <span data-i18n="enter_studio">Enter Design Studio</span>
+      </button>
     </div>
     <div class="subtle" data-i18n-html="hint_blank">💡 To create a bookmark that only shows the icon without text, simply clear the <strong>Divider Name</strong> field.</div>
   </div>
@@ -228,21 +312,44 @@
     <div class="brand"><strong data-i18n="studio_title">Divider Studio</strong><span id="topMeta">Designing...</span></div>
     
     <div class="segmented-control">
-      <button id="tabHomeBtn" data-i18n="tab_home">Home</button>
-      <button id="tabStudioBtn" class="active" data-i18n="tab_studio">Studio</button>
+      <button id="tabHomeBtn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline; vertical-align:middle; margin-right:4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span data-i18n="tab_home">Home</span>
+      </button>
+      <button id="tabStudioBtn" class="active">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline; vertical-align:middle; margin-right:4px;"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><circle cx="12" cy="12" r="3"/></svg>
+        <span data-i18n="tab_studio">Studio</span>
+      </button>
     </div>
     
     <div class="spacer"></div>
     
+    <!-- Theme Switcher in Studio Topbar -->
+    <select class="lang-selector studio-theme-select" style="padding: 6px 10px;" title="Select Theme Style">
+      <option value="system" data-i18n="theme_system">💻 Auto</option>
+      <option value="light" data-i18n="theme_light">☀️ Light</option>
+      <option value="dark" data-i18n="theme_dark">🌌 Space</option>
+      <option value="amoled" data-i18n="theme_amoled">🕶️ AMOLED</option>
+    </select>
+
     <!-- Lang Switcher in Studio Topbar -->
     <select class="lang-selector studio-lang-select" style="padding: 6px 10px;">
       <option value="en">🇬🇧 EN</option>
       <option value="vi">🇻🇳 VI</option>
     </select>
 
-    <button id="undoBtn" class="btn-ghost" data-i18n="btn_undo">Undo</button>
-    <button id="redoBtn" class="btn-ghost" data-i18n="btn_redo">Redo</button>
-    <button id="saveBtn" class="btn-primary" data-i18n="btn_save">Save Project</button>
+    <button id="undoBtn" class="btn-ghost" title="Undo">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></svg>
+      <span data-i18n="btn_undo">Undo</span>
+    </button>
+    <button id="redoBtn" class="btn-ghost" title="Redo">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7v6h-6"/><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7"/></svg>
+      <span data-i18n="btn_redo">Redo</span>
+    </button>
+    <button id="saveBtn" class="btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+      <span data-i18n="btn_save">Save Project</span>
+    </button>
   </div>
   
   <div class="main-container">
@@ -254,8 +361,14 @@
       </div>
       <div class="body">
         <div class="row" style="margin-bottom: 4px;">
-          <button id="studioNewBtn" class="btn-primary" style="flex: 1;" data-i18n="add_new">+ Add New</button>
-          <button id="studioImportBtn" class="btn-ghost" data-i18n="btn_import">Import</button>
+          <button id="studioNewBtn" class="btn-primary" style="flex: 1;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span data-i18n="add_new">Add New</span>
+          </button>
+          <button id="studioImportBtn" class="btn-ghost">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span data-i18n="btn_import">Import</span>
+          </button>
           <input id="importInput" type="file" accept="application/json" class="hidden" />
         </div>
         <div class="field">
@@ -270,7 +383,10 @@
     <section class="panel scroll">
       <div class="head">
         <h3 data-i18n="preview_title">Stage Preview</h3>
-        <span class="tiny" data-i18n="preview_subtitle">Drag and drop to install</span>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span class="tiny" data-i18n="grid_toggle" style="text-transform:none; font-weight:700;">Grid</span>
+          <input type="checkbox" id="gridToggle" checked style="width:auto; cursor:pointer; accent-color: var(--brand-pink);">
+        </div>
       </div>
       <div class="body" style="grid-template-rows: auto 1fr auto; gap: 20px; align-items: center;">
         
@@ -285,7 +401,7 @@
         </div>
 
         <div class="stagebox">
-          <svg id="svgCanvas" viewBox="0 0 64 64" style="max-width: 240px; aspect-ratio: 1;"></svg>
+          <svg id="svgCanvas" class="grid-active" viewBox="0 0 64 64" style="max-width: 240px; aspect-ratio: 1;"></svg>
         </div>
         
         <div class="preview-grid">
@@ -341,17 +457,26 @@
         <!-- Dynamic inputs shown adaptively based on configuration -->
         <div class="grid" style="display: grid; gap: 12px;">
           <div class="field">
-            <label id="lblY1">Top End</label>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <label id="lblY1">Top End</label>
+              <span class="val-badge" id="valY1">6</span>
+            </div>
             <input id="y1" type="range" min="0" max="64" value="6">
           </div>
           <div class="field">
-            <label id="lblY2">Bottom End</label>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <label id="lblY2">Bottom End</label>
+              <span class="val-badge" id="valY2">58</span>
+            </div>
             <input id="y2" type="range" min="0" max="64" value="58">
           </div>
           
           <!-- Line specific options -->
           <div class="field" id="boxStroke">
-            <label data-i18n="field_stroke">Border Thickness</label>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <label data-i18n="field_stroke">Border Thickness</label>
+              <span class="val-badge" id="valStroke">4</span>
+            </div>
             <input id="stroke" type="range" min="1" max="24" value="4">
           </div>
           <div class="field" id="boxCap">
@@ -365,18 +490,30 @@
 
           <!-- Rounded Rectangle specific options -->
           <div class="field hidden" id="boxWidth">
-            <label data-i18n="field_width">Block Thickness</label>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <label data-i18n="field_width">Block Thickness</label>
+              <span class="val-badge" id="valWidth">8</span>
+            </div>
             <input id="width" type="range" min="1" max="48" value="8">
           </div>
           <div class="field hidden" id="boxRx">
-            <label data-i18n="field_rx">Corner Radius (Rx)</label>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <label data-i18n="field_rx">Corner Radius (Rx)</label>
+              <span class="val-badge" id="valRx">4</span>
+            </div>
             <input id="rx" type="range" min="0" max="24" value="4">
           </div>
         </div>
 
         <div class="row" style="margin-top: 10px;">
-          <button id="dupBtn" class="btn-ghost" style="flex: 1;" data-i18n="btn_duplicate">Duplicate</button>
-          <button id="delBtn" class="btn-danger" style="flex: 1;" data-i18n="btn_delete">Delete</button>
+          <button id="dupBtn" class="btn-ghost" style="flex: 1;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span data-i18n="btn_duplicate">Duplicate</span>
+          </button>
+          <button id="delBtn" class="btn-danger" style="flex: 1;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+            <span data-i18n="btn_delete">Delete</span>
+          </button>
         </div>
 
         <div class="section-title" style="margin-top: 15px;" data-i18n="share_json">JSON Data & Share</div>
@@ -384,12 +521,21 @@
           <textarea id="shareUrl" readonly style="font-size: 11px;" data-i18n-placeholder="placeholder_share"></textarea>
         </div>
         <div class="row">
-          <button id="copyUrlBtn" class="btn-ghost" style="flex: 1; font-size: 12px;" data-i18n="btn_copy_url">Copy URL</button>
-          <button id="exportJsonBtn" class="btn-ghost" style="flex: 1; font-size: 12px;" data-i18n="btn_export">Export JSON</button>
+          <button id="copyUrlBtn" class="btn-ghost" style="flex: 1; font-size: 12px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            <span data-i18n="btn_copy_url">Copy URL</span>
+          </button>
+          <button id="exportJsonBtn" class="btn-ghost" style="flex: 1; font-size: 12px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span data-i18n="btn_export">Export JSON</span>
+          </button>
         </div>
 
         <div class="section-title" style="margin-top: 15px;" data-i18n="revisions">Revisions</div>
-        <button id="saveSnapBtn" class="btn-ghost" style="width: 100%;" data-i18n="btn_snapshot">+ Save current Snapshot</button>
+        <button id="saveSnapBtn" class="btn-ghost" style="width: 100%;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2 2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <span data-i18n="btn_snapshot">Save current Snapshot</span>
+        </button>
         <div class="list" id="snapList" style="margin-top: 8px;"></div>
       </div>
     </aside>
@@ -401,6 +547,7 @@
   const KEY = 'bbd_projects_pinksky_v4';
   const ACTIVE = 'bbd_active_pinksky_v4';
   const LANG_KEY = 'bbd_lang_v4';
+  const THEME_KEY = 'bbd_theme_v4_style'; // Enhanced theme storage
   
   const $ = id => document.getElementById(id);
   const now = () => new Date().toISOString();
@@ -418,13 +565,14 @@
       enter_studio: "Enter Design Studio",
       hint_blank: "💡 To create a bookmark that only shows the icon without text, simply clear the <strong>Divider Name</strong> field.",
       studio_title: "Divider Studio",
+      studio_meta: "Minimalist divider studio",
       tab_home: "Home",
       tab_studio: "Studio",
       btn_undo: "Undo",
       btn_redo: "Redo",
       btn_save: "Save Project",
       your_projects: "Your Projects",
-      add_new: "+ Add New",
+      add_new: "Add New",
       btn_import: "Import",
       search_label: "Quick Search",
       search_placeholder: "Enter search query...",
@@ -461,7 +609,14 @@
       btn_copy_url: "Copy URL",
       btn_export: "Export JSON",
       revisions: "Revisions",
-      btn_snapshot: "+ Save current Snapshot",
+      btn_snapshot: "Save current Snapshot",
+      grid_toggle: "Grid",
+      
+      // Theme names
+      theme_system: "💻 System Auto",
+      theme_light: "☀️ Light Mode",
+      theme_dark: "🌌 Space Dark",
+      theme_amoled: "🕶️ AMOLED Dark",
       
       // Dynamic strings (including placeholder replacements)
       drag_link_default: "Drag up to Bookmark Bar",
@@ -501,13 +656,14 @@
       enter_studio: "Vào Studio Thiết Kế",
       hint_blank: "💡 Để tạo bookmark ẩn tên chỉ hiển thị biểu tượng, bạn chỉ cần xóa sạch nội dung ô <strong>Tên Divider</strong>.",
       studio_title: "Divider Studio",
+      studio_meta: "Thiết kế dải phân cách tối giản",
       tab_home: "Trang chủ",
       tab_studio: "Studio",
       btn_undo: "Hoàn tác",
       btn_redo: "Làm lại",
       btn_save: "Lưu Dự Án",
       your_projects: "Dự án của bạn",
-      add_new: "+ Thêm Mới",
+      add_new: "Thêm Mới",
       btn_import: "Nhập",
       search_label: "Tìm kiếm nhanh",
       search_placeholder: "Nhập tên tìm kiếm...",
@@ -544,7 +700,14 @@
       btn_copy_url: "Sao chép URL",
       btn_export: "Xuất JSON",
       revisions: "Điểm khôi phục",
-      btn_snapshot: "+ Lưu Snapshot hiện tại",
+      btn_snapshot: "Lưu Snapshot hiện tại",
+      grid_toggle: "Lưới",
+      
+      // Theme names
+      theme_system: "💻 Tự động",
+      theme_light: "☀️ Chế độ Sáng",
+      theme_dark: "🌌 Không gian Tối",
+      theme_amoled: "🕶️ AMOLED Siêu tối",
       
       drag_link_default: "Kéo thả lên Bookmark Bar",
       drag_link_named: "Dải phân cách: {name}",
@@ -581,7 +744,8 @@
   // State
   const st = {
     page: 'home',
-    lang: 'en', // Defaulting to English as instructed
+    lang: 'en',
+    themeMode: 'system', // 'system' | 'light' | 'dark' | 'amoled'
     projects: [],
     active: null,
     undo: [],
@@ -589,17 +753,15 @@
     searchQuery: ''
   };
 
-  // Translation helper function
   const t = (key, vars = {}) => {
     const langDict = I18N[st.lang] || I18N['en'];
     let val = langDict[key] || I18N['en'][key] || key;
     Object.keys(vars).forEach(k => {
-      val = val.replace(`{${k}}`, vars[k]);
+      val = val.replaceAll(`{${k}}`, vars[k]);
     });
     return val;
   };
 
-  // Convert dates gracefully based on current language locale
   const fmt = d => {
     try {
       return new Date(d).toLocaleString(t('locale'));
@@ -608,29 +770,51 @@
     }
   };
 
-  // Apply Language to DOM elements
   const applyLanguage = () => {
-    // 1. Static text mapping
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       el.textContent = t(key);
     });
 
-    // 2. HTML embedded static texts
     document.querySelectorAll('[data-i18n-html]').forEach(el => {
       const key = el.getAttribute('data-i18n-html');
       el.innerHTML = t(key);
     });
 
-    // 3. Attribute placeholders mapping
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
       const key = el.getAttribute('data-i18n-placeholder');
       el.setAttribute('placeholder', t(key));
     });
 
-    // Synchronize selector elements
     document.querySelectorAll('.home-lang-select').forEach(sel => sel.value = st.lang);
     document.querySelectorAll('.studio-lang-select').forEach(sel => sel.value = st.lang);
+  };
+
+  // Theme Management Engine supporting system preference detection
+  const applyTheme = () => {
+    document.body.classList.remove('theme-dark', 'theme-amoled');
+    
+    let resolvedTheme = st.themeMode;
+    if (st.themeMode === 'system') {
+      const isSystemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      resolvedTheme = isSystemDark ? 'dark' : 'light';
+    }
+
+    if (resolvedTheme === 'dark') {
+      document.body.classList.add('theme-dark');
+    } else if (resolvedTheme === 'amoled') {
+      document.body.classList.add('theme-amoled');
+    }
+    
+    // Sync Select elements
+    document.querySelectorAll('.home-theme-select').forEach(sel => sel.value = st.themeMode);
+    document.querySelectorAll('.studio-theme-select').forEach(sel => sel.value = st.themeMode);
+  };
+
+  const setThemeMode = (mode) => {
+    st.themeMode = mode;
+    localStorage.setItem(THEME_KEY, mode);
+    applyTheme();
   };
 
   // Default structure
@@ -640,7 +824,7 @@
     createdAt: now(),
     updatedAt: now(),
     line: {
-      color: '#ec4899',
+      color: '#6366f1', // Set default color matching Aurora Theme indigo
       y1: 8,
       y2: 56,
       stroke: 6,
@@ -653,56 +837,6 @@
     revisions: []
   });
 
-  function toast(message, type = 'info') {
-    let container = $('toast-container');
-    if (!container) {
-      container = document.createElement('div');
-      container.id = 'toast-container';
-      container.style.cssText = 'position:fixed; bottom:24px; right:24px; z-index:9999; display:flex; flex-direction:column; gap:8px; pointer-events:none;';
-      document.body.appendChild(container);
-    }
-    const el = document.createElement('div');
-    el.style.cssText = 'background:rgba(30,27,75,0.95); color:#fff; padding:12px 22px; border-radius:14px; font-size:14px; font-weight:600; box-shadow:0 10px 25px rgba(236,72,153,0.15); transform:translateY(20px); opacity:0; transition:all 0.4s cubic-bezier(0.16, 1, 0.3, 1); pointer-events:auto; display:flex; align-items:center; gap:8px; border:1px solid rgba(255,255,255,0.1);';
-    if (type === 'error') el.style.background = 'rgba(225,29,72,0.95)';
-    else if (type === 'success') el.style.background = 'linear-gradient(135deg, #ec4899, #a855f7)';
-    el.textContent = message;
-    container.appendChild(el);
-    requestAnimationFrame(() => { el.style.transform = 'translateY(0)'; el.style.opacity = '1'; });
-    setTimeout(() => {
-      el.style.transform = 'translateY(-20px)'; el.style.opacity = '0';
-      setTimeout(() => el.remove(), 400);
-    }, 2500);
-  }
-
-  function customConfirm(message, onConfirm) {
-    const modal = document.createElement('div');
-    modal.style.cssText = 'position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(30,27,75,0.4); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; z-index:10000; opacity:0; transition:opacity 0.25s ease;';
-    const content = document.createElement('div');
-    content.style.cssText = 'background:#fff; padding:28px; border-radius:24px; max-width:420px; width:90%; box-shadow:var(--shadow-premium); transform:scale(0.95); transition:transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); display:grid; gap:20px; border:1px solid rgba(244,63,94,0.15);';
-    const text = document.createElement('p');
-    text.style.cssText = 'margin:0; font-size:15px; color:#1e1b4b; font-weight:600; line-height:1.6;';
-    text.textContent = message;
-    const btnRow = document.createElement('div');
-    btnRow.style.cssText = 'display:flex; justify-content:end; gap:12px;';
-    const cancelBtn = document.createElement('button');
-    cancelBtn.className = 'btn-ghost';
-    cancelBtn.textContent = t('btn_confirm_cancel');
-    const confirmBtn = document.createElement('button');
-    confirmBtn.className = 'btn-primary';
-    confirmBtn.style.cssText = 'background:var(--brand-pink);';
-    confirmBtn.textContent = t('btn_confirm_ok');
-    btnRow.appendChild(cancelBtn);
-    btnRow.appendChild(confirmBtn);
-    content.appendChild(text);
-    content.appendChild(btnRow);
-    modal.appendChild(content);
-    document.body.appendChild(modal);
-    requestAnimationFrame(() => { modal.style.opacity = '1'; content.style.transform = 'scale(1)'; });
-    const close = () => { modal.style.opacity = '0'; content.style.transform = 'scale(0.95)'; setTimeout(() => modal.remove(), 250); };
-    cancelBtn.onclick = close;
-    confirmBtn.onclick = () => { onConfirm(); close(); };
-  }
-
   const load = () => {
     try { st.projects = JSON.parse(localStorage.getItem(KEY) || '[]') } catch { st.projects = [] }
     if (!st.projects.length) st.projects = [def()];
@@ -713,8 +847,10 @@
       revisions: p.revisions || []
     }));
     
-    // Load language with English fallback
     st.lang = localStorage.getItem(LANG_KEY) || 'en';
+    st.themeMode = localStorage.getItem(THEME_KEY) || 'system';
+    
+    applyTheme();
     
     const savedActive = localStorage.getItem(ACTIVE);
     st.active = st.projects.some(p => p.id === savedActive) ? savedActive : st.projects[0].id;
@@ -814,7 +950,6 @@
     const p = cur();
     const url = shareUrl();
     const isBlank = !p.name || p.name.trim() === '';
-    const displayName = isBlank ? '‌' : p.name;
     
     document.title = isBlank ? '‌' : p.name;
     
@@ -871,8 +1006,8 @@
             <svg viewBox="0 0 64 64" style="border:none; box-shadow:none; background:transparent;">${previewMarkup}</svg>
           </div>
           <div style="flex: 1; min-width: 0;">
-            <b style="display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px;">${esc(p.name || t('untitled_proj'))}</b>
-            <small style="display:block; opacity:0.7; font-size:11px;">${t('edited_at', { time: fmt(p.updatedAt || p.createdAt) })}</small>
+            <b style="display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px; color: var(--text-primary);">${esc(p.name || t('untitled_proj'))}</b>
+            <small style="display:block; opacity:0.7; font-size:11px; color: var(--text-muted);">${t('edited_at', { time: fmt(p.updatedAt || p.createdAt) })}</small>
           </div>
         </div>
       `;
@@ -884,8 +1019,8 @@
     $('snapList').innerHTML = p.revisions.map((r, i) => `
       <div class="item" style="padding: 10px 12px; font-size: 12px;">
         <div style="flex:1;">
-          <b style="display:block;">${esc(r.note || t('manual_snap'))}</b>
-          <small style="opacity: 0.7;">${fmt(r.at)}</small>
+          <b style="display:block; color: var(--text-primary);">${esc(r.note || t('manual_snap'))}</b>
+          <small style="opacity: 0.7; color: var(--text-muted);">${fmt(r.at)}</small>
         </div>
         <button class="btn-ghost" data-restore="${i}" style="padding: 4px 8px; font-size: 11px;">${t('btn_restore')}</button>
       </div>
@@ -905,6 +1040,13 @@
     $('cap').value = p.line.cap;
     $('width').value = p.line.width || 8;
     $('rx').value = p.line.rx || 4;
+
+    // Update Slider numerical badge values
+    $('valY1').textContent = p.line.y1;
+    $('valY2').textContent = p.line.y2;
+    $('valStroke').textContent = p.line.stroke;
+    $('valWidth').textContent = p.line.width || 8;
+    $('valRx').textContent = p.line.rx || 4;
 
     // Adapt layout label names dynamically based on orientation
     if (p.line.orientation === 'horizontal') {
@@ -1035,6 +1177,25 @@
       });
     });
 
+    // Theme selector change listener (Home & Studio)
+    document.querySelectorAll('.home-theme-select, .studio-theme-select').forEach(selector => {
+      selector.addEventListener('change', e => {
+        setThemeMode(e.target.value);
+      });
+    });
+
+    // Handle system color preference change dynamically
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      if (st.themeMode === 'system') {
+        applyTheme();
+      }
+    });
+
+    // Grid Background Toggle listener
+    $('gridToggle').onchange = e => {
+      $('svgCanvas').classList.toggle('grid-active', e.target.checked);
+    };
+
     // Navigation & Tab togglers
     $('newBtn').onclick = () => { addProject(); showPage('studio'); };
     $('enterStudioBtn').onclick = () => showPage('studio');
@@ -1117,7 +1278,8 @@
       render();
     };
 
-    [$('shape'), $('orientation'), $('color'), $('y1'), $('y2'), $('stroke'), $('cap'), $('width'), $('rx')].forEach(el => {
+    [$('shape'), $('orientation'), $('color'), $('y1'), $('y2'), $('stroke'), strokeEvent => {}, $('cap'), $('width'), $('rx')].forEach((el, index) => {
+      if (typeof el === 'function') return;
       el.addEventListener('input', () => {
         pushUndo();
         triggerUpdate();
