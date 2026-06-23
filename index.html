@@ -9,273 +9,256 @@
   *{box-sizing:border-box} html,body{height:100%} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:#101828}
   button,input,select,textarea,a{font:inherit} button{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;cursor:pointer} button:hover{box-shadow:var(--shadow)} .primary{background:var(--brand);color:#fff;border-color:var(--brand)} .ghost{background:#fff} .danger{color:#b42318;background:#fff5f5;border-color:#fecdca}
   .hidden{display:none!important}
-  .wrap{min-height:100%;display:grid;place-items:center;padding:28px}
-  .card{width:min(1060px,100%);background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border:1px solid rgba(208,213,221,.8);border-radius:28px;box-shadow:var(--shadow);padding:28px}
-  .hero{display:grid;gap:14px;justify-items:start;padding:8px 0 18px;border-bottom:1px solid #eaecf0}
-  h1{margin:0;font-size:46px;line-height:1;letter-spacing:-.05em} p{margin:0;color:var(--muted);max-width:70ch;line-height:1.55}
-  .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
-  .stat{background:#fff;border:1px solid #eaecf0;border-radius:18px;padding:14px 16px}.k{font-size:12px;color:var(--muted)} .v{font-size:18px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:18px}
-  .project{background:#fff;border:1px solid #eaecf0;border-radius:18px;padding:14px;display:grid;gap:10px}.project.active{background:var(--soft);border-color:#cfe0ff}.meta{font-size:12px;color:var(--muted);line-height:1.45}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-  .bookmark-link{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#0b4dd8;border:1px dashed #b6cdfd;background:#f8fbff;padding:10px 12px;border-radius:999px;cursor:grab;user-select:none}.bookmark-link:active{cursor:grabbing}
-  .editor{min-height:100vh;display:grid;grid-template-rows:auto 1fr}
+  .page{min-height:100vh;display:grid;place-items:center;padding:28px}
+  .home-card,.manager-card{width:min(1120px,100%);background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border:1px solid rgba(208,213,221,.8);border-radius:28px;box-shadow:var(--shadow)}
+  .home-card{padding:36px;display:grid;gap:16px;justify-items:center;text-align:center}
+  .home-card h1{margin:0;font-size:48px;line-height:1;letter-spacing:-.05em}.home-card p{margin:0;color:var(--muted);max-width:68ch;line-height:1.5}
+  .home-actions,.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center}
+  .bookmark-link{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#0b4dd8;border:1px dashed #b6cdfd;background:#f8fbff;padding:10px 14px;border-radius:999px;cursor:grab;user-select:none}.bookmark-link:active{cursor:grabbing}
+  .subtle{font-size:12px;color:var(--muted)}
+  .manager{min-height:100vh;display:grid;grid-template-rows:auto 1fr}
   .topbar{position:sticky;top:0;z-index:10;display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:10px 12px;background:rgba(244,247,251,.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(208,213,221,.8)}
   .brand{min-width:180px;display:grid;gap:2px}.brand strong{font-size:14px}.brand span,.tiny{font-size:12px;color:var(--muted)} .spacer{flex:1}
-  .main{display:grid;grid-template-columns:230px minmax(360px,1fr) 300px;gap:12px;padding:12px;align-items:start}
-  .panel{background:rgba(255,255,255,.94);border:1px solid rgba(208,213,221,.85);border-radius:24px;box-shadow:var(--shadow);overflow:hidden}
+  .main{display:grid;grid-template-columns:280px minmax(360px,1fr) 320px;gap:12px;padding:12px;align-items:start}
+  .panel{background:rgba(255,255,255,.96);border:1px solid rgba(208,213,221,.85);border-radius:24px;box-shadow:var(--shadow);overflow:hidden}
   .head{padding:14px;border-bottom:1px solid #eaecf0;display:flex;justify-content:space-between;align-items:center;gap:10px;background:linear-gradient(#fff,#fcfcfd)} .head h3{margin:0;font-size:14px}
   .body{padding:14px;display:grid;gap:12px}.scroll{max-height:calc(100vh - 92px);overflow:auto}
-  .list{display:grid;gap:8px}.item{padding:10px 12px;border:1px solid #eaecf0;border-radius:14px;background:#fff;display:flex;justify-content:space-between;gap:8px;align-items:center}.item.active{background:var(--soft);border-color:#cfe0ff}.item small{color:var(--muted)}
   .field{display:grid;gap:6px}.field label,.section{font-size:12px;color:var(--muted)} .field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff}.field textarea{min-height:90px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;resize:vertical}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .list{display:grid;gap:8px}.item{padding:10px 12px;border:1px solid #eaecf0;border-radius:14px;background:#fff;display:flex;justify-content:space-between;gap:8px;align-items:center}.item.active{background:var(--soft);border-color:#cfe0ff}.item small{color:var(--muted)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+  .p-card{background:#fff;border:1px solid #eaecf0;border-radius:18px;padding:14px;display:grid;gap:10px}.p-card.active{background:var(--soft);border-color:#cfe0ff}
+  .p-card .meta{font-size:12px;color:var(--muted);line-height:1.45}.mini{width:100%;height:auto;border:1px solid var(--line);border-radius:14px;background:#fff;aspect-ratio:16/5}
   svg{display:block;width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:20px}
   .stagebox{background:#fff;border:1px solid #eaecf0;border-radius:20px;padding:12px}
   .preview{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  @media (max-width:1050px){.main{grid-template-columns:1fr}.scroll{max-height:none}.preview{grid-template-columns:1fr}}
+  @media (max-width:1120px){.main{grid-template-columns:1fr}.scroll{max-height:none}.preview{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<div id="landing" class="wrap">
-  <div class="card">
-    <div class="hero">
-      <h1>bookmark bar divider</h1>
-      <p>Chỉnh một vertical divider đơn giản: màu, độ dài, độ rộng, độ bo đầu. Bấm Edit để mở SVG hiện tại, lưu snapshot để giữ lịch sử, và export/import JSON để mang project sang máy khác.</p>
-      <div class="row">
-        <button id="editBtn" class="primary">Edit</button>
-        <a id="bookmarkLink" class="bookmark-link" href="#" draggable="true" title="Drag this link to the bookmark bar">Drag to bookmark bar</a>
-      </div>
-    </div>
-    <div class="stats">
-      <div class="stat"><div class="k">Saved projects</div><div class="v" id="statProjects">0</div></div>
-      <div class="stat"><div class="k">Active project</div><div class="v" id="statActive">None</div></div>
-      <div class="stat"><div class="k">Snapshots</div><div class="v" id="statSnaps">0</div></div>
-    </div>
-    <div class="projects" id="projectCards"></div>
-    <div class="tiny" style="margin-top:14px">Lưu trên localStorage; JSON export là file lịch sử project thực sự.</div>
-  </div>
-</div>
 
-<div id="editor" class="editor hidden">
+<section id="homePage" class="page">
+  <div class="home-card">
+    <h1>bookmark bar divider</h1>
+    <p>Chỉ tạo divider đơn giản cho bookmark bar. Dùng trang quản lý project để chọn phiên trước khi vào editor.</p>
+    <div class="home-actions">
+      <button id="newBtn" class="primary">New Divider</button>
+      <button id="projectsBtn" class="ghost">Open Projects</button>
+    </div>
+    <a id="bookmarkLink" class="bookmark-link" href="#" draggable="true">Drag to bookmark bar</a>
+    <div class="subtle">Mục đích chính: tạo một link bookmark có favicon divider và URL lưu project/version.</div>
+  </div>
+</section>
+
+<section id="projectsPage" class="page hidden">
+  <div class="manager-card manager">
+    <div class="topbar">
+      <div class="brand"><strong>Projects</strong><span>Chọn project trước khi edit</span></div>
+      <button id="backHomeBtn" class="ghost">Home</button>
+      <button id="newFromProjectsBtn" class="primary">New Divider</button>
+      <div class="spacer"></div>
+      <button id="importBtn" class="ghost">Import JSON</button>
+      <input id="importInput" type="file" accept="application/json" class="hidden" />
+    </div>
+    <div class="main">
+      <aside class="panel scroll">
+        <div class="head"><h3>Project list</h3><span class="tiny" id="countLabel">0</span></div>
+        <div class="body">
+          <div class="field"><label>Search</label><input id="searchInput" placeholder="Type project name"></div>
+          <div class="list" id="projectList"></div>
+        </div>
+      </aside>
+
+      <section class="panel scroll">
+        <div class="head"><h3>Overview</h3><span class="tiny">Visual management</span></div>
+        <div class="body">
+          <div id="projectCards" class="card-grid"></div>
+        </div>
+      </section>
+
+      <aside class="panel scroll">
+        <div class="head"><h3>Selected</h3><span class="tiny">Version / share</span></div>
+        <div class="body">
+          <div class="field"><label>Project name</label><input id="nameInput"></div>
+          <div class="row"><button id="openEditBtn" class="primary">Edit</button><button id="dupBtn" class="ghost">Duplicate</button><button id="delBtn" class="danger">Delete</button></div>
+          <div class="section">Snapshots</div>
+          <div class="list" id="snapList"></div>
+          <div class="field"><label>Share / bookmark URL</label><textarea id="shareUrl" readonly></textarea></div>
+          <div class="row"><button id="copyUrlBtn" class="ghost">Copy URL</button><button id="exportJsonBtn" class="ghost">Export JSON</button></div>
+          <div class="subtle">The URL contains <code>?p=...</code> and <code>?v=...</code>.</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="editPage" class="manager hidden">
   <div class="topbar">
-    <div class="brand"><strong id="topName">bookmark bar divider</strong><span id="topMeta">SVG project editor</span></div>
-    <button id="backBtn" class="ghost">Back</button>
+    <div class="brand"><strong id="topName">bookmark bar divider</strong><span id="topMeta">Edit divider</span></div>
+    <button id="backProjectsBtn" class="ghost">Projects</button>
     <button id="saveSnapBtn" class="ghost">Save snapshot</button>
     <button id="saveBtn" class="primary">Save project</button>
-    <button id="exportJsonBtn" class="ghost">Export JSON</button>
-    <button id="importJsonBtn" class="ghost">Import JSON</button>
-    <input id="importJsonInput" type="file" accept="application/json" class="hidden">
+    <button id="exportJsonBtn2" class="ghost">Export JSON</button>
     <div class="spacer"></div>
     <button id="undoBtn" class="ghost">Undo</button>
     <button id="redoBtn" class="ghost">Redo</button>
-    <button id="delBtn" class="danger">Delete project</button>
   </div>
-
   <div class="main">
     <aside class="panel scroll">
-      <div class="head"><h3>Projects</h3><span class="tiny" id="projectCount">0</span></div>
+      <div class="head"><h3>Project</h3><span class="tiny" id="projectCount">0</span></div>
       <div class="body">
-        <div class="list" id="projectList"></div>
-        <div class="field"><label>Project name</label><input id="nameInput"></div>
-        <div class="row"><button id="newBtn" class="ghost">New</button><button id="dupBtn" class="ghost">Duplicate</button></div>
-        <div class="section">Snapshots</div>
-        <div class="list" id="snapList"></div>
+        <div class="field"><label>Project name</label><input id="editNameInput"></div>
+        <div class="section">Quick list</div>
+        <div class="list" id="editProjectList"></div>
       </div>
     </aside>
 
     <section class="panel scroll">
-      <div class="head"><h3>Divider</h3><span class="tiny">Click Edit to load SVG</span></div>
+      <div class="head"><h3>Divider</h3><span class="tiny">Vertical line only</span></div>
       <div class="body">
-        <div class="stagebox"><svg id="svg" viewBox="0 0 64 64" aria-label="bookmark divider svg"></svg></div>
+        <div class="stagebox"><svg id="svg" viewBox="0 0 64 64"></svg></div>
         <div class="preview">
-          <div class="stagebox"><div class="tiny">64×64 preview</div><svg id="pv64" viewBox="0 0 64 64"></svg></div>
-          <div class="stagebox"><div class="tiny">16×16 preview</div><svg id="pv16" viewBox="0 0 16 16"></svg></div>
+          <div class="stagebox"><div class="tiny">64×64</div><svg id="pv64" viewBox="0 0 64 64"></svg></div>
+          <div class="stagebox"><div class="tiny">16×16</div><svg id="pv16" viewBox="0 0 16 16"></svg></div>
         </div>
       </div>
     </section>
 
     <aside class="panel scroll">
-      <div class="head"><h3>Properties</h3><span class="tiny">Vertical line only</span></div>
+      <div class="head"><h3>Properties</h3><span class="tiny">Line settings</span></div>
       <div class="body">
         <div class="field"><label>Color</label><input id="color" type="color"></div>
         <div class="grid">
           <div class="field"><label>Top</label><input id="y1" type="range" min="0" max="64" step="1"></div>
           <div class="field"><label>Bottom</label><input id="y2" type="range" min="0" max="64" step="1"></div>
           <div class="field"><label>Width</label><input id="stroke" type="range" min="1" max="20" step="1"></div>
-          <div class="field"><label>Round cap</label><select id="cap"><option value="round">round</option><option value="butt">butt</option><option value="square">square</option></select></div>
+          <div class="field"><label>Cap</label><select id="cap"><option value="round">round</option><option value="butt">butt</option><option value="square">square</option></select></div>
         </div>
         <div class="field"><label>JSON</label><textarea id="json" spellcheck="false"></textarea></div>
         <div class="row"><button id="applyJsonBtn" class="ghost">Apply JSON</button><button id="copyJsonBtn" class="ghost">Copy JSON</button></div>
       </div>
     </aside>
   </div>
-</div>
+</section>
 
 <script>
 (() => {
-  const KEY='bbd_projects_min_v2', ACTIVE='bbd_active_min_v2';
+  const KEY='bbd_projects_min_v3', ACTIVE='bbd_active_min_v3';
   const $=id=>document.getElementById(id);
   const now=()=>new Date().toISOString();
   const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,8);
   const clone=v=>JSON.parse(JSON.stringify(v));
   const safe=s=>String(s||'project').toLowerCase().replace(/[^a-z0-9-_]+/g,'-').replace(/^-+|-+$/g,'')||'project';
+  const fmt=d=>new Date(d).toLocaleString();
+  const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 
-  const st={mode:'landing',projects:[],active:null,undo:[],redo:[]};
+  const st={page:'home',projects:[],active:null,undo:[],redo:[],selected:null};
   const ui={
-    landing:$('landing'), editor:$('editor'), projectCards:$('projectCards'), statProjects:$('statProjects'), statActive:$('statActive'), statSnaps:$('statSnaps'),
-    editBtn:$('editBtn'), bookmarkLink:$('bookmarkLink'), backBtn:$('backBtn'), saveSnapBtn:$('saveSnapBtn'), saveBtn:$('saveBtn'), exportJsonBtn:$('exportJsonBtn'), importJsonBtn:$('importJsonBtn'), importJsonInput:$('importJsonInput'),
-    undoBtn:$('undoBtn'), redoBtn:$('redoBtn'), delBtn:$('delBtn'), newBtn:$('newBtn'), dupBtn:$('dupBtn'),
-    projectList:$('projectList'), snapList:$('snapList'), projectCount:$('projectCount'), nameInput:$('nameInput'), topName:$('topName'), topMeta:$('topMeta'),
-    svg:$('svg'), pv64:$('pv64'), pv16:$('pv16'), color:$('color'), y1:$('y1'), y2:$('y2'), stroke:$('stroke'), cap:$('cap'), json:$('json'), applyJsonBtn:$('applyJsonBtn'), copyJsonBtn:$('copyJsonBtn')
+    homePage:$('homePage'), projectsPage:$('projectsPage'), editPage:$('editPage'), bookmarkLink:$('bookmarkLink'),
+    newBtn:$('newBtn'), projectsBtn:$('projectsBtn'), backHomeBtn:$('backHomeBtn'), newFromProjectsBtn:$('newFromProjectsBtn'), importBtn:$('importBtn'), importInput:$('importInput'),
+    projectList:$('projectList'), projectCards:$('projectCards'), countLabel:$('countLabel'), searchInput:$('searchInput'), nameInput:$('nameInput'), shareUrl:$('shareUrl'),
+    openEditBtn:$('openEditBtn'), dupBtn:$('dupBtn'), delBtn:$('delBtn'), snapList:$('snapList'), copyUrlBtn:$('copyUrlBtn'), exportJsonBtn:$('exportJsonBtn'),
+    topName:$('topName'), topMeta:$('topMeta'), backProjectsBtn:$('backProjectsBtn'), saveSnapBtn:$('saveSnapBtn'), saveBtn:$('saveBtn'), exportJsonBtn2:$('exportJsonBtn2'), undoBtn:$('undoBtn'), redoBtn:$('redoBtn'),
+    projectCount:$('projectCount'), editNameInput:$('editNameInput'), editProjectList:$('editProjectList'), svg:$('svg'), pv64:$('pv64'), pv16:$('pv16'),
+    color:$('color'), y1:$('y1'), y2:$('y2'), stroke:$('stroke'), cap:$('cap'), json:$('json'), applyJsonBtn:$('applyJsonBtn'), copyJsonBtn:$('copyJsonBtn')
   };
 
-  const def=()=>({
-    id:uid(), name:'bookmark bar divider', createdAt:now(), updatedAt:now(),
-    line:{color:'#111111', y1:6, y2:58, stroke:4, cap:'round'}, revisions:[]
-  });
+  const def=()=>({id:uid(),name:'bookmark bar divider',createdAt:now(),updatedAt:now(),line:{color:'#111111',y1:6,y2:58,stroke:4,cap:'round'},revisions:[]});
+  const load=()=>{ try{ st.projects=JSON.parse(localStorage.getItem(KEY)||'[]') }catch{ st.projects=[] } if(!st.projects.length) st.projects=[def()]; st.projects=st.projects.map(p=>({ ...def(), ...p, line:{...def().line,...(p.line||{})}, revisions:p.revisions||[] })); st.active=st.projects.some(p=>p.id===localStorage.getItem(ACTIVE))?localStorage.getItem(ACTIVE):st.projects[0].id; };
+  const save=()=>{ localStorage.setItem(KEY,JSON.stringify(st.projects)); localStorage.setItem(ACTIVE,st.active); updateBookmarkLink(); renderHome(); };
+  const cur=()=>st.projects.find(p=>p.id===st.active)||st.projects[0];
+  const setActive=id=>{ st.active=id; localStorage.setItem(ACTIVE,id); sync(); render(); save(); };
+  const pushUndo=()=>{ st.undo.push(JSON.stringify(cur())); if(st.undo.length>40) st.undo.shift(); st.redo=[]; };
+  const snap=(note='snapshot')=>{ const p=cur(); p.revisions.unshift({id:uid(),at:now(),note,line:clone(p.line)}); p.updatedAt=now(); };
 
-  function load(){
-    try{ st.projects=JSON.parse(localStorage.getItem(KEY)||'[]') }catch{ st.projects=[] }
-    if(!st.projects.length) st.projects=[def()];
-    st.projects=st.projects.map(p=>({ ...def(), ...p, line:{...def().line, ...(p.line||{})}, revisions:p.revisions||[] }));
-    st.active=st.projects.some(p=>p.id===localStorage.getItem(ACTIVE))?localStorage.getItem(ACTIVE):st.projects[0].id;
-  }
-  function save(){ localStorage.setItem(KEY, JSON.stringify(st.projects)); localStorage.setItem(ACTIVE, st.active); renderLanding(); updateBookmarkLink(); }
-  function cur(){ return st.projects.find(p=>p.id===st.active) || st.projects[0]; }
-  function setActive(id){ st.active=id; localStorage.setItem(ACTIVE,id); syncUI(); render(); save(); }
-  function snap(note='snapshot'){ const p=cur(); p.revisions.unshift({id:uid(),at:now(),note,line:clone(p.line)}); p.updatedAt=now(); }
-  function pushUndo(){ st.undo.push(JSON.stringify(cur())); if(st.undo.length>50) st.undo.shift(); st.redo=[]; }
+  const versionToken=()=>cur().revisions[0]?.id || cur().updatedAt;
+  const shareUrl=()=>{ const u=new URL(location.href); u.searchParams.set('p',cur().id); u.searchParams.set('v',versionToken()); return u.toString(); };
+  const updateBookmarkLink=()=>{ const url=shareUrl(); ui.bookmarkLink.href=url; ui.bookmarkLink.dataset.url=url; ui.shareUrl.value=url; };
 
-  function versionToken(){
-    const p=cur();
-    const last=p.revisions[0];
-    return last ? last.id : p.updatedAt;
-  }
-  function buildShareUrl(){
-    const u=new URL(location.href);
-    const p=cur();
-    u.searchParams.set('p', p.id);
-    u.searchParams.set('v', versionToken());
-    return u.toString();
-  }
-  function updateBookmarkLink(){
-    const url=buildShareUrl();
-    ui.bookmarkLink.href=url;
-    ui.bookmarkLink.textContent='Drag to bookmark bar';
-    ui.bookmarkLink.dataset.url=url;
+  function show(page){ st.page=page; ui.homePage.classList.toggle('hidden',page!=='home'); ui.projectsPage.classList.toggle('hidden',page!=='projects'); ui.editPage.classList.toggle('hidden',page!=='edit'); }
+
+  function renderHome(){ ui.projectCards.innerHTML=st.projects.map(p=>`
+    <div class="p-card ${p.id===st.active?'active':''}">
+      <svg class="mini" viewBox="0 0 64 20"><line x1="32" y1="2" x2="32" y2="18" stroke="${p.line.color}" stroke-width="${Math.max(1,p.line.stroke/2)}" stroke-linecap="${p.line.cap}"/></svg>
+      <div><b>${esc(p.name)}</b><div class="meta">${p.revisions.length} snapshots · ${fmt(p.updatedAt||p.createdAt)}</div></div>
+      <div class="row"><button data-home-open="${p.id}" class="${p.id===st.active?'primary':'ghost'}">Open</button><button data-home-edit="${p.id}" class="ghost">Edit</button></div>
+    </div>`).join('');
+    ui.statProjects.textContent=st.projects.length; ui.statActive.textContent=cur().name; ui.statSnaps.textContent=cur().revisions.length;
   }
 
-  function renderLanding(){
-    ui.statProjects.textContent=st.projects.length;
-    ui.statActive.textContent=cur()?.name || 'None';
-    ui.statSnaps.textContent=cur()?.revisions?.length || 0;
-    ui.projectCards.innerHTML=st.projects.map(p=>`<div class="project ${p.id===st.active?'active':''}"><div><div><b>${escapeHtml(p.name)}</b></div><div class="meta">${fmt(p.updatedAt||p.createdAt)} · ${p.revisions.length} snapshots</div></div><div class="row"><button data-open="${p.id}" class="${p.id===st.active?'primary':'ghost'}">${p.id===st.active?'Open':'Edit'}</button><button data-dup="${p.id}" class="ghost">Duplicate</button><button data-json="${p.id}" class="ghost">JSON</button></div></div>`).join('');
-  }
-  function fmt(d){ return new Date(d).toLocaleString() }
-  function escapeHtml(s){ return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;') }
-
-  function syncUI(){
-    const p=cur(); if(!p) return;
-    ui.projectCount.textContent=st.projects.length;
-    ui.nameInput.value=p.name; ui.topName.textContent=p.name; ui.topMeta.textContent='Project history in localStorage / JSON';
-    ui.color.value=p.line.color; ui.y1.value=p.line.y1; ui.y2.value=p.line.y2; ui.stroke.value=p.line.stroke; ui.cap.value=p.line.cap;
-    ui.json.value=JSON.stringify({...p, shareUrl:buildShareUrl()},null,2);
-    renderProjectList(); renderSnapList(); updateBookmarkLink();
-  }
-  function renderProjectList(){
-    ui.projectList.innerHTML=st.projects.map(p=>`<div class="item ${p.id===st.active?'active':''}"><div><b>${escapeHtml(p.name)}</b><div><small>${p.revisions.length} snapshots</small></div></div><button data-switch="${p.id}" class="${p.id===st.active?'primary':'ghost'}">${p.id===st.active?'Open':'Switch'}</button></div>`).join('');
-  }
-  function renderSnapList(){
-    const p=cur(); ui.snapList.innerHTML=p.revisions.length?p.revisions.map((r,i)=>`<div class="item"><div><b>${escapeHtml(r.note||'snapshot')}</b><div><small>${fmt(r.at)}</small></div></div><button data-restore="${i}" class="ghost">Restore</button></div>`).join(''):'<div class="tiny">No snapshots yet.</div>';
+  function renderProjectsPage(){
+    const q=(ui.searchInput.value||'').toLowerCase().trim();
+    const list=st.projects.filter(p=>p.name.toLowerCase().includes(q));
+    ui.countLabel.textContent=`${list.length}/${st.projects.length}`;
+    ui.projectList.innerHTML=list.map(p=>`<div class="item ${p.id===st.active?'active':''}"><div><b>${esc(p.name)}</b><div><small>${p.revisions.length} snapshots</small></div></div><button data-switch="${p.id}" class="${p.id===st.active?'primary':'ghost'}">Edit</button></div>`).join('') || '<div class="tiny">No projects.</div>';
+    ui.projectCards.innerHTML=list.map(p=>`
+      <div class="p-card ${p.id===st.active?'active':''}">
+        <svg class="mini" viewBox="0 0 64 20"><line x1="32" y1="2" x2="32" y2="18" stroke="${p.line.color}" stroke-width="${Math.max(1,p.line.stroke/2)}" stroke-linecap="${p.line.cap}"/></svg>
+        <div><b>${esc(p.name)}</b><div class="meta">Updated ${fmt(p.updatedAt||p.createdAt)}</div></div>
+        <div class="row"><button data-card-open="${p.id}" class="${p.id===st.active?'primary':'ghost'}">Open</button><button data-card-edit="${p.id}" class="ghost">Edit</button><button data-card-dup="${p.id}" class="ghost">Duplicate</button><button data-card-del="${p.id}" class="danger">Delete</button></div>
+      </div>`).join('');
   }
 
-  function renderLine(){
-    const p=cur(); const {color,y1,y2,stroke,cap}=p.line;
-    const line=`<line x1="32" y1="${y1}" x2="32" y2="${y2}" stroke="${color}" stroke-width="${stroke}" stroke-linecap="${cap}"/>`;
-    ui.svg.innerHTML=line; ui.pv64.innerHTML=line; ui.pv16.innerHTML=`<line x1="8" y1="${Math.max(0, y1/4)}" x2="8" y2="${Math.min(16, y2/4)}" stroke="${color}" stroke-width="${Math.max(1,stroke/4)}" stroke-linecap="${cap}"/>`;
-    ui.json.value=JSON.stringify({...p, shareUrl:buildShareUrl()},null,2);
-    renderLanding();
-  }
-  function render(){ renderLine(); syncUI(); save(); }
+  function renderSnapshots(){ ui.snapList.innerHTML=cur().revisions.map((r,i)=>`<div class="item"><div><b>${esc(r.note||'snapshot')}</b><div><small>${fmt(r.at)}</small></div></div><button data-restore="${i}" class="ghost">Restore</button></div>`).join('') || '<div class="tiny">No snapshots yet.</div>'; }
+  function renderProjectSidebar(){ ui.projectCount.textContent=st.projects.length; ui.editNameInput.value=cur().name; ui.editProjectList.innerHTML=st.projects.map(p=>`<div class="item ${p.id===st.active?'active':''}"><div><b>${esc(p.name)}</b><div><small>${p.revisions.length} snapshots</small></div></div><button data-edit-switch="${p.id}" class="${p.id===st.active?'primary':'ghost'}">Open</button></div>`).join(''); }
+  function renderLine(){ const p=cur(); const {color,y1,y2,stroke,cap}=p.line; const line=`<line x1="32" y1="${y1}" x2="32" y2="${y2}" stroke="${color}" stroke-width="${stroke}" stroke-linecap="${cap}"/>`; ui.svg.innerHTML=line; ui.pv64.innerHTML=line; ui.pv16.innerHTML=`<line x1="8" y1="${Math.max(0,y1/4)}" x2="8" y2="${Math.min(16,y2/4)}" stroke="${color}" stroke-width="${Math.max(1,stroke/4)}" stroke-linecap="${cap}"/>`; ui.json.value=JSON.stringify({...p,shareUrl:shareUrl()},null,2); }
+  function sync(){ const p=cur(); ui.topName.textContent=p.name; ui.topMeta.textContent='Edit divider'; ui.nameInput.value=p.name; ui.editNameInput.value=p.name; ui.color.value=p.line.color; ui.y1.value=p.line.y1; ui.y2.value=p.line.y2; ui.stroke.value=p.line.stroke; ui.cap.value=p.line.cap; ui.shareUrl.value=shareUrl(); renderProjectSidebar(); renderSnapshots(); renderProjectsPage(); updateBookmarkLink(); ui.countLabel.textContent=st.projects.length; }
+  function render(){ renderLine(); sync(); renderHome(); save(); }
 
-  function addProject(){ const p=def(); st.projects.unshift(p); setActive(p.id); openEditor(); }
-  function duplicateProject(id){ const src=st.projects.find(p=>p.id===id); if(!src) return; const p=clone(src); p.id=uid(); p.name=src.name+' copy'; p.createdAt=now(); p.updatedAt=now(); p.revisions=[]; st.projects.unshift(p); setActive(p.id); openEditor(); }
-  function deleteProject(){ const p=cur(); if(!confirm(`Delete project "${p.name}"?`)) return; st.projects=st.projects.filter(x=>x.id!==p.id); if(!st.projects.length) st.projects=[def()]; st.active=st.projects[0].id; openLanding(); save(); }
-  function restoreSnapshot(i){ const p=cur(); const s=p.revisions[i]; if(!s) return; pushUndo(); p.line=clone(s.line); p.updatedAt=now(); render(); }
+  function openHome(){ show('home'); renderHome(); }
+  function openProjects(){ show('projects'); sync(); renderProjectsPage(); }
+  function openEdit(id=st.active){ setActive(id); show('edit'); sync(); render(); }
 
-  function openEditor(){ st.mode='editor'; ui.landing.classList.add('hidden'); ui.editor.classList.remove('hidden'); render(); }
-  function openLanding(){ st.mode='landing'; ui.editor.classList.add('hidden'); ui.landing.classList.remove('hidden'); renderLanding(); updateBookmarkLink(); }
-
-  function exportJson(project=cur()){
-    const blob=new Blob([JSON.stringify({...project, shareUrl:buildShareUrl()},null,2)],{type:'application/json'});
-    const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=safe(project.name)+'.json'; a.click();
-  }
-  function importJson(file){ const r=new FileReader(); r.onload=()=>{ try{ const p=JSON.parse(r.result); p.id=p.id||uid(); p.name=p.name||'imported project'; p.line={...def().line,...(p.line||{})}; p.revisions=p.revisions||[]; const i=st.projects.findIndex(x=>x.id===p.id); if(i>=0) st.projects[i]=p; else st.projects.unshift(p); setActive(p.id); openEditor(); }catch(e){ alert('Invalid JSON'); } }; r.readAsText(file); }
+  function addProject(){ const p=def(); st.projects.unshift(p); setActive(p.id); openEdit(p.id); }
+  function duplicateProject(id){ const src=st.projects.find(p=>p.id===id); if(!src) return; const p=clone(src); p.id=uid(); p.name=src.name+' copy'; p.createdAt=now(); p.updatedAt=now(); p.revisions=[]; st.projects.unshift(p); setActive(p.id); openEdit(p.id); }
+  function deleteProject(id=st.active){ const idx=st.projects.findIndex(p=>p.id===id); if(idx<0) return; if(!confirm(`Delete project "${st.projects[idx].name}"?`)) return; st.projects.splice(idx,1); if(!st.projects.length) st.projects=[def()]; st.active=st.projects[0].id; openProjects(); save(); }
+  function restoreSnapshot(i){ const p=cur(), s=p.revisions[i]; if(!s) return; pushUndo(); p.line=clone(s.line); p.updatedAt=now(); render(); }
+  function exportJson(project=cur()){ const blob=new Blob([JSON.stringify({...project,shareUrl:shareUrl()},null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=safe(project.name)+'.json'; a.click(); }
+  function importJson(file){ const r=new FileReader(); r.onload=()=>{ try{ const p=JSON.parse(r.result); p.id=p.id||uid(); p.name=p.name||'imported project'; p.line={...def().line,...(p.line||{})}; p.revisions=p.revisions||[]; const i=st.projects.findIndex(x=>x.id===p.id); if(i>=0) st.projects[i]=p; else st.projects.unshift(p); setActive(p.id); openProjects(); }catch{ alert('Invalid JSON'); } }; r.readAsText(file); }
 
   function bind(){
-    ui.editBtn.onclick=()=>openEditor(st.active);
-    ui.backBtn.onclick=()=>openLanding();
-    ui.saveSnapBtn.onclick=()=>{ snap('snapshot'); render(); };
-    ui.saveBtn.onclick=()=>{ cur().updatedAt=now(); save(); alert('Saved in browser storage.'); };
-    ui.exportJsonBtn.onclick=()=>exportJson();
-    ui.importJsonBtn.onclick=()=>ui.importJsonInput.click();
-    ui.importJsonInput.onchange=e=>{ const f=e.target.files[0]; e.target.value=''; if(f) importJson(f); };
-    ui.undoBtn.onclick=()=>{ if(!st.undo.length) return; st.redo.push(JSON.stringify(cur())); st.projects[st.projects.findIndex(p=>p.id===st.active)] = JSON.parse(st.undo.pop()); render(); };
-    ui.redoBtn.onclick=()=>{ if(!st.redo.length) return; st.undo.push(JSON.stringify(cur())); st.projects[st.projects.findIndex(p=>p.id===st.active)] = JSON.parse(st.redo.pop()); render(); };
-    ui.delBtn.onclick=()=>deleteProject();
-    ui.newBtn.onclick=()=>addProject();
-    ui.dupBtn.onclick=()=>duplicateProject(st.active);
+    ui.newBtn.onclick=addProject; ui.newFromProjectsBtn.onclick=addProject; ui.projectsBtn.onclick=openProjects; ui.backHomeBtn.onclick=openHome; ui.backProjectsBtn.onclick=openProjects;
+    ui.importBtn.onclick=()=>ui.importInput.click(); ui.importInput.onchange=e=>{ const f=e.target.files[0]; e.target.value=''; if(f) importJson(f); };
+    ui.editBtn.onclick=()=>openEdit(st.active);
+    ui.bookmarkLink.addEventListener('dragstart',e=>{ const u=shareUrl(); e.dataTransfer.effectAllowed='copy'; e.dataTransfer.setData('text/uri-list',u); e.dataTransfer.setData('text/plain',u); });
+    ui.bookmarkLink.addEventListener('click',e=>{ e.preventDefault(); navigator.clipboard.writeText(shareUrl()); alert('Link copied. Drag it to the bookmark bar or create a bookmark from it.'); });
 
-    ui.projectCards.addEventListener('click',e=>{ const o=e.target.closest('[data-open]'); const d=e.target.closest('[data-dup]'); const j=e.target.closest('[data-json]'); if(o) setActive(o.dataset.open),openEditor(); if(d) duplicateProject(d.dataset.dup); if(j) exportJson(st.projects.find(x=>x.id===j.dataset.json)); });
-    ui.projectList.addEventListener('click',e=>{ const s=e.target.closest('[data-switch]'); if(s) setActive(s.dataset.switch),openEditor(); });
+    ui.projectCards.addEventListener('click',e=>{
+      const o=e.target.closest('[data-home-open]'), ed=e.target.closest('[data-home-edit]'), d=e.target.closest('[data-home-dup]'), del=e.target.closest('[data-home-del]');
+      if(o) setActive(o.dataset.homeOpen), openProjects();
+      if(ed) openEdit(ed.dataset.homeEdit);
+      if(d) duplicateProject(d.dataset.homeDup);
+      if(del) deleteProject(del.dataset.homeDel);
+    });
+    ui.projectList.addEventListener('click',e=>{ const s=e.target.closest('[data-switch]'); if(s) openEdit(s.dataset.switch); });
+    ui.editProjectList.addEventListener('click',e=>{ const s=e.target.closest('[data-edit-switch]'); if(s) openEdit(s.dataset.editSwitch); });
     ui.snapList.addEventListener('click',e=>{ const r=e.target.closest('[data-restore]'); if(r && confirm('Restore this snapshot?')) restoreSnapshot(+r.dataset.restore); });
 
     [ui.color,ui.y1,ui.y2,ui.stroke,ui.cap].forEach(el=>el.addEventListener('input',()=>{ const p=cur(); p.line.color=ui.color.value; p.line.y1=+ui.y1.value; p.line.y2=+ui.y2.value; p.line.stroke=+ui.stroke.value; p.line.cap=ui.cap.value; p.updatedAt=now(); render(); }));
     ui.nameInput.addEventListener('input',()=>{ cur().name=ui.nameInput.value.trim()||'Untitled project'; cur().updatedAt=now(); render(); });
-    ui.applyJsonBtn.onclick=()=>{ try{ const p=JSON.parse(ui.json.value); p.id=p.id||uid(); p.line={...def().line,...(p.line||{})}; p.revisions=p.revisions||[]; const i=st.projects.findIndex(x=>x.id===st.active); st.projects[i]=p; setActive(p.id); render(); }catch{ alert('Invalid JSON'); } };
+    ui.editNameInput.addEventListener('input',()=>{ cur().name=ui.editNameInput.value.trim()||'Untitled project'; cur().updatedAt=now(); render(); });
+    ui.saveSnapBtn.onclick=()=>{ snap('snapshot'); render(); };
+    ui.saveBtn.onclick=()=>{ cur().updatedAt=now(); save(); alert('Saved.'); };
+    ui.exportJsonBtn.onclick=()=>exportJson(); ui.exportJsonBtn2.onclick=()=>exportJson();
+    ui.copyUrlBtn.onclick=async()=>{ await navigator.clipboard.writeText(shareUrl()); alert('Copied URL'); };
+    ui.delBtn.onclick=()=>deleteProject();
+    ui.dupBtn.onclick=()=>duplicateProject(st.active);
+    ui.undoBtn.onclick=()=>{ if(!st.undo.length) return; st.redo.push(JSON.stringify(cur())); st.projects[st.projects.findIndex(p=>p.id===st.active)] = JSON.parse(st.undo.pop()); render(); };
+    ui.redoBtn.onclick=()=>{ if(!st.redo.length) return; st.undo.push(JSON.stringify(cur())); st.projects[st.projects.findIndex(p=>p.id===st.active)] = JSON.parse(st.redo.pop()); render(); };
+    ui.searchInput.addEventListener('input',renderProjectsPage);
+    ui.applyJsonBtn.onclick=()=>{ try{ const p=JSON.parse(ui.json.value); p.id=p.id||uid(); p.line={...def().line,...(p.line||{})}; p.revisions=p.revisions||[]; const i=st.projects.findIndex(x=>x.id===st.active); st.projects[i]=p; setActive(p.id); openEdit(p.id); }catch{ alert('Invalid JSON'); } };
     ui.copyJsonBtn.onclick=async()=>{ await navigator.clipboard.writeText(ui.json.value); alert('Copied JSON'); };
+    ui.json.addEventListener('focus',()=>ui.json.select());
 
-    ui.bookmarkLink.addEventListener('dragstart', e => {
-      const url = ui.bookmarkLink.dataset.url || buildShareUrl();
-      e.dataTransfer.effectAllowed = 'copy';
-      e.dataTransfer.setData('text/uri-list', url);
-      e.dataTransfer.setData('text/plain', url);
+    $('projectsPage').addEventListener('click',e=>{
+      const o=e.target.closest('[data-card-open]'), ed=e.target.closest('[data-card-edit]'), d=e.target.closest('[data-card-dup]'), del=e.target.closest('[data-card-del]');
+      if(o) setActive(o.dataset.cardOpen), openProjects();
+      if(ed) openEdit(ed.dataset.cardEdit);
+      if(d) duplicateProject(d.dataset.cardDup);
+      if(del) deleteProject(del.dataset.cardDel);
     });
-    ui.bookmarkLink.addEventListener('click', e => { e.preventDefault(); navigator.clipboard.writeText(ui.bookmarkLink.dataset.url || buildShareUrl()); alert('Link copied. Drag this link to the bookmark bar or paste it into a bookmark.'); });
   }
 
-  function checkVersionInLink(){
-    const u=new URL(location.href);
-    const p=u.searchParams.get('p');
-    const v=u.searchParams.get('v');
-    return {p,v,hasVersion:!!v};
-  }
-
-  function maybeRestoreFromUrl(){
-    const u=new URL(location.href);
-    const pId=u.searchParams.get('p');
-    const v=u.searchParams.get('v');
-    if(!pId) return;
-    const found=st.projects.find(p=>p.id===pId);
-    if(found) st.active=pId;
-    // version in URL is preserved for sharing/bookmarking; current app stores snapshots locally.
-    if(found && v){
-      const snap = found.revisions.find(r => r.id === v);
-      if (snap) found.line = clone(snap.line);
-    }
-  }
-
-  function init(){
-    load();
-    maybeRestoreFromUrl();
-    bind();
-    renderLanding();
-    openLanding();
-    const info = checkVersionInLink();
-    if (info.hasVersion) {
-      ui.topMeta.textContent = `Version in URL: ${info.v}`;
-    }
-    save();
-  }
+  function init(){ load(); bind(); if(new URL(location.href).searchParams.get('p')){ const pid=new URL(location.href).searchParams.get('p'); const found=st.projects.find(x=>x.id===pid); if(found) st.active=pid; } openHome(); updateBookmarkLink(); save(); }
   init();
 })();
 </script>
