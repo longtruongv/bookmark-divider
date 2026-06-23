@@ -93,12 +93,10 @@
   .btn-danger:hover { background: rgba(244, 63, 94, 0.15); border-color: rgba(244, 63, 94, 0.3); }
   .hidden { display: none !important; }
 
-  /* Tab switching layout */
   .segmented-control { display: inline-flex; background: var(--segmented-bg); padding: 4px; border-radius: var(--radius-md); border: 1px solid var(--panel-border); }
   .segmented-control button { border: none; background: transparent; border-radius: 10px; padding: 6px 16px; font-size: 13px; font-weight: 700; color: var(--text-muted); }
   .segmented-control button.active { background: var(--button-bg); color: var(--brand-pink); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
 
-  /* Premium Language & Theme Selector Controls */
   .lang-selector {
     background: var(--button-bg);
     border: 1px solid var(--panel-border);
@@ -109,12 +107,8 @@
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
   }
-  .lang-selector:hover {
-    border-color: var(--brand-pink);
-    background: var(--button-bg);
-  }
+  .lang-selector:hover { border-color: var(--brand-pink); background: var(--button-bg); }
 
-  /* Sliders value display */
   .val-badge {
     font-size: 11px;
     font-weight: 700;
@@ -126,7 +120,6 @@
 
   .page { min-height: 100vh; display: grid; place-items: center; padding: 24px; box-sizing: border-box; }
   
-  /* Home Landing card styling */
   .home-card { 
     width: min(680px, 100%); 
     background: var(--panel-bg); 
@@ -166,10 +159,8 @@
     box-shadow: 0 15px 30px rgba(168, 85, 247, 0.35);
     border-color: rgba(255, 255, 255, 0.5);
   }
-  .bookmark-link:active {
-    cursor: grabbing;
-    transform: translateY(1px);
-  }
+  .bookmark-link:active { cursor: grabbing; transform: translateY(1px); }
+  
   .bookmark-icon-preview {
     display: inline-flex;
     align-items: center;
@@ -181,18 +172,11 @@
     padding: 4px;
     backdrop-filter: blur(4px);
   }
-  .bookmark-icon-preview svg {
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: transparent;
-    border-radius: 0;
-  }
+  .bookmark-icon-preview svg { width: 100%; height: 100%; border: none; background: transparent; border-radius: 0; }
   
   .home-actions, .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: center; width: 100%; }
   .subtle { font-size: 13px; color: var(--text-muted); opacity: 0.8; line-height: 1.5; }
 
-  /* Elegant Studio Layout (Merged Editor + Projects Manager) */
   .studio { min-height: 100vh; display: grid; grid-template-rows: auto 1fr; }
   .topbar { 
     position: sticky; 
@@ -212,88 +196,72 @@
   .brand span, .tiny { font-size: 12px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
   .spacer { flex: 1; }
   
-  .main-container { display: grid; grid-template-columns: 290px minmax(360px, 1fr) 330px; gap: 16px; padding: 16px; align-items: start; height: calc(100vh - 75px); box-sizing: border-box; }
+  .main-container { display: grid; grid-template-columns: 310px minmax(360px, 1fr) 330px; gap: 16px; padding: 16px; align-items: start; height: calc(100vh - 75px); box-sizing: border-box; }
   .panel { background: var(--panel-bg); backdrop-filter: blur(12px); border: 1px solid var(--panel-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-premium); overflow: hidden; display: flex; flex-direction: column; height: 100%; }
   .head { padding: 16px 20px; border-bottom: 1px solid var(--panel-border); display: flex; justify-content: space-between; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.05); }
   .head h3 { margin: 0; font-size: 13px; font-weight: 800; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.08em; }
   .body { padding: 20px; display: grid; gap: 18px; overflow-y: auto; flex: 1; }
   .scroll { overflow-y: auto; }
   
-  /* Modern Form Controls */
   .field { display: grid; gap: 6px; }
   .field label, .section-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
   .field input, .field select, .field textarea { width: 100%; border: 1px solid var(--input-border); border-radius: var(--radius-md); padding: 11px 14px; background: var(--input-bg); color: var(--text-primary); transition: var(--transition); }
   .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--brand-pink); background: var(--button-bg); box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.15); }
   .field textarea { min-height: 80px; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; resize: vertical; }
   
-  /* Beautiful Sidebar List Cards */
   .list { display: grid; gap: 10px; }
   .item { padding: 12px 16px; border: 1px solid var(--panel-border); border-radius: var(--radius-md); background: var(--item-bg); display: flex; justify-content: space-between; gap: 12px; align-items: center; cursor: pointer; }
   .item:hover { border-color: var(--brand-pink); background: var(--button-bg); }
   .item.active { background: var(--item-active-bg); border-color: var(--brand-pink); }
   .item small { color: var(--text-muted); font-size: 11px; opacity: 0.8; }
-  
-  .p-card { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--panel-border); border-radius: var(--radius-md); padding: 14px; display: grid; gap: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.01); }
-  .p-card.active { background: var(--item-active-bg); border-color: var(--brand-pink); }
-  .p-card .meta { font-size: 12px; color: var(--text-muted); opacity: 0.8; }
-  .mini-stage { width: 100%; height: auto; border: 1px solid var(--panel-border); border-radius: var(--radius-md); background: var(--svg-canvas-bg); aspect-ratio: 16/5; padding: 4px; display: flex; align-items: center; justify-content: center; }
-  
-  /* Icon SVG mặc định: trong suốt */
-  svg {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background: transparent !important;
-    border: 0 !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    flex: 0 0 auto;
-    vertical-align: middle;
-  }
-  
-  /* SVG canvas / preview lớn */
-  #svgCanvas {
-    display: block;
-    width: 100%;
-    height: auto;
-    background: var(--svg-canvas-bg);
-    border: 1px solid var(--panel-border);
-    border-radius: var(--radius-lg);
-    box-shadow: inset 0 2px 8px rgba(0,0,0,0.04);
-  }
-  
-  #homeLogoSvg,
-  #btnPreviewSvg,
-  #studioBtnPreviewSvg,
-  #pv16,
-  #pv32 {
-    display: block;
-    width: 100%;
-    height: auto;
-    background: transparent;
-    border: 0;
-    box-shadow: none;
-  }
-  
-  /* Grid Background Support */
-  #svgCanvas {
-    background: var(--svg-canvas-bg);
-    transition: var(--transition), background-image 0s;
-  }
-  #svgCanvas.grid-active {
-    background-image: radial-gradient(rgba(168, 85, 247, 0.18) 1px, transparent 1px);
-    background-size: 8px 8px;
-  }
 
-  .home-actions button svg,
-  .topbar button svg,
-  .segmented-control button svg {
-    width: 16px;
-    height: 16px;
+  /* Draggable Quick Bookmark drag button styling */
+  .quick-drag-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    color: var(--text-muted);
+    border: 1px solid var(--panel-border);
+    background: var(--button-bg);
+    cursor: grab;
+    transition: var(--transition);
   }
+  .quick-drag-btn:hover {
+    color: #fff;
+    background: var(--brand-gradient);
+    border-color: transparent;
+    box-shadow: 0 4px 10px rgba(249, 115, 22, 0.25);
+  }
+  .quick-drag-btn:active {
+    cursor: grabbing;
+  }
+  .quick-drag-btn svg {
+    width: 15px;
+    height: 15px;
+    stroke: currentColor;
+    fill: none;
+  }
+  
+  svg { display: inline-block; width: 16px; height: 16px; background: transparent !important; border: 0 !important; box-shadow: none !important; border-radius: 0 !important; flex: 0 0 auto; vertical-align: middle; }
+  
+  #svgCanvas { display: block; width: 100%; height: auto; background: var(--svg-canvas-bg); border: 1px solid var(--panel-border); border-radius: var(--radius-lg); box-shadow: inset 0 2px 8px rgba(0,0,0,0.04); transition: var(--transition), background-image 0s; }
+  #svgCanvas.grid-active { background-image: radial-gradient(rgba(168, 85, 247, 0.18) 1px, transparent 1px); background-size: 8px 8px; }
+  
+  #homeLogoSvg, #btnPreviewSvg, #studioBtnPreviewSvg, #pv16, #pv32 { display: block; width: 100%; height: auto; background: transparent; border: 0; box-shadow: none; }
   
   .stagebox { background: var(--stage-box-bg); border: 1px solid var(--panel-border); border-radius: var(--radius-lg); padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
   .preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%; }
+
+  .toast-container { position: fixed; bottom: 24px; right: 24px; display: flex; flex-direction: column; gap: 10px; z-index: 9999; }
+  .toast { background: var(--panel-bg); border: 1px solid var(--panel-border); color: var(--text-primary); padding: 12px 22px; border-radius: var(--radius-md); box-shadow: var(--shadow-premium); backdrop-filter: blur(16px); font-size: 14px; font-weight: 600; transform: translateY(20px); opacity: 0; animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  @keyframes toastIn { to { transform: translateY(0); opacity: 1; } }
+
+  .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.35); backdrop-filter: blur(6px); display: grid; place-items: center; z-index: 10000; }
+  .modal-box { background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-premium); padding: 32px; width: min(420px, 90%); display: grid; gap: 20px; text-align: center; }
+  .modal-box p { margin: 0; font-size: 15px; font-weight: 600; color: var(--text-primary); line-height: 1.5; }
 
   @media (max-width: 1120px) {
     .main-container { grid-template-columns: 1fr; height: auto; overflow: visible; }
@@ -304,19 +272,20 @@
 </head>
 <body>
 
+<!-- TOAST CONTAINER -->
+<div id="toastContainer" class="toast-container"></div>
+
 <!-- HOME PAGE -->
 <section id="homePage" class="page">
   <div class="home-card">
     <div style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
-      <!-- Theme Selector Dropdown on Homepage -->
       <select class="lang-selector home-theme-select" title="Select Theme Style">
-        <option value="system" data-i18n="theme_system">💻 Auto Theme</option>
-        <option value="light" data-i18n="theme_light">☀️ Light Theme</option>
-        <option value="dark" data-i18n="theme_dark">🌌 Space Dark</option>
+        <option value="system" data-i18n="theme_system">💻 Auto</option>
+        <option value="light" data-i18n="theme_light">☀️ Light Mode</option>
+        <option value="dark" data-i18n="theme_dark">🌌 Dark Mode</option>
         <option value="amoled" data-i18n="theme_amoled">🕶️ AMOLED Dark</option>
       </select>
 
-      <!-- Language Selector -->
       <select class="lang-selector home-lang-select">
         <option value="en">🇬🇧 English</option>
         <option value="vi">🇻🇳 Tiếng Việt</option>
@@ -324,9 +293,9 @@
     </div>
 
     <div style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
-      <svg id="homeLogoSvg" viewBox="0 0 64 64" style="border:none; background:transparent; width:100%; height:100%;"></svg>
+      <svg id="homeLogoSvg" viewBox="0 0 64 64"></svg>
     </div>
-    <h1 data-i18n="app_title">bookmark bar divider</h1>
+    <h1 data-i18n="app_title">Bookmark Bar Divider</h1>
     <p data-i18n="home_desc">Smart Bookmark Bar Divider designer. Create beautiful separator icons and drag them directly to your bookmark bar.</p>
     
     <a id="bookmarkLink" class="bookmark-link" href="#" draggable="true">
@@ -338,11 +307,11 @@
     
     <div class="home-actions">
       <button id="newBtn" class="btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         <span data-i18n="create_new">Create New Divider</span>
       </button>
       <button id="enterStudioBtn" class="btn-ghost">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         <span data-i18n="enter_studio">Enter Design Studio</span>
       </button>
     </div>
@@ -350,48 +319,46 @@
   </div>
 </section>
 
-<!-- MAIN STUDIO (COMPACT EDITOR & INTEGRATED PROJECT MANAGER) -->
+<!-- MAIN STUDIO -->
 <section id="studioPage" class="studio hidden">
   <div class="topbar">
     <div class="brand"><strong data-i18n="studio_title">Divider Studio</strong><span id="topMeta">Designing...</span></div>
     
     <div class="segmented-control">
       <button id="tabHomeBtn">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline; vertical-align:middle; margin-right:4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline; vertical-align:middle; margin-right:4px;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         <span data-i18n="tab_home">Home</span>
       </button>
       <button id="tabStudioBtn" class="active">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline; vertical-align:middle; margin-right:4px;"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><circle cx="12" cy="12" r="3"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline; vertical-align:middle; margin-right:4px;"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><circle cx="12" cy="12" r="3"/></svg>
         <span data-i18n="tab_studio">Studio</span>
       </button>
     </div>
     
     <div class="spacer"></div>
     
-    <!-- Theme Switcher in Studio Topbar -->
     <select class="lang-selector studio-theme-select" style="padding: 6px 10px;" title="Select Theme Style">
       <option value="system" data-i18n="theme_system">💻 Auto</option>
-      <option value="light" data-i18n="theme_light">☀️ Light</option>
-      <option value="dark" data-i18n="theme_dark">🌌 Space</option>
-      <option value="amoled" data-i18n="theme_amoled">🕶️ AMOLED</option>
+      <option value="light" data-i18n="theme_light">☀️ Light Mode</option>
+      <option value="dark" data-i18n="theme_dark">🌌 Dark Mode</option>
+      <option value="amoled" data-i18n="theme_amoled">🕶️ AMOLED Dark</option>
     </select>
 
-    <!-- Lang Switcher in Studio Topbar -->
     <select class="lang-selector studio-lang-select" style="padding: 6px 10px;">
       <option value="en">🇬🇧 EN</option>
       <option value="vi">🇻🇳 VI</option>
     </select>
 
     <button id="undoBtn" class="btn-ghost" title="Undo">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></svg>
       <span data-i18n="btn_undo">Undo</span>
     </button>
     <button id="redoBtn" class="btn-ghost" title="Redo">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7v6h-6"/><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7v6h-6"/><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7"/></svg>
       <span data-i18n="btn_redo">Redo</span>
     </button>
     <button id="saveBtn" class="btn-primary">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
       <span data-i18n="btn_save">Save Project</span>
     </button>
   </div>
@@ -400,18 +367,18 @@
     <!-- LEFT SIDEBAR: PROJECTS -->
     <aside class="panel scroll">
       <div class="head">
-        <h3 data-i18n="your_projects">Your Projects</h3>
+        <h3 data-i18n="your_projects">Saved Dividers</h3>
         <span class="tiny" id="projectCount">0</span>
       </div>
       <div class="body">
         <div class="row" style="margin-bottom: 4px;">
           <button id="studioNewBtn" class="btn-primary" style="flex: 1;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             <span data-i18n="add_new">Add New</span>
           </button>
           <button id="studioImportBtn" class="btn-ghost">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-            <span data-i18n="btn_import">Import</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span data-i18n="btn_import">Import JSON</span>
           </button>
           <input id="importInput" type="file" accept="application/json" class="hidden" />
         </div>
@@ -426,15 +393,14 @@
     <!-- CENTER PREVIEW PANEL -->
     <section class="panel scroll">
       <div class="head">
-        <h3 data-i18n="preview_title">Stage Preview</h3>
+        <h3 data-i18n="preview_title">Live Preview</h3>
         <div style="display: flex; align-items: center; gap: 8px;">
-          <span class="tiny" data-i18n="grid_toggle" style="text-transform:none; font-weight:700;">Grid</span>
+          <span class="tiny" data-i18n="grid_toggle" style="text-transform:none; font-weight:700;">Show Grid</span>
           <input type="checkbox" id="gridToggle" checked style="width:auto; cursor:pointer; accent-color: var(--brand-pink);">
         </div>
       </div>
       <div class="body" style="grid-template-rows: auto 1fr auto; gap: 20px; align-items: center;">
         
-        <!-- Interactive Bookmark Anchor for easy instant dragging/dropping -->
         <div style="display: flex; justify-content: center; width: 100%;">
           <a id="studioBookmarkLink" class="bookmark-link" href="#" draggable="true" style="width: 100%; justify-content: center;">
             <span class="bookmark-icon-preview">
@@ -450,15 +416,15 @@
         
         <div class="preview-grid">
           <div class="stagebox">
-            <div class="tiny" style="margin-bottom: 8px;" data-i18n="preview_16">Favicon Size (16x16)</div>
+            <div class="tiny" style="margin-bottom: 8px;" data-i18n="preview_16">Favicon (16x16)</div>
             <div style="width: 32px; height: 32px; background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 6px; padding: 4px; display: flex; align-items: center; justify-content: center;">
-              <svg id="pv16" viewBox="0 0 16 16" style="border:none; box-shadow:none; width: 100%; height: 100%;"></svg>
+              <svg id="pv16" viewBox="0 0 16 16"></svg>
             </div>
           </div>
           <div class="stagebox">
-            <div class="tiny" style="margin-bottom: 8px;" data-i18n="preview_32">Tab Size (32x32)</div>
+            <div class="tiny" style="margin-bottom: 8px;" data-i18n="preview_32">Tab Icon (32x32)</div>
             <div style="width: 48px; height: 48px; background: #fff; border: 1px solid rgba(0,0,0,0.05); border-radius: 6px; padding: 6px; display: flex; align-items: center; justify-content: center;">
-              <svg id="pv32" viewBox="0 0 32 32" style="border:none; box-shadow:none; width: 100%; height: 100%;"></svg>
+              <svg id="pv32" viewBox="0 0 32 32"></svg>
             </div>
           </div>
         </div>
@@ -469,7 +435,7 @@
     <aside class="panel scroll">
       <div class="head">
         <h3 data-i18n="properties">Properties</h3>
-        <span class="tiny" data-i18n="edit">Edit</span>
+        <span class="tiny" data-i18n="edit">Customize</span>
       </div>
       <div class="body">
         <div class="field">
@@ -478,10 +444,10 @@
         </div>
         
         <div class="field">
-          <label data-i18n="field_shape">Shape</label>
+          <label data-i18n="field_shape">Shape Style</label>
           <select id="shape">
-            <option value="line" data-i18n="opt_line">Minimalist line</option>
-            <option value="rect" data-i18n="opt_rect">Rounded rectangle box</option>
+            <option value="line" data-i18n="opt_line">Minimalist Line</option>
+            <option value="rect" data-i18n="opt_rect">Rounded Block</option>
           </select>
         </div>
 
@@ -494,55 +460,52 @@
         </div>
 
         <div class="field">
-          <label data-i18n="field_color">Color</label>
+          <label data-i18n="field_color">Color Accent</label>
           <input id="color" type="color" style="height: 44px; padding: 3px; cursor: pointer;">
         </div>
 
-        <!-- Dynamic inputs shown adaptively based on configuration -->
         <div class="grid" style="display: grid; gap: 12px;">
           <div class="field">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-              <label id="lblY1">Top End</label>
+              <label id="lblY1">Start Point</label>
               <span class="val-badge" id="valY1">6</span>
             </div>
             <input id="y1" type="range" min="0" max="64" value="6">
           </div>
           <div class="field">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-              <label id="lblY2">Bottom End</label>
+              <label id="lblY2">End Point</label>
               <span class="val-badge" id="valY2">58</span>
             </div>
             <input id="y2" type="range" min="0" max="64" value="58">
           </div>
           
-          <!-- Line specific options -->
           <div class="field" id="boxStroke">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-              <label data-i18n="field_stroke">Border Thickness</label>
+              <label data-i18n="field_stroke">Line Thickness</label>
               <span class="val-badge" id="valStroke">4</span>
             </div>
             <input id="stroke" type="range" min="1" max="24" value="4">
           </div>
           <div class="field" id="boxCap">
-            <label data-i18n="field_cap">Line Cap style</label>
+            <label data-i18n="field_cap">Line Caps</label>
             <select id="cap">
               <option value="round" data-i18n="opt_round">Round</option>
-              <option value="butt" data-i18n="opt_butt">Butt</option>
+              <option value="butt" data-i18n="opt_butt">Flat</option>
               <option value="square" data-i18n="opt_square">Square</option>
             </select>
           </div>
 
-          <!-- Rounded Rectangle specific options -->
           <div class="field hidden" id="boxWidth">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-              <label data-i18n="field_width">Block Thickness</label>
+              <label data-i18n="field_width">Block Width</label>
               <span class="val-badge" id="valWidth">8</span>
             </div>
             <input id="width" type="range" min="1" max="48" value="8">
           </div>
           <div class="field hidden" id="boxRx">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-              <label data-i18n="field_rx">Corner Radius (Rx)</label>
+              <label data-i18n="field_rx">Corner Radius</label>
               <span class="val-badge" id="valRx">4</span>
             </div>
             <input id="rx" type="range" min="0" max="24" value="4">
@@ -551,34 +514,34 @@
 
         <div class="row" style="margin-top: 10px;">
           <button id="dupBtn" class="btn-ghost" style="flex: 1;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
             <span data-i18n="btn_duplicate">Duplicate</span>
           </button>
           <button id="delBtn" class="btn-danger" style="flex: 1;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
             <span data-i18n="btn_delete">Delete</span>
           </button>
         </div>
 
-        <div class="section-title" style="margin-top: 15px;" data-i18n="share_json">JSON Data & Share</div>
+        <div class="section-title" style="margin-top: 15px;" data-i18n="share_json">Share & Export</div>
         <div class="field">
           <textarea id="shareUrl" readonly style="font-size: 11px;" data-i18n-placeholder="placeholder_share"></textarea>
         </div>
         <div class="row">
           <button id="copyUrlBtn" class="btn-ghost" style="flex: 1; font-size: 12px;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-            <span data-i18n="btn_copy_url">Copy URL</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            <span data-i18n="btn_copy_url">Copy URL Link</span>
           </button>
           <button id="exportJsonBtn" class="btn-ghost" style="flex: 1; font-size: 12px;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            <span data-i18n="btn_export">Export JSON</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span data-i18n="btn_export">Download JSON</span>
           </button>
         </div>
 
-        <div class="section-title" style="margin-top: 15px;" data-i18n="revisions">Revisions</div>
+        <div class="section-title" style="margin-top: 15px;" data-i18n="revisions">Version History</div>
         <button id="saveSnapBtn" class="btn-ghost" style="width: 100%;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2 2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-          <span data-i18n="btn_snapshot">Save current Snapshot</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2 2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <span data-i18n="btn_snapshot">Take Backup Snapshot</span>
         </button>
         <div class="list" id="snapList" style="margin-top: 8px;"></div>
       </div>
@@ -591,7 +554,7 @@
   const KEY = 'bbd_projects_pinksky_v4';
   const ACTIVE = 'bbd_active_pinksky_v4';
   const LANG_KEY = 'bbd_lang_v4';
-  const THEME_KEY = 'bbd_theme_v4_style'; // Enhanced theme storage
+  const THEME_KEY = 'bbd_theme_v4_style';
   
   const $ = id => document.getElementById(id);
   const now = () => new Date().toISOString();
@@ -600,69 +563,95 @@
   const safe = s => String(s || 'divider').toLowerCase().replace(/[^a-z0-9-_]+/g, '-').replace(/^-+|-+$/g, '') || 'divider';
   const esc = s => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 
-  // Highly Extensible i18n Dictionary
+  const toast = (message, type = 'info') => {
+    const container = $('toastContainer');
+    if (!container) return;
+    const el = document.createElement('div');
+    el.className = 'toast';
+    el.textContent = message;
+    container.appendChild(el);
+    setTimeout(() => el.remove(), 2600);
+  };
+
+  const customConfirm = (message, onConfirm) => {
+    const overlay = document.createElement('div');
+    overlay.className = 'modal-overlay';
+    overlay.innerHTML = `
+      <div class="modal-box">
+        <p>${esc(message)}</p>
+        <div class="row">
+          <button id="modalCancel" class="btn-ghost">${t('btn_confirm_cancel')}</button>
+          <button id="modalOk" class="btn-primary">${t('btn_confirm_ok')}</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+    overlay.querySelector('#modalCancel').onclick = () => overlay.remove();
+    overlay.querySelector('#modalOk').onclick = () => {
+      onConfirm();
+      overlay.remove();
+    };
+  };
+
+  // High quality professional translations keeping standard technical terms intact
   const I18N = {
     en: {
-      app_title: "bookmark bar divider",
+      app_title: "Bookmark Bar Divider",
       home_desc: "Smart Bookmark Bar Divider designer. Create beautiful separator icons and drag them directly to your bookmark bar.",
       create_new: "Create New Divider",
       enter_studio: "Enter Design Studio",
-      hint_blank: "💡 To create a bookmark that only shows the icon without text, simply clear the <strong>Divider Name</strong> field.",
+      hint_blank: "💡 **Pro Tip:** To create a clean, icon-only divider without text, simply leave the **Divider Name** field empty.",
       studio_title: "Divider Studio",
-      studio_meta: "Minimalist divider studio",
+      studio_meta: "Crafting a minimalist divider",
       tab_home: "Home",
-      tab_studio: "Studio",
+      tab_studio: "Editor",
       btn_undo: "Undo",
       btn_redo: "Redo",
       btn_save: "Save Project",
-      your_projects: "Your Projects",
-      add_new: "Add New",
-      btn_import: "Import",
+      your_projects: "Saved Dividers",
+      add_new: "Add Divider",
+      btn_import: "Import JSON",
       search_label: "Quick Search",
-      search_placeholder: "Enter search query...",
-      preview_title: "Stage Preview",
+      search_placeholder: "Search dividers...",
+      preview_title: "Live Preview",
       preview_subtitle: "Drag and drop to install",
-      preview_16: "Favicon Size (16x16)",
-      preview_32: "Tab Size (32x32)",
+      preview_16: "Favicon (16x16)",
+      preview_32: "Tab Icon (32x32)",
       properties: "Properties",
-      edit: "Edit",
+      edit: "Customize",
       field_name: "Divider Name",
       placeholder_name: "(Leave blank for icon-only)",
-      field_shape: "Shape",
-      opt_line: "Minimalist line",
-      opt_rect: "Rounded rectangle box",
+      field_shape: "Shape Style",
+      opt_line: "Minimalist Line",
+      opt_rect: "Rounded Block",
       field_orientation: "Orientation",
       opt_vertical: "Vertical",
       opt_horizontal: "Horizontal",
-      field_color: "Color",
-      lbl_top: "Top End",
-      lbl_bottom: "Bottom End",
-      lbl_left: "Left End",
-      lbl_right: "Right End",
-      field_stroke: "Border Thickness",
-      field_cap: "Line Cap style",
+      field_color: "Color Accent",
+      lbl_top: "Start Point",
+      lbl_bottom: "End Point",
+      lbl_left: "Start Point",
+      lbl_right: "End Point",
+      field_stroke: "Line Thickness",
+      field_cap: "Line Caps",
       opt_round: "Round",
-      opt_butt: "Butt",
+      opt_butt: "Flat",
       opt_square: "Square",
-      field_width: "Block Thickness",
-      field_rx: "Corner Radius (Rx)",
+      field_width: "Block Width",
+      field_rx: "Corner Radius",
       btn_duplicate: "Duplicate",
       btn_delete: "Delete",
-      share_json: "JSON Data & Share",
-      placeholder_share: "Share configuration URL",
-      btn_copy_url: "Copy URL",
-      btn_export: "Export JSON",
-      revisions: "Revisions",
-      btn_snapshot: "Save current Snapshot",
-      grid_toggle: "Grid",
-      
-      // Theme names
+      share_json: "Share & Export",
+      placeholder_share: "Config URL link",
+      btn_copy_url: "Copy URL Link",
+      btn_export: "Download JSON",
+      revisions: "Version History",
+      btn_snapshot: "Take Backup Snapshot",
+      grid_toggle: "Show Grid",
       theme_system: "💻 System Auto",
       theme_light: "☀️ Light Mode",
-      theme_dark: "🌌 Space Dark",
+      theme_dark: "🌌 Dark Mode",
       theme_amoled: "🕶️ AMOLED Dark",
-      
-      // Dynamic strings (including placeholder replacements)
       drag_link_default: "Drag up to Bookmark Bar",
       drag_link_named: "Divider: {name}",
       drag_link_blank: "Drag up (Hidden Name)",
@@ -672,7 +661,7 @@
       edited_at: "Edited: {time}",
       no_projects: "No projects found",
       no_snapshots: "No backup snapshots saved yet",
-      manual_snap: "Manual backup snapshot",
+      manual_snap: "Manual Backup Snapshot",
       toast_new_project: "Added a new divider!",
       toast_duplicate: "Duplicated the design!",
       toast_delete_success: "Deleted project successfully",
@@ -691,105 +680,103 @@
       btn_restore: "Restore",
       btn_confirm_ok: "Confirm",
       btn_confirm_cancel: "Cancel",
-      locale: "en-US"
+      locale: "en-US",
+      quick_drag_title: "Drag to Bookmark Bar / Kéo vào Bookmark Bar"
     },
     vi: {
-      app_title: "bookmark bar divider",
-      home_desc: "Trình thiết kế dải phân cách Bookmark thông minh. Tạo các biểu tượng phân tách tuyệt đẹp, kéo thả trực tiếp lên thanh dấu trang.",
+      app_title: "Bookmark Bar Divider",
+      home_desc: "Trình thiết kế Divider cho thanh Bookmark. Tạo các icon phân tách tối giản và kéo thả trực tiếp lên Bookmark Bar.",
       create_new: "Tạo Divider Mới",
-      enter_studio: "Vào Studio Thiết Kế",
-      hint_blank: "💡 Để tạo bookmark ẩn tên chỉ hiển thị biểu tượng, bạn chỉ cần xóa sạch nội dung ô <strong>Tên Divider</strong>.",
+      enter_studio: "Vào Design Studio",
+      hint_blank: "💡 **Mẹo:** Để tạo một divider ẩn tên (chỉ hiển thị icon), bạn chỉ cần để trống ô **Divider Name**.",
       studio_title: "Divider Studio",
-      studio_meta: "Thiết kế dải phân cách tối giản",
-      tab_home: "Trang chủ",
-      tab_studio: "Studio",
-      btn_undo: "Hoàn tác",
-      btn_redo: "Làm lại",
-      btn_save: "Lưu Dự Án",
-      your_projects: "Dự án của bạn",
-      add_new: "Thêm Mới",
-      btn_import: "Nhập",
-      search_label: "Tìm kiếm nhanh",
-      search_placeholder: "Nhập tên tìm kiếm...",
-      preview_title: "Bản Xem Trước (Stage)",
+      studio_meta: "Thiết kế Bookmark Divider",
+      tab_home: "Home",
+      tab_studio: "Editor",
+      btn_undo: "Undo",
+      btn_redo: "Redo",
+      btn_save: "Save Project",
+      your_projects: "Saved Dividers",
+      add_new: "Add Divider",
+      btn_import: "Import JSON",
+      search_label: "Quick Search",
+      search_placeholder: "Tìm kiếm divider...",
+      preview_title: "Live Preview",
       preview_subtitle: "Kéo thả để cài đặt",
-      preview_16: "Kích thước Favicon (16x16)",
-      preview_32: "Kích thước Tab (32x32)",
-      properties: "Thông số",
-      edit: "Chỉnh Sửa",
-      field_name: "Tên Divider",
-      placeholder_name: "(Để trống để không hiển thị tên)",
-      field_shape: "Hình dáng",
-      opt_line: "Đường thẳng tối giản",
-      opt_rect: "Hộp chữ nhật bo góc",
-      field_orientation: "Chiều hiển thị",
-      opt_vertical: "Dọc (Vertical)",
-      opt_horizontal: "Ngang (Horizontal)",
-      field_color: "Màu sắc",
-      lbl_top: "Đầu Trên",
-      lbl_bottom: "Đầu Dưới",
-      lbl_left: "Đầu Trái",
-      lbl_right: "Đầu Phải",
-      field_stroke: "Độ dày viền",
-      field_cap: "Bo đầu nét vẽ",
-      opt_round: "Tròn (Round)",
-      opt_butt: "Bằng (Butt)",
-      opt_square: "Vuông (Square)",
-      field_width: "Độ dày khối",
-      field_rx: "Bo góc (Radius)",
-      btn_duplicate: "Nhân đôi",
-      btn_delete: "Xóa bỏ",
-      share_json: "Dữ liệu JSON & Chia sẻ",
-      placeholder_share: "URL Chia sẻ cấu hình",
-      btn_copy_url: "Sao chép URL",
-      btn_export: "Xuất JSON",
-      revisions: "Điểm khôi phục",
-      btn_snapshot: "Lưu Snapshot hiện tại",
-      grid_toggle: "Lưới",
-      
-      // Theme names
-      theme_system: "💻 Tự động",
-      theme_light: "☀️ Chế độ Sáng",
-      theme_dark: "🌌 Không gian Tối",
-      theme_amoled: "🕶️ AMOLED Siêu tối",
-      
+      preview_16: "Favicon (16x16)",
+      preview_32: "Tab Icon (32x32)",
+      properties: "Properties",
+      edit: "Customize",
+      field_name: "Divider Name",
+      placeholder_name: "(Để trống nếu chỉ cần icon)",
+      field_shape: "Shape Style",
+      opt_line: "Minimalist Line",
+      opt_rect: "Rounded Block",
+      field_orientation: "Orientation",
+      opt_vertical: "Vertical",
+      opt_horizontal: "Horizontal",
+      field_color: "Color Accent",
+      lbl_top: "Start Point",
+      lbl_bottom: "End Point",
+      lbl_left: "Start Point",
+      lbl_right: "End Point",
+      field_stroke: "Line Thickness",
+      field_cap: "Line Caps",
+      opt_round: "Round",
+      opt_butt: "Flat",
+      opt_square: "Square",
+      field_width: "Block Width",
+      field_rx: "Corner Radius",
+      btn_duplicate: "Duplicate",
+      btn_delete: "Delete",
+      share_json: "Share & Export",
+      placeholder_share: "Config URL link",
+      btn_copy_url: "Copy URL Link",
+      btn_export: "Download JSON",
+      revisions: "Version History",
+      btn_snapshot: "Take Backup Snapshot",
+      grid_toggle: "Show Grid",
+      theme_system: "💻 System Auto",
+      theme_light: "☀️ Light Mode",
+      theme_dark: "🌌 Dark Mode",
+      theme_amoled: "🕶️ AMOLED Dark",
       drag_link_default: "Kéo thả lên Bookmark Bar",
-      drag_link_named: "Dải phân cách: {name}",
+      drag_link_named: "Divider: {name}",
       drag_link_blank: "Kéo thả lên Bookmark Bar (Ẩn tên)",
-      drag_link_home_default: "Kéo lên Bookmark Bar",
-      drag_link_home_named: "Kéo phân cách: {name}",
-      untitled_proj: "Untitled (Chỉ Icon)",
-      edited_at: "Chỉnh sửa: {time}",
-      no_projects: "Không tìm thấy dự án nào",
+      drag_link_home_default: "Kéo thả lên Bookmark Bar",
+      drag_link_home_named: "Kéo Divider: {name}",
+      untitled_proj: "Untitled (Icon-only)",
+      edited_at: "Edited: {time}",
+      no_projects: "Không tìm thấy dải phân cách nào",
       no_snapshots: "Chưa lưu snapshot dự phòng nào",
-      manual_snap: "Bản sao lưu thủ công",
-      toast_new_project: "Đã thêm một dải phân cách mới!",
+      manual_snap: "Manual Backup Snapshot",
+      toast_new_project: "Đã thêm divider mới!",
       toast_duplicate: "Đã nhân bản thiết kế!",
-      toast_delete_success: "Đã xóa dự án thành công",
-      toast_import_success: "Đã import tệp cấu hình thành công!",
-      toast_import_error: "Tệp JSON không hợp lệ hoặc bị lỗi cấu trúc!",
-      toast_save_success: "Đã lưu tất cả thay đổi!",
-      toast_copy_drag: "Đã sao chép liên kết drag-and-drop!",
-      toast_copy_share: "Đã sao chép liên kết chia sẻ!",
+      toast_delete_success: "Đã xóa divider thành công",
+      toast_import_success: "Đã import cấu hình thành công!",
+      toast_import_error: "JSON không hợp lệ!",
+      toast_save_success: "Đã lưu thay đổi!",
+      toast_copy_drag: "Đã copy liên kết kéo thả!",
+      toast_copy_share: "Đã copy liên kết chia sẻ!",
       toast_copy_json: "Đã copy cấu hình JSON!",
-      toast_undo: "Đã quay lại thao tác trước!",
-      toast_redo: "Đã lặp lại thao tác hủy bỏ!",
-      toast_snapshot: "Đã tạo một điểm snapshot dự phòng!",
-      toast_apply_json: "Đã cập nhật từ JSON!",
-      confirm_delete: "Bạn có muốn xóa dải phân cách \"{name}\" này không?",
-      confirm_restore: "Bạn có muốn phục hồi thiết kế từ điểm sao lưu này?",
-      btn_restore: "Phục hồi",
-      btn_confirm_ok: "Đồng ý",
-      btn_confirm_cancel: "Hủy bỏ",
-      locale: "vi-VN"
+      toast_undo: "Đã Undo!",
+      toast_redo: "Đã Redo!",
+      toast_snapshot: "Đã lưu Snapshot!",
+      toast_apply_json: "Đã khôi phục từ JSON!",
+      confirm_delete: "Bạn có chắc muốn xóa divider \"{name}\"?",
+      confirm_restore: "Bạn có muốn khôi phục thiết kế từ Snapshot này không?",
+      btn_restore: "Restore",
+      btn_confirm_ok: "Xác nhận",
+      btn_confirm_cancel: "Hủy",
+      locale: "vi-VN",
+      quick_drag_title: "Drag to Bookmark Bar / Kéo vào Bookmark Bar"
     }
   };
 
-  // State
   const st = {
     page: 'home',
     lang: 'en',
-    themeMode: 'system', // 'system' | 'light' | 'dark' | 'amoled'
+    themeMode: 'system',
     projects: [],
     active: null,
     undo: [],
@@ -807,52 +794,32 @@
   };
 
   const fmt = d => {
-    try {
-      return new Date(d).toLocaleString(t('locale'));
-    } catch(e) {
-      return new Date(d).toLocaleString();
-    }
+    try { return new Date(d).toLocaleString(t('locale')); } catch { return new Date(d).toLocaleString(); }
   };
 
   const applyLanguage = () => {
     document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      el.textContent = t(key);
+      el.textContent = t(el.getAttribute('data-i18n'));
     });
-
     document.querySelectorAll('[data-i18n-html]').forEach(el => {
-      const key = el.getAttribute('data-i18n-html');
-      el.innerHTML = t(key);
+      el.innerHTML = t(el.getAttribute('data-i18n-html'));
     });
-
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-      const key = el.getAttribute('data-i18n-placeholder');
-      el.setAttribute('placeholder', t(key));
+      el.setAttribute('placeholder', t(el.getAttribute('data-i18n-placeholder')));
     });
-
-    document.querySelectorAll('.home-lang-select').forEach(sel => sel.value = st.lang);
-    document.querySelectorAll('.studio-lang-select').forEach(sel => sel.value = st.lang);
+    document.querySelectorAll('.home-lang-select, .studio-lang-select').forEach(sel => sel.value = st.lang);
   };
 
-  // Theme Management Engine supporting system preference detection
   const applyTheme = () => {
     document.body.classList.remove('theme-dark', 'theme-amoled');
-    
     let resolvedTheme = st.themeMode;
     if (st.themeMode === 'system') {
-      const isSystemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      resolvedTheme = isSystemDark ? 'dark' : 'light';
+      resolvedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
-
-    if (resolvedTheme === 'dark') {
-      document.body.classList.add('theme-dark');
-    } else if (resolvedTheme === 'amoled') {
-      document.body.classList.add('theme-amoled');
-    }
+    if (resolvedTheme === 'dark') document.body.classList.add('theme-dark');
+    else if (resolvedTheme === 'amoled') document.body.classList.add('theme-amoled');
     
-    // Sync Select elements
-    document.querySelectorAll('.home-theme-select').forEach(sel => sel.value = st.themeMode);
-    document.querySelectorAll('.studio-theme-select').forEach(sel => sel.value = st.themeMode);
+    document.querySelectorAll('.home-theme-select, .studio-theme-select').forEach(sel => sel.value = st.themeMode);
   };
 
   const setThemeMode = (mode) => {
@@ -861,14 +828,13 @@
     applyTheme();
   };
 
-  // Default structure
   const def = () => ({
     id: uid(),
     name: '',
     createdAt: now(),
     updatedAt: now(),
     line: {
-      color: '#6366f1', // Set default color matching Aurora Theme indigo
+      color: '#6366f1',
       y1: 8,
       y2: 56,
       stroke: 6,
@@ -895,7 +861,6 @@
     st.themeMode = localStorage.getItem(THEME_KEY) || 'system';
     
     applyTheme();
-    
     const savedActive = localStorage.getItem(ACTIVE);
     st.active = st.projects.some(p => p.id === savedActive) ? savedActive : st.projects[0].id;
   };
@@ -924,7 +889,6 @@
   const generateSvgContent = (lineObj, size = 64) => {
     const { color, y1, y2, stroke, cap, shape, rx, width, orientation } = lineObj;
     const ratio = size / 64;
-    const c = color;
     const s = stroke * ratio;
     const r = (rx || 4) * ratio;
     const w = (width || 8) * ratio;
@@ -932,62 +896,56 @@
     if (shape === 'rect') {
       if (orientation === 'horizontal') {
         const xStart = y1 * ratio;
-        const xEnd = y2 * ratio;
-        const rectW = Math.max(1, xEnd - xStart);
-        const yStart = (size / 2) - (w / 2);
-        return `<rect x="${xStart}" y="${yStart}" width="${rectW}" height="${w}" rx="${r}" ry="${r}" fill="${c}" />`;
+        const rectW = Math.max(1, (y2 * ratio) - xStart);
+        return `<rect x="${xStart}" y="${(size / 2) - (w / 2)}" width="${rectW}" height="${w}" rx="${r}" ry="${r}" fill="${color}" />`;
       } else {
         const yStart = y1 * ratio;
-        const yEnd = y2 * ratio;
-        const rectH = Math.max(1, yEnd - yStart);
-        const xStart = (size / 2) - (w / 2);
-        return `<rect x="${xStart}" y="${yStart}" width="${w}" height="${rectH}" rx="${r}" ry="${r}" fill="${c}" />`;
+        const rectH = Math.max(1, (y2 * ratio) - yStart);
+        return `<rect x="${(size / 2) - (w / 2)}" y="${yStart}" width="${w}" height="${rectH}" rx="${r}" ry="${r}" fill="${color}" />`;
       }
     } else {
       if (orientation === 'horizontal') {
-        return `<line x1="${y1 * ratio}" y1="${size / 2}" x2="${y2 * ratio}" y2="${size / 2}" stroke="${c}" stroke-width="${s}" stroke-linecap="${cap}" />`;
+        return `<line x1="${y1 * ratio}" y1="${size / 2}" x2="${y2 * ratio}" y2="${size / 2}" stroke="${color}" stroke-width="${s}" stroke-linecap="${cap}" />`;
       } else {
-        return `<line x1="${size / 2}" y1="${y1 * ratio}" x2="${size / 2}" y2="${y2 * ratio}" stroke="${c}" stroke-width="${s}" stroke-linecap="${cap}" />`;
+        return `<line x1="${size / 2}" y1="${y1 * ratio}" x2="${size / 2}" y2="${y2 * ratio}" stroke="${color}" stroke-width="${s}" stroke-linecap="${cap}" />`;
       }
     }
   };
 
   const updateFavicon = () => {
-    const p = cur();
-    const svgContent = generateSvgContent(p.line, 32);
+    const svgContent = generateSvgContent(cur().line, 32);
     const svgMarkup = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">${svgContent}</svg>`;
     let link = document.querySelector("link[rel~='icon']");
     if (!link) {
       link = document.createElement('link');
-      link.rel='icon';
+      link.rel = 'icon';
       link.type = 'image/svg+xml';
       document.head.appendChild(link);
     }
     link.href = 'data:image/svg+xml;utf8,' + encodeURIComponent(svgMarkup);
   };
 
+  // Helper for converting individual project configurations to deep link bookmark URLs
+  const getEncodedConfigForProject = p => {
+    return btoa(unescape(encodeURIComponent(JSON.stringify({
+      n: p.name, c: p.line.color, y1: p.line.y1, y2: p.line.y2, s: p.line.stroke,
+      cp: p.line.cap, sh: p.line.shape, rx: p.line.rx, w: p.line.width, o: p.line.orientation
+    }))));
+  };
+
+  const shareUrlForProject = p => {
+    const u = new URL(location.href);
+    u.searchParams.set('p', p.id);
+    u.searchParams.set('d', getEncodedConfigForProject(p));
+    return u.toString();
+  };
+
   const getEncodedConfig = () => {
-    const p = cur();
-    const data = {
-      n: p.name,
-      c: p.line.color,
-      y1: p.line.y1,
-      y2: p.line.y2,
-      s: p.line.stroke,
-      cp: p.line.cap,
-      sh: p.line.shape,
-      rx: p.line.rx,
-      w: p.line.width,
-      o: p.line.orientation
-    };
-    return btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+    return getEncodedConfigForProject(cur());
   };
 
   const shareUrl = () => {
-    const u = new URL(location.href);
-    u.searchParams.set('p', cur().id);
-    u.searchParams.set('d', getEncodedConfig());
-    return u.toString();
+    return shareUrlForProject(cur());
   };
 
   const updateBookmarkElements = () => {
@@ -997,14 +955,10 @@
     
     document.title = isBlank ? '‌' : p.name;
     
-    // Setup for home drag anchor
     $('bookmarkLink').href = url;
-    $('bookmarkLink').dataset.url = url;
     $('bookmarkLinkText').textContent = isBlank ? t('drag_link_default') : t('drag_link_home_named', { name: p.name });
     
-    // Setup for studio drag anchor
     $('studioBookmarkLink').href = url;
-    $('studioBookmarkLink').dataset.url = url;
     $('studioBookmarkLinkText').textContent = isBlank ? t('drag_link_blank') : t('drag_link_named', { name: p.name });
     
     $('shareUrl').value = url;
@@ -1014,7 +968,6 @@
     st.page = page;
     $('homePage').classList.toggle('hidden', page !== 'home');
     $('studioPage').classList.toggle('hidden', page !== 'studio');
-    
     $('tabHomeBtn').classList.toggle('active', page === 'home');
     $('tabStudioBtn').classList.toggle('active', page === 'studio');
   };
@@ -1022,16 +975,13 @@
   const renderStages = () => {
     const p = cur();
     const draw64 = generateSvgContent(p.line, 64);
-    const draw32 = generateSvgContent(p.line, 32);
-    const draw16 = generateSvgContent(p.line, 16);
     
     $('homeLogoSvg').innerHTML = draw64;
     $('btnPreviewSvg').innerHTML = draw64;
     $('studioBtnPreviewSvg').innerHTML = draw64;
-    
     $('svgCanvas').innerHTML = draw64;
-    $('pv32').innerHTML = draw32;
-    $('pv16').innerHTML = draw16;
+    $('pv32').innerHTML = generateSvgContent(p.line, 32);
+    $('pv16').innerHTML = generateSvgContent(p.line, 16);
     
     updateFavicon();
   };
@@ -1043,24 +993,54 @@
     
     $('projectList').innerHTML = filtered.map(p => {
       const activeCls = p.id === st.active ? 'active' : '';
-      const previewMarkup = generateSvgContent(p.line, 64);
+      const pUrl = shareUrlForProject(p);
       return `
         <div class="item ${activeCls}" data-id="${p.id}">
-          <div style="width: 24px; height: 24px; background: #fff; border-radius: 6px; padding: 2px;">
-            <svg viewBox="0 0 64 64" style="border:none; box-shadow:none; background:transparent;">${previewMarkup}</svg>
+          <div style="width: 24px; height: 24px; background: #fff; border-radius: 6px; padding: 2px; flex-shrink: 0;">
+            <svg viewBox="0 0 64 64">${generateSvgContent(p.line, 64)}</svg>
           </div>
           <div style="flex: 1; min-width: 0;">
             <b style="display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px; color: var(--text-primary);">${esc(p.name || t('untitled_proj'))}</b>
             <small style="display:block; opacity:0.7; font-size:11px; color: var(--text-muted);">${t('edited_at', { time: fmt(p.updatedAt || p.createdAt) })}</small>
           </div>
+          <a class="quick-drag-btn" 
+             href="${pUrl}" 
+             data-id="${p.id}"
+             draggable="true" 
+             title="${esc(t('quick_drag_title'))}">
+             <svg viewBox="0 0 24 24" stroke-width="2.5">
+               <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+             </svg>
+          </a>
         </div>
       `;
     }).join('') || `<div class="tiny" style="padding:10px 0; text-align:center;">${t('no_projects')}</div>`;
+
+    // Dynamic programmatic bookmark link bindings for each list quick drag icon button
+    document.querySelectorAll('.quick-drag-btn').forEach(btn => {
+      const id = btn.dataset.id;
+      const p = st.projects.find(x => x.id === id);
+      if (!p) return;
+      const pUrl = shareUrlForProject(p);
+      
+      btn.addEventListener('dragstart', e => {
+        e.stopPropagation();
+        e.dataTransfer.effectAllowed = 'copy';
+        e.dataTransfer.setData('text/uri-list', pUrl);
+        e.dataTransfer.setData('text/plain', pUrl);
+        e.dataTransfer.setData('text/html', `<a href="${esc(pUrl)}">${esc(p.name || '')}</a>`);
+      });
+      
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        e.preventDefault();
+        copyToClipboard(pUrl, t('toast_copy_drag'));
+      });
+    });
   };
 
   const renderSnapshots = () => {
-    const p = cur();
-    $('snapList').innerHTML = p.revisions.map((r, i) => `
+    $('snapList').innerHTML = cur().revisions.map((r, i) => `
       <div class="item" style="padding: 10px 12px; font-size: 12px;">
         <div style="flex:1;">
           <b style="display:block; color: var(--text-primary);">${esc(r.note || t('manual_snap'))}</b>
@@ -1085,23 +1065,16 @@
     $('width').value = p.line.width || 8;
     $('rx').value = p.line.rx || 4;
 
-    // Update Slider numerical badge values
     $('valY1').textContent = p.line.y1;
     $('valY2').textContent = p.line.y2;
     $('valStroke').textContent = p.line.stroke;
     $('valWidth').textContent = p.line.width || 8;
     $('valRx').textContent = p.line.rx || 4;
 
-    // Adapt layout label names dynamically based on orientation
-    if (p.line.orientation === 'horizontal') {
-      $('lblY1').textContent = t('lbl_left');
-      $('lblY2').textContent = t('lbl_right');
-    } else {
-      $('lblY1').textContent = t('lbl_top');
-      $('lblY2').textContent = t('lbl_bottom');
-    }
+    const isHorizontal = p.line.orientation === 'horizontal';
+    $('lblY1').textContent = isHorizontal ? t('lbl_left') : t('lbl_top');
+    $('lblY2').textContent = isHorizontal ? t('lbl_right') : t('lbl_bottom');
 
-    // Toggle specific option blocks based on shape
     const isLine = p.line.shape === 'line';
     $('boxStroke').classList.toggle('hidden', !isLine);
     $('boxCap').classList.toggle('hidden', !isLine);
@@ -1120,12 +1093,8 @@
 
   const snap = (note = t('manual_snap')) => {
     const p = cur();
-    p.revisions.unshift({
-      id: uid(),
-      at: now(),
-      note,
-      line: clone(p.line)
-    });
+    p.revisions.unshift({ id: uid(), at: now(), note, line: clone(p.line) });
+    if (p.revisions.length > 20) p.revisions.pop();
     p.updatedAt = now();
   };
 
@@ -1154,15 +1123,11 @@
   };
 
   const deleteProject = () => {
-    const activeId = st.active;
-    const idx = st.projects.findIndex(p => p.id === activeId);
+    const idx = st.projects.findIndex(p => p.id === st.active);
     if (idx < 0) return;
-    const name = st.projects[idx].name || t('untitled_proj');
-    customConfirm(t('confirm_delete', { name: name }), () => {
+    customConfirm(t('confirm_delete', { name: st.projects[idx].name || t('untitled_proj') }), () => {
       st.projects.splice(idx, 1);
-      if (!st.projects.length) {
-        st.projects = [def()];
-      }
+      if (!st.projects.length) st.projects = [def()];
       setActive(st.projects[0].id);
       render();
       save();
@@ -1176,19 +1141,13 @@
       try {
         const parsed = JSON.parse(reader.result);
         const imported = {
-          ...def(),
-          ...parsed,
+          ...def(), ...parsed,
           id: parsed.id || uid(),
-          name: parsed.name || '',
-          line: { ...def().line, ...(parsed.line || {}) },
-          revisions: parsed.revisions || []
+          line: { ...def().line, ...(parsed.line || {}) }
         };
         const existIdx = st.projects.findIndex(p => p.id === imported.id);
-        if (existIdx >= 0) {
-          st.projects[existIdx] = imported;
-        } else {
-          st.projects.unshift(imported);
-        }
+        if (existIdx >= 0) st.projects[existIdx] = imported;
+        else st.projects.unshift(imported);
         setActive(imported.id);
         render();
         save();
@@ -1211,9 +1170,22 @@
     toast(t('toast_save_success'), 'success');
   };
 
+  const copyToClipboard = (text, successMsg) => {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => toast(successMsg, 'success'));
+    } else {
+      const dummy = document.createElement('textarea');
+      document.body.appendChild(dummy);
+      dummy.value = text; dummy.select();
+      document.execCommand('copy');
+      document.body.removeChild(dummy);
+      toast(successMsg, 'success');
+    }
+  };
+
   const bindEvents = () => {
-    // Language Select change listener
-    document.querySelectorAll('.lang-selector').forEach(selector => {
+    // Target exclusively language selects to avoid any theme property collision
+    document.querySelectorAll('.home-lang-select, .studio-lang-select').forEach(selector => {
       selector.addEventListener('change', e => {
         st.lang = e.target.value;
         save();
@@ -1221,32 +1193,19 @@
       });
     });
 
-    // Theme selector change listener (Home & Studio)
     document.querySelectorAll('.home-theme-select, .studio-theme-select').forEach(selector => {
-      selector.addEventListener('change', e => {
-        setThemeMode(e.target.value);
-      });
+      selector.addEventListener('change', e => setThemeMode(e.target.value));
     });
 
-    // Handle system color preference change dynamically
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-      if (st.themeMode === 'system') {
-        applyTheme();
-      }
+      if (st.themeMode === 'system') applyTheme();
     });
 
-    // Grid Background Toggle listener
-    $('gridToggle').onchange = e => {
-      $('svgCanvas').classList.toggle('grid-active', e.target.checked);
-    };
-
-    // Navigation & Tab togglers
+    $('gridToggle').onchange = e => $('svgCanvas').classList.toggle('grid-active', e.target.checked);
     $('newBtn').onclick = () => { addProject(); showPage('studio'); };
     $('enterStudioBtn').onclick = () => showPage('studio');
     $('tabHomeBtn').onclick = () => showPage('home');
     $('tabStudioBtn').onclick = () => showPage('studio');
-    
-    // Core actions in Studio
     $('studioNewBtn').onclick = addProject;
     $('studioImportBtn').onclick = () => $('importInput').click();
     $('importInput').onchange = e => {
@@ -1266,41 +1225,24 @@
     $('delBtn').onclick = deleteProject;
     $('exportJsonBtn').onclick = exportJson;
 
-    // Interactive Drag and drop configuration inside canvas
     const setupDrag = (linkEl) => {
       linkEl.addEventListener('dragstart', e => {
         const u = shareUrl();
-        const pName = cur().name || '';
         e.dataTransfer.effectAllowed = 'copy';
         e.dataTransfer.setData('text/uri-list', u);
         e.dataTransfer.setData('text/plain', u);
-        e.dataTransfer.setData('text/html', `<a href="${esc(u)}">${esc(pName)}</a>`);
+        e.dataTransfer.setData('text/html', `<a href="${esc(u)}">${esc(cur().name || '')}</a>`);
       });
       linkEl.addEventListener('click', e => {
         e.preventDefault();
-        const dummy = document.createElement('textarea');
-        document.body.appendChild(dummy);
-        dummy.value = shareUrl();
-        dummy.select();
-        document.execCommand('copy');
-        document.body.removeChild(dummy);
-        toast(t('toast_copy_drag'), 'success');
+        copyToClipboard(shareUrl(), t('toast_copy_drag'));
       });
     };
     setupDrag($('bookmarkLink'));
     setupDrag($('studioBookmarkLink'));
 
-    $('copyUrlBtn').onclick = () => {
-      const dummy = document.createElement('textarea');
-      document.body.appendChild(dummy);
-      dummy.value = shareUrl();
-      dummy.select();
-      document.execCommand('copy');
-      document.body.removeChild(dummy);
-      toast(t('toast_copy_share'), 'success');
-    };
+    $('copyUrlBtn').onclick = () => copyToClipboard(shareUrl(), t('toast_copy_share'));
 
-    // Live controller inputs
     $('editNameInput').addEventListener('input', e => {
       cur().name = e.target.value;
       cur().updatedAt = now();
@@ -1322,21 +1264,15 @@
       render();
     };
 
-    [$('shape'), $('orientation'), $('color'), $('y1'), $('y2'), $('stroke'), strokeEvent => {}, $('cap'), $('width'), $('rx')].forEach((el, index) => {
-      if (typeof el === 'function') return;
-      el.addEventListener('input', () => {
-        pushUndo();
-        triggerUpdate();
-      });
+    ['shape', 'orientation', 'color', 'y1', 'y2', 'stroke', 'cap', 'width', 'rx'].forEach(id => {
+      $(id).addEventListener('input', () => { pushUndo(); triggerUpdate(); });
     });
 
-    // Project switching listener in list
+    // Project selection inside list container
     $('projectList').onclick = e => {
+      if (e.target.closest('.quick-drag-btn')) return; // ignore clicks targeting the drag handles
       const item = e.target.closest('.item');
-      if (item) {
-        setActive(item.dataset.id);
-        render();
-      }
+      if (item) { setActive(item.dataset.id); render(); }
     };
 
     $('searchInput').addEventListener('input', e => {
@@ -1344,13 +1280,11 @@
       renderProjectList();
     });
 
-    // Undo / Redo mechanics
     $('undoBtn').onclick = () => {
       if (!st.undo.length) return;
       st.redo.push(JSON.stringify(cur()));
-      const restored = JSON.parse(st.undo.pop());
       const idx = st.projects.findIndex(p => p.id === st.active);
-      st.projects[idx] = restored;
+      st.projects[idx] = JSON.parse(st.undo.pop());
       render();
       toast(t('toast_undo'));
     };
@@ -1358,14 +1292,12 @@
     $('redoBtn').onclick = () => {
       if (!st.redo.length) return;
       st.undo.push(JSON.stringify(cur()));
-      const redone = JSON.parse(st.redo.pop());
       const idx = st.projects.findIndex(p => p.id === st.active);
-      st.projects[idx] = redone;
+      st.projects[idx] = JSON.parse(st.redo.pop());
       render();
       toast(t('toast_redo'));
     };
 
-    // Revisions & Snapshots
     $('saveSnapBtn').onclick = () => {
       snap(t('manual_snap'));
       render();
@@ -1378,9 +1310,8 @@
         const idx = +restoreBtn.dataset.restore;
         customConfirm(t('confirm_restore'), () => {
           pushUndo();
-          const p = cur();
-          p.line = clone(p.revisions[idx].line);
-          p.updatedAt = now();
+          cur().line = clone(cur().revisions[idx].line);
+          cur().updatedAt = now();
           render();
           toast(t('toast_apply_json'), 'success');
         });
@@ -1392,7 +1323,6 @@
     load();
     bindEvents();
 
-    // Deep Link configuration from URL Base64
     const params = new URL(location.href).searchParams;
     const dParam = params.get('d');
     const pParam = params.get('p');
@@ -1401,12 +1331,9 @@
       try {
         const decoded = JSON.parse(decodeURIComponent(escape(atob(dParam))));
         const imported = {
-          id: pParam || uid(),
-          name: decoded.n || '',
-          createdAt: now(),
-          updatedAt: now(),
+          id: pParam || uid(), name: decoded.n || '', createdAt: now(), updatedAt: now(),
           line: {
-            color: decoded.c || '#ec4899',
+            color: decoded.c || '#6366f1',
             y1: decoded.y1 !== undefined ? decoded.y1 : 8,
             y2: decoded.y2 !== undefined ? decoded.y2 : 56,
             stroke: decoded.s !== undefined ? decoded.s : 6,
@@ -1419,18 +1346,14 @@
           revisions: []
         };
         const existIdx = st.projects.findIndex(x => x.id === imported.id);
-        if (existIdx >= 0) {
-          st.projects[existIdx] = imported;
-        } else {
-          st.projects.unshift(imported);
-        }
+        if (existIdx >= 0) st.projects[existIdx] = imported;
+        else st.projects.unshift(imported);
         st.active = imported.id;
       } catch (e) {
         console.error("URL configuration read error", e);
       }
     } else if (pParam) {
-      const found = st.projects.find(x => x.id === pParam);
-      if (found) st.active = pParam;
+      if (st.projects.some(x => x.id === pParam)) st.active = pParam;
     }
 
     showPage('home');
